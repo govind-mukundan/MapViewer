@@ -1,0 +1,257 @@
+ *(.strings)
+ *(._pm*)
+ *(.init)
+ *(.fini)
+                0x00010a30                _etext = .
+                0x00010a30                . = ALIGN (0x4)
+
+.tors           0x00800000        0x0
+                0x00800000                ___ctors = .
+ *(.ctors)
+                0x00800000                ___ctors_end = .
+                0x00800000                ___dtors = .
+ *(.dtors)
+                0x00800000                ___dtors_end = .
+                0x00800000                . = ALIGN (0x4)
+
+.data           0x00800000     0x3844 load address 0x00010a30
+ *(.data)
+ .data          0x00800000      0x372 ./Demo/FT32_GCC/main.o
+ *fill*         0x00800372        0x2 
+ .data          0x00800374      0x428 /cygdrive/c/Program Files (x86)/FTDI/FT90x Toolchain/Toolchain/tools/bin/../lib/gcc/ft32-elf/5.0.0/../../../../ft32-elf/lib/libc.a(lib_a-impure.o)
+                0x00800374                _impure_ptr
+ .data          0x0080079c      0x410 /cygdrive/c/Program Files (x86)/FTDI/FT90x Toolchain/Toolchain/tools/bin/../lib/gcc/ft32-elf/5.0.0/../../../../ft32-elf/lib/libc.a(lib_a-mallocr.o)
+                0x0080079c                __malloc_sbrk_base
+                0x008007a0                __malloc_trim_threshold
+                0x008007a4                __malloc_av_
+ .data          0x00800bac        0x4 /cygdrive/c/Program Files (x86)/FTDI/FT90x Toolchain/Toolchain/tools/bin/../lib/gcc/ft32-elf/5.0.0/../../../../ft32-elf/lib/libstub.a(sbrk.o)
+ .data          0x00800bb0        0x8 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_core.o)
+                0x00800bb0                rpc_free
+                0x00800bb4                rpc_malloc
+ .data          0x00800bb8        0x8 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_debug.o)
+                0x00800bb8                rpc_debug_unlock
+                0x00800bbc                rpc_debug_lock
+ .data          0x00800bc0        0x8 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_diskio.o)
+                0x00800bc0                rpc_diskio_unlock
+                0x00800bc4                rpc_diskio_lock
+ .data          0x00800bc8        0x1 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_diskio_port.o)
+ *fill*         0x00800bc9        0x3 
+ .data          0x00800bcc        0x8 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_httpc.o)
+                0x00800bcc                rpc_httpc_unlock
+                0x00800bd0                rpc_httpc_lock
+ .data          0x00800bd4      0x1ee D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(http.o)
+ .data          0x00800dc2       0x84 D:\Freelance\Study\FTDI\new_build_framework\projects\libFreeRTOS\Debug/libFreeRTOS.a(crt0.o)
+                0x00800dc2                vector_table
+ *fill*         0x00800e46        0x2 
+ .data          0x00800e48        0x4 D:\Freelance\Study\FTDI\new_build_framework\projects\libFreeRTOS\Debug/libFreeRTOS.a(port.o)
+                0x00800e48                lDebugTaskID
+ .data          0x00800e4c       0x3c D:\Freelance\Study\FTDI\new_build_framework\projects\libft900\Debug/libft900.a(sdhost.o)
+ .data          0x00800e88       0x7c /cygdrive/c/Program Files (x86)/FTDI/FT90x Toolchain/Toolchain/tools/bin/../lib/gcc/ft32-elf/5.0.0/../../../../ft32-elf/lib/libc.a(lib_a-locale.o)
+                0x00800f00                __mb_cur_max
+ .data          0x00800f04        0x4 /cygdrive/c/Program Files (x86)/FTDI/FT90x Toolchain/Toolchain/tools/bin/../lib/gcc/ft32-elf/5.0.0/../../../../ft32-elf/lib/libc.a(lib_a-wctomb_r.o)
+                0x00800f04                __wctomb
+ *(.rodata)
+ .rodata        0x00800f08       0x35 ./Demo/FT32_GCC/main.o
+ *fill*         0x00800f3d        0x3 
+ .rodata        0x00800f40        0x4 /cygdrive/c/Program Files (x86)/FTDI/FT90x Toolchain/Toolchain/tools/bin/../lib/gcc/ft32-elf/5.0.0/../../../../ft32-elf/lib/libc.a(lib_a-impure.o)
+                0x00800f40                _global_impure_ptr
+ .rodata        0x00800f44       0xd6 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_core.o)
+ *fill*         0x0080101a        0x2 
+ .rodata        0x0080101c       0x15 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_debug.o)
+ *fill*         0x00801031        0x3 
+ .rodata        0x00801034       0x50 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_debug_DPutNumDec.o)
+ .rodata        0x00801084       0x50 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_debug_DPutNumHex.o)
+ .rodata        0x008010d4       0x48 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_debug_DPutc.o)
+ .rodata        0x0080111c       0x50 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_debug_DPuts.o)
+ .rodata        0x0080116c       0x90 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_debug_port.o)
+ .rodata        0x008011fc       0x16 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_diskio.o)
+ *fill*         0x00801212        0x2 
+ .rodata        0x00801214       0x58 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_diskio_initialize.o)
+ .rodata        0x0080126c       0x95 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_diskio_port.o)
+ *fill*         0x00801301        0x3 
+ .rodata        0x00801304       0x70 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_diskio_read.o)
+ .rodata        0x00801374       0x50 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_diskio_status.o)
+ .rodata        0x008013c4       0x70 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_diskio_write.o)
+ .rodata        0x00801434       0x15 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_httpc.o)
+ *fill*         0x00801449        0x3 
+ .rodata        0x0080144c      0x200 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_httpc_HttpClient.o)
+ .rodata        0x0080164c       0x90 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_httpc_port.o)
+ .rodata        0x008016dc       0x16 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(ipc_gpio.o)
+ *fill*         0x008016f2        0x2 
+ .rodata        0x008016f4       0x5a D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(ipc_spim.o)
+ *fill*         0x0080174e        0x2 
+ .rodata        0x00801750       0x3e D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(ipc_spis.o)
+ *fill*         0x0080178e        0x2 
+ .rodata        0x00801790       0x11 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(http.o)
+ *fill*         0x008017a1        0x3 
+ .rodata        0x008017a4       0x38 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(ipc_spi.o)
+ .rodata        0x008017dc       0x19 D:\Freelance\Study\FTDI\new_build_framework\projects\libFreeRTOS\Debug/libFreeRTOS.a(heap_4.o)
+ *fill*         0x008017f5        0x3 
+ .rodata        0x008017f8       0x45 D:\Freelance\Study\FTDI\new_build_framework\projects\libFreeRTOS\Debug/libFreeRTOS.a(port_extra.o)
+ *fill*         0x0080183d        0x3 
+ .rodata        0x00801840      0x15b D:\Freelance\Study\FTDI\new_build_framework\projects\libFreeRTOS\Debug/libFreeRTOS.a(queue.o)
+ *fill*         0x0080199b        0x1 
+ .rodata        0x0080199c      0x277 D:\Freelance\Study\FTDI\new_build_framework\projects\libFreeRTOS\Debug/libFreeRTOS.a(tasks.o)
+ *fill*         0x00801c13        0x1 
+ .rodata        0x00801c14       0xee D:\Freelance\Study\FTDI\new_build_framework\projects\libFreeRTOS\Debug/libFreeRTOS.a(timers.o)
+ *fill*         0x00801d02        0x2 
+ .rodata        0x00801d04       0x54 D:\Freelance\Study\FTDI\new_build_framework\projects\libft900\Debug/libft900.a(gpio.o)
+ .rodata        0x00801d58        0x8 D:\Freelance\Study\FTDI\new_build_framework\projects\libft900\Debug/libft900.a(delay.o)
+ .rodata        0x00801d60       0x20 /cygdrive/c/Program Files (x86)/FTDI/FT90x Toolchain/Toolchain/tools/bin/../lib/gcc/ft32-elf/5.0.0/../../../../ft32-elf/lib/libc.a(lib_a-vfiprintf.o)
+ .rodata        0x00801d80      0x100 /cygdrive/c/Program Files (x86)/FTDI/FT90x Toolchain/Toolchain/tools/bin/../lib/gcc/ft32-elf/5.0.0/libgcc.a(_clz.o)
+                0x00801d80                __clz_tab
+ *(.rodata*)
+ .rodata.str1.4
+                0x00801e80      0x5fd ./Demo/FT32_GCC/main.o
+                                0x601 (size before relaxing)
+ *fill*         0x0080247d        0x3 
+ .rodata.str1.4
+                0x00802480        0x2 /cygdrive/c/Program Files (x86)/FTDI/FT90x Toolchain/Toolchain/tools/bin/../lib/gcc/ft32-elf/5.0.0/../../../../ft32-elf/lib/libc.a(lib_a-impure.o)
+ *fill*         0x00802482        0x2 
+ .rodata.str1.4
+                0x00802484      0x6ad D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_core.o)
+ *fill*         0x00802b31        0x3 
+ .rodata.str1.4
+                0x00802b34       0x41 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_debug.o)
+ *fill*         0x00802b75        0x3 
+ .rodata.str1.4
+                0x00802b78       0x16 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_debug_DPutNumDec.o)
+                                 0x2a (size before relaxing)
+ .rodata.str1.4
+                0x00802b8e       0x2a D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_debug_DPutNumHex.o)
+ .rodata.str1.4
+                0x00802b8e       0x2a D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_debug_DPutc.o)
+ .rodata.str1.4
+                0x00802b8e       0x2a D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_debug_DPuts.o)
+ *fill*         0x00802b8e        0x2 
+ .rodata.str1.4
+                0x00802b90      0x121 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_debug_port.o)
+ .rodata.str1.4
+                0x00802cb1       0x41 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_diskio.o)
+ .rodata.str1.4
+                0x00802cb1       0x2a D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_diskio_initialize.o)
+ .rodata.str1.4
+                0x00802cb1      0x121 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_diskio_port.o)
+ .rodata.str1.4
+                0x00802cb1       0x2a D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_diskio_read.o)
+ .rodata.str1.4
+                0x00802cb1       0x2a D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_diskio_status.o)
+ .rodata.str1.4
+                0x00802cb1       0x2a D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_diskio_write.o)
+ .rodata.str1.4
+                0x00802cb1       0x1d D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_httpc.o)
+ .rodata.str1.4
+                0x00802cb1       0x2a D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_httpc_HttpClient.o)
+ .rodata.str1.4
+                0x00802cb1      0x121 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_httpc_port.o)
+ *fill*         0x00802cb1        0x3 
+ .rodata.str1.4
+                0x00802cb4       0x8b D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(ipc_gpio.o)
+                                 0xa2 (size before relaxing)
+ *fill*         0x00802d3f        0x1 
+ .rodata.str1.4
+                0x00802d40      0x269 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(ipc_spim.o)
+                                0x296 (size before relaxing)
+ *fill*         0x00802fa9        0x3 
+ .rodata.str1.4
+                0x00802fac      0x312 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(ipc_spis.o)
+                                0x3ae (size before relaxing)
+ *fill*         0x008032be        0x2 
+ .rodata.str1.4
+                0x008032c0       0x10 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(debug.o)
+ .rodata.str1.4
+                0x008032d0       0xa7 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(http.o)
+                                0x1f7 (size before relaxing)
+ *fill*         0x00803377        0x1 
+ .rodata.str1.4
+                0x00803378       0xad D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(platform.o)
+                                 0xb9 (size before relaxing)
+ *fill*         0x00803425        0x3 
+ .rodata.str1.4
+                0x00803428       0x9c D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(ipc_spi.o)
+ .rodata.str1.4
+                0x008034c4        0xb D:\Freelance\Study\FTDI\new_build_framework\projects\libFreeRTOS\Debug/libFreeRTOS.a(heap_4.o)
+ *fill*         0x008034cf        0x1 
+ .rodata.str1.4
+                0x008034d0      0x211 D:\Freelance\Study\FTDI\new_build_framework\projects\libFreeRTOS\Debug/libFreeRTOS.a(port_extra.o)
+                                0x215 (size before relaxing)
+ .rodata.str1.4
+                0x008036e1        0xb D:\Freelance\Study\FTDI\new_build_framework\projects\libFreeRTOS\Debug/libFreeRTOS.a(queue.o)
+ *fill*         0x008036e1        0x3 
+ .rodata.str1.4
+                0x008036e4       0x30 D:\Freelance\Study\FTDI\new_build_framework\projects\libFreeRTOS\Debug/libFreeRTOS.a(tasks.o)
+                                 0x3c (size before relaxing)
+ .rodata.str1.4
+                0x00803714        0x8 D:\Freelance\Study\FTDI\new_build_framework\projects\libFreeRTOS\Debug/libFreeRTOS.a(timers.o)
+                                 0x14 (size before relaxing)
+ .rodata.str1.4
+                0x0080371c       0xab D:\Freelance\Study\FTDI\new_build_framework\projects\libFreeRTOS\Debug/libFreeRTOS.a(port.o)
+ *fill*         0x008037c7        0x1 
+ .rodata.str1.4
+                0x008037c8       0x3f /cygdrive/c/Program Files (x86)/FTDI/FT90x Toolchain/Toolchain/tools/bin/../lib/gcc/ft32-elf/5.0.0/../../../../ft32-elf/lib/libc.a(lib_a-assert.o)
+                                 0x43 (size before relaxing)
+ *fill*         0x00803807        0x1 
+ .rodata.str1.4
+                0x00803808       0x2f /cygdrive/c/Program Files (x86)/FTDI/FT90x Toolchain/Toolchain/tools/bin/../lib/gcc/ft32-elf/5.0.0/../../../../ft32-elf/lib/libc.a(lib_a-vfiprintf.o)
+ *fill*         0x00803837        0x1 
+ .rodata.str1.4
+                0x00803838        0xc /cygdrive/c/Program Files (x86)/FTDI/FT90x Toolchain/Toolchain/tools/bin/../lib/gcc/ft32-elf/5.0.0/../../../../ft32-elf/lib/libc.a(lib_a-locale.o)
+                                 0x12 (size before relaxing)
+                0x00803844                _edata = .
+
+.bss            0x00803844     0x9930 load address 0x00014274
+                0x00803844                _bss_start = .
+ *(.bss)
+ .bss           0x00803844     0x1018 ./Demo/FT32_GCC/main.o
+ .bss           0x0080485c       0x34 /cygdrive/c/Program Files (x86)/FTDI/FT90x Toolchain/Toolchain/tools/bin/../lib/gcc/ft32-elf/5.0.0/../../../../ft32-elf/lib/libc.a(lib_a-mallocr.o)
+                0x0080485c                __malloc_current_mallinfo
+                0x00804884                __malloc_max_total_mem
+                0x00804888                __malloc_max_sbrked_mem
+                0x0080488c                __malloc_top_pad
+ .bss           0x00804890       0x44 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_debug_port.o)
+ .bss           0x008048d4       0x44 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_diskio_port.o)
+ .bss           0x00804918       0x44 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_httpc_port.o)
+ .bss           0x0080495c        0x4 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(ipc_gpio.o)
+ .bss           0x00804960       0x8c D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(ipc_spim.o)
+ .bss           0x008049ec       0x8c D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(ipc_spis.o)
+ .bss           0x00804a78        0x8 D:\Freelance\Study\FTDI\new_build_framework\projects\libexternal\Debug/libexternal.a(tinyprintf.o)
+ .bss           0x00804a80      0x204 D:\Freelance\Study\FTDI\new_build_framework\projects\libexternal\Debug/libexternal.a(diskio.o)
+ .bss           0x00804c84       0x80 D:\Freelance\Study\FTDI\new_build_framework\projects\libexternal\Debug/libexternal.a(ff.o)
+ .bss           0x00804d04     0x5818 D:\Freelance\Study\FTDI\new_build_framework\projects\libFreeRTOS\Debug/libFreeRTOS.a(heap_4.o)
+ .bss           0x0080a51c       0xf4 D:\Freelance\Study\FTDI\new_build_framework\projects\libFreeRTOS\Debug/libFreeRTOS.a(tasks.o)
+                0x0080a51c                pxCurrentTCB
+ .bss           0x0080a610       0x3c D:\Freelance\Study\FTDI\new_build_framework\projects\libFreeRTOS\Debug/libFreeRTOS.a(timers.o)
+ .bss           0x0080a64c        0x4 D:\Freelance\Study\FTDI\new_build_framework\projects\libFreeRTOS\Debug/libFreeRTOS.a(port.o)
+ *(COMMON)
+ COMMON         0x0080a650     0x2804 ./Demo/FT32_GCC/main.o
+                0x0080a650                BufferW
+                0x0080ba50                BufferR
+                0x0080ce50                rpc_status_e
+ COMMON         0x0080ce54        0x4 /cygdrive/c/Program Files (x86)/FTDI/FT90x Toolchain/Toolchain/tools/bin/../lib/gcc/ft32-elf/5.0.0/../../../../ft32-elf/lib/libc.a(lib_a-reent.o)
+                0x0080ce54                errno
+ COMMON         0x0080ce58       0x40 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_debug_port.o)
+                0x0080ce58                gRPC_Debug_PacketServer
+ COMMON         0x0080ce98       0x40 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_diskio_port.o)
+                0x0080ce98                gRPC_Diskio_PacketServer
+ COMMON         0x0080ced8       0x40 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_httpc_port.o)
+                0x0080ced8                gRPC_HttpC_PacketServer
+ COMMON         0x0080cf18        0x8 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(ipc_spim.o)
+                0x0080cf18                gxSPIM_QueueMOSI
+                0x0080cf1c                gxSPIM_QueueMISO
+ COMMON         0x0080cf20        0x8 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(ipc_spis.o)
+                0x0080cf20                gxSPIS_QueueMISO
+                0x0080cf24                gxSPIS_QueueMOSI
+ COMMON         0x0080cf28      0x234 D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(platform.o)
+                0x0080cf28                FatFs
+ COMMON         0x0080d15c        0x4 D:\Freelance\Study\FTDI\new_build_framework\projects\libFreeRTOS\Debug/libFreeRTOS.a(port_extra.o)
+                0x0080d15c                lDebugEnterCriticalSection_Caller
+ COMMON         0x0080d160       0x14 D:\Freelance\Study\FTDI\new_build_framework\projects\libFreeRTOS\Debug/libFreeRTOS.a(port.o)
+                0x0080d160                lDebugFlagIntMaskState
+                0x0080d164                uxCriticalNesting
+                0x0080d168                lDebugContextSwitchCaller
+                0x0080d16c                lDebugISRReturnAddr
+                0x0080d170                lDebugIsInISR
+                0x0080d174                _end = .
+                0x00010a30                __data_load_start = LOADADDR (.data)
+                0x00014274                __data_load_end = (__data_load_start + SIZEOF (.data))
+
