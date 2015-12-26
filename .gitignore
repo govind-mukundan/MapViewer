@@ -29,3 +29,5 @@ heat-ip/
 .vs/
 *.opensdf
 *.sdf
+*.d
+*.o

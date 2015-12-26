@@ -40,7 +40,7 @@ namespace MapViewer
     {
 
         string BINUTIL_NM; //= Environment.GetEnvironmentVariable("FT90X_TOOLCHAIN") + "/tools/bin/" + "ft32-elf-nm.exe";
-        string BINUTIL_OBJ_DUMP; //= Environment.GetEnvironmentVariable("FT90X_TOOLCHAIN") + "/tools/bin/" + "ft32-elf-objdump.exe";
+        string BINUTIL_READ_ELF; //= Environment.GetEnvironmentVariable("FT90X_TOOLCHAIN") + "/tools/bin/" + "ft32-elf-objdump.exe";
 
         /*
         
@@ -70,7 +70,7 @@ namespace MapViewer
             txtBx_MapFilepath.Text = _settings.MapPath;//Properties.Settings.Default.MapPath.ToString();
             txtBx_ElfFilepath.Text = _settings.ElfPath;//Properties.Settings.Default.ElfPath.ToString();
             BINUTIL_NM = _settings.NMPath;
-            BINUTIL_OBJ_DUMP = _settings.ObjDumpPath;
+            BINUTIL_READ_ELF = _settings.ReadElfPath;
             MAPParser.Instance.C_BSS_ID = _settings.BSSSeg2SecMap.ToArray();
             MAPParser.Instance.C_DATA_ID = _settings.DataSeg2SecMap.ToArray();
             MAPParser.Instance.C_TEXT_ID = _settings.TextSeg2SecMap.ToArray();
@@ -242,6 +242,7 @@ namespace MapViewer
             if (OFD.ShowDialog() == DialogResult.OK)
             {
                 txtBx_MapFilepath.Text = OFD.FileName;
+                _settings.MapPath = OFD.FileName;
             }
         }
 
@@ -321,14 +322,14 @@ namespace MapViewer
                 MessageBox.Show("Please enter a valid ELF file path for symbol analysis!");
                 return;
             }
-            if (BINUTIL_OBJ_DUMP == "" || !File.Exists(BINUTIL_OBJ_DUMP) ||
+            if (BINUTIL_READ_ELF == "" || !File.Exists(BINUTIL_READ_ELF) ||
                 BINUTIL_NM == "" || !File.Exists(BINUTIL_NM))
             {
                 MessageBox.Show("Please enter a valid ObjectDump and NM path for symbol analysis!\n Click the Settings button!");
                 return;
             }
             // Parse the dwarf information to get all the compilation units
-            DwarfParser.Instance.Run(BINUTIL_OBJ_DUMP, txtBx_ElfFilepath.Text);
+            DwarfParser.Instance.Run(BINUTIL_READ_ELF, txtBx_ElfFilepath.Text);
             // Extract the symbols using NM
             _syms = SymParser.Instance;
             _syms.Run(BINUTIL_NM, txtBx_ElfFilepath.Text);
@@ -390,6 +391,7 @@ namespace MapViewer
             if (OFD.ShowDialog() == DialogResult.OK)
             {
                 txtBx_ElfFilepath.Text = OFD.FileName;
+                _settings.ElfPath = OFD.FileName;
             }
         }
 

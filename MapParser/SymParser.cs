@@ -68,7 +68,7 @@ namespace MapViewer
             string result = "";
             Symbols = new List<Symbol>();
             if (elfPath == "") return;
-            ProcessAdapter.Execute(ref result, nmPath, "--print-size --size-sort  " + Quote(elfPath)); //--line-numbers
+            ProcessAdapter.Execute(ref result, nmPath, "--demangle --print-size --size-sort " + Quote(elfPath)); //--line-numbers
 
             // Parse the resultant table
             // 00800744 00000004 b LoaderIPMode  --> b means static BSS symbol, B beans global BSS symbol, same for d/D data

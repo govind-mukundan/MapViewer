@@ -61,16 +61,17 @@ namespace MapViewer
         /// </summary>
         /// <param name="nmPath"></param>
         /// <param name="elfPath"></param>
-        public void Run(string objDumpPath, string elfPath)
+        public void Run(string readElfPath, string elfPath)
         {
             string result = "";
-            if (elfPath == "" || objDumpPath == "") return;
-            ProcessAdapter.Execute(ref result, objDumpPath, "--dwarf=info " + Quote(elfPath));
+            if (elfPath == "" || readElfPath == "") return;
+            ProcessAdapter.Execute(ref result, readElfPath, "--debug-dump=info " + Quote(elfPath));
             string[] lines = result.Split(new[] { '\r', '\n' });
             DwarfInfo = lines.ToList();
             CompilationUnits = new List<string[]>();
             // Select the index of all lines that contain the compilation unit tag
             var ci = DwarfInfo.Select((s, i) => new { s, i }).Where(x => x.s.Contains(COMPILE_UNIT)).Select(x => x.i).ToList();
+            ci.Add(DwarfInfo.Count - 1); // last index
             for (int i = 0; i < ci.Count - 1; i++)
             {
                 CompilationUnits.Add(DwarfInfo.GetRange(ci[i], ci[i + 1] - ci[i]).ToArray());
@@ -92,12 +93,16 @@ namespace MapViewer
         {
             string ads = address.ToString("X").ToLower();
 
+            //if (name.Contains("StaticFunc"))
+            //    Debug.WriteLine("aaa");
+
             string[] mName = name.Split('.'); // .postfix is added by compiler/linker.. we ignore that
 
             var filteredCU = CompilationUnits.FirstOrDefault(cu =>
             {
                 // Name is case sensitive, address is not
-                if (cu.Where(s => s.Contains(ATTRIB_NAME) && s.Contains(mName[0])).Count() > 0 &&
+                // XC16 compiler mangles all names with a leading underscore, so we trim that
+                if (cu.Where(s => s.Contains(ATTRIB_NAME) && s.Contains(mName[0].Trim('_'))).Count() > 0 &&
                     cu.Where(s => s.Contains(AT_SUBPROGRAM_ADDRESS) && s.ToLower().Contains(ads)).Count() > 0)
                     return true;
                 else return false;
@@ -123,7 +128,7 @@ namespace MapViewer
 
             filteredCU = CompilationUnits.FirstOrDefault(cu =>
             {
-                if (cu.Where(s => s.Contains(ATTRIB_NAME) && s.Contains(mName[0])).Count() > 0 &&
+                if (cu.Where(s => s.Contains(ATTRIB_NAME) && s.Contains(mName[0].Trim('_'))).Count() > 0 &&
                     cu.Where(s => s.Contains(ATTRIB_LOCATION) && s.Contains(LOC_ADDRESS) && s.ToLower().Contains(ads)).Count() > 0)
                     return true;
                 else return false;

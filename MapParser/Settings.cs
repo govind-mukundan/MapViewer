@@ -70,9 +70,9 @@ namespace MapViewer
         [Editor(@"System.Windows.Forms.Design.StringCollectionEditor," + "System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
         typeof(System.Drawing.Design.UITypeEditor))]
         [TypeConverter(typeof(CsvConverter))]
-        [DefaultValue(".text"), Category("Segment To Section Map")]
+        [DefaultValue(".text, .reset, .init, .user_init, .handle, .isr, .libc, .libm, .libdsp, .lib, usercode, userconst, .dinit, .const"), Category("Segment To Section Map")]
         public List<string> TextSeg2SecMap
-        {
+        { 
             get { return _textSeg2SecMap; }
             set
             {
@@ -89,7 +89,7 @@ namespace MapViewer
         [Editor(@"System.Windows.Forms.Design.StringCollectionEditor," + "System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
         typeof(System.Drawing.Design.UITypeEditor))]
         [TypeConverter(typeof(CsvConverter))]
-        [DefaultValue(".data, .rodata, .strings, ._pm"), Category("Segment To Section Map")]
+        [DefaultValue(".data, .rodata, .strings, ._pm, .ndata"), Category("Segment To Section Map")]
         public List<string> DataSeg2SecMap
         {
             get { return _dataSeg2SecMap; }
@@ -109,7 +109,7 @@ namespace MapViewer
         [Editor(@"System.Windows.Forms.Design.StringCollectionEditor," + "System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
         typeof(System.Drawing.Design.UITypeEditor))]
         [TypeConverter(typeof(CsvConverter))]
-        [DefaultValue(".bss, COMMON"), Category("Segment To Section Map")]
+        [DefaultValue(".bss, COMMON, .nbss"), Category("Segment To Section Map")]
         public List<string> BSSSeg2SecMap
         {
             get { return _bssSeg2SecMap; }
@@ -171,27 +171,26 @@ namespace MapViewer
             }
         }
 
-        string _objDumpPath;
+        string _readElfPath;
         [Editor(typeof(FileBrowserEditor), typeof(System.Drawing.Design.UITypeEditor))] // To display elepsis button and file browser
-        [DefaultValue("Path to ObjDump"), Category("Path")]
-        public string ObjDumpPath
+        [DefaultValue("Path to ReadElf"), Category("Path")]
+        public string ReadElfPath
         {
-            get { return _objDumpPath; }
+            get { return _readElfPath; }
             set
             {
-                if (value != _objDumpPath)
+                if (value != _readElfPath)
                 {
                     appSettingsChanged = true;
-                    _objDumpPath = value;
+                    _readElfPath = value;
                 }
             }
         }
         private bool appSettingsChanged;
 
-        public Settings()
-        { 
+        public int TARGET_FT32 = 1;
+        public int TARGET_MICROCHIP_XC = 2;
 
-        }
 
         public class CsvConverter : TypeConverter
         {
@@ -223,7 +222,7 @@ namespace MapViewer
                     {
                         if (pi.Name == "DataSeg2SecMap" || pi.Name == "BSSSeg2SecMap" || pi.Name == "TextSeg2SecMap")
                         {
-                            pi.SetValue(this, def.Value.ToString().Split(',').ToList() , null);
+                            pi.SetValue(this, def.Value.ToString().Split(',').Select(x => x.Trim()).ToList(), null);
                         }
                         else
                         {
@@ -298,7 +297,7 @@ namespace MapViewer
                     this.BSSSeg2SecMap = myAppSettings.BSSSeg2SecMap;
                     this.DataSeg2SecMap = myAppSettings.DataSeg2SecMap;
                     this.NMPath = myAppSettings.NMPath;
-                    this.ObjDumpPath = myAppSettings.ObjDumpPath;
+                    this.ReadElfPath = myAppSettings.ReadElfPath;
                     fileExists = true;
                 }
             }

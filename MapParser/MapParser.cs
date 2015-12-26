@@ -175,7 +175,7 @@ namespace MapViewer
 
 
             // Sometimes the linker may optimize read only string (?) data
-            //            .rodata	802CB1	2A	42	D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_diskio_write.o)	
+            //.rodata	802CB1	2A	42	D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_diskio_write.o)	
             //.rodata	802CB1	1D	29	D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_httpc.o)	
             //.rodata	802CB1	2A	42	D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_httpc_HttpClient.o)	
             //.rodata	802CB1	121	289	D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_httpc_port.o)
@@ -237,8 +237,8 @@ namespace MapViewer
                 {
                     sym.SectionName = Sections.LastOrDefault().Name;
 
-                    if (sym.SymbolName.Contains("*fill*"))
-                        Debug.Write("oops");
+                    //if (sym.SymbolName.Contains("*fill*"))
+                    //    Debug.Write("oops");
                     sym.ModuleName = mod.ModuleName;
                     uint siz = 0;
                     // update the size of the previous symbol, given that we know the address of the current symbol
@@ -360,7 +360,9 @@ namespace MapViewer
                     // Exact match of id with section name
                     if ((Map[i].Split(' ')[0].Trim(new char[] { ' ', '\n', '\r' }).Length == id.Length) && (String.Compare(id, 0, Map[i], 0, id.Length) == 0))
                     {
-                        LinkerRepSize = Convert.ToUInt32(Map[i].Split(new char[0], StringSplitOptions.RemoveEmptyEntries)[2], 16); // this is the linker reported size eg: .text           0x00000000     0x5a48
+                        Debug.WriteLine(Map[i]);
+                        if (Map[i].Split(new char[0], StringSplitOptions.RemoveEmptyEntries).Count() >=2)
+                        LinkerRepSize += Convert.ToUInt32(Map[i].Split(new char[0], StringSplitOptions.RemoveEmptyEntries)[2], 16); // this is the linker reported size eg: .text           0x00000000     0x5a48
                         i++;
                         continue;
                     }
@@ -375,7 +377,7 @@ namespace MapViewer
 
                         if (ele.Length >= 4)
                         {
-                            string path = Map[i].Substring(C_MODULE_NAME_CHAR_POS); // FIXME: looks like the map file is so generates so that the module path is always at the 38th character. There should be a more portable way to calculate this
+                            string path = Map[i].Substring(Map[i].LastIndexOf(ele[2]) + ele[2].Length).TrimStart(); //Map[i].Substring(C_MODULE_NAME_CHAR_POS); // FIXME: looks like the map file is so generates so that the module path is always at the 38th character. There should be a more portable way to calculate this
                             seg.Add(new Symbol(String.Empty, path, Convert.ToUInt32(ele[1], 16), Convert.ToUInt32(ele[2], 16), id));
                         }
                         else
@@ -388,7 +390,7 @@ namespace MapViewer
                                 //Debug.WriteLine("Found sub match at : " + j.ToString() + " " + Map[j].ToString());
                                 Debug.WriteLine(Map[j].ToString());
                                 ele = Map[j].Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
-                                string path = Map[j].Substring(C_MODULE_NAME_CHAR_POS); // FIXME: looks like the map file is so generates so that the module path is always at the 38th character. There should be a more portable way to calculate this
+                                string path = Map[i].Substring(Map[i].LastIndexOf(ele[1]) + ele[1].Length).TrimStart();//Map[j].Substring(C_MODULE_NAME_CHAR_POS); // FIXME: looks like the map file is so generates so that the module path is always at the 38th character. There should be a more portable way to calculate this
                                 seg.Add(new Symbol(String.Empty, path, Convert.ToUInt32(ele[0], 16), Convert.ToUInt32(ele[1], 16), id));
                                 i++;
                             }
@@ -470,21 +472,21 @@ namespace MapViewer
                 if (Regex.IsMatch(ele[0], @"0[xX][0-9a-fA-F]+")) // Match a hex number in the format 0xyyyy..
                 {
                     // everything after the size is the module path
-                    path = line.Substring(line.IndexOf(ele[1]) + ele[1].Length).TrimStart();
+                    path = line.Substring(line.LastIndexOf(ele[1]) + ele[1].Length).TrimStart();
                     m = new Module(path, Convert.ToUInt32(ele[1], 16));
                     Debug.WriteLine("Found MODULE " + path + "\n" + line);
                     ret = true;
                 }
                 else if (Regex.IsMatch(ele[1], @"0[xX][0-9a-fA-F]+"))
                 {
-                    path = line.Substring(line.IndexOf(ele[2]) + ele[2].Length).TrimStart();
+                    path = line.Substring(line.LastIndexOf(ele[2]) + ele[2].Length).TrimStart();
                     m = new Module(path, Convert.ToUInt32(ele[2], 16));
                     Debug.WriteLine("Found MODULE " + path + "\n" + line);
                     ret = true;
                 }
 
-                if (path != line.Substring(C_MODULE_NAME_CHAR_POS))
-                    Debug.WriteLine("Error in Module Path substring repeats! probably");
+                //if (path != line.Substring(C_MODULE_NAME_CHAR_POS))
+                //    Debug.WriteLine("Error in Module Path substring repeats! probably");
             }
             return ret;
         }
