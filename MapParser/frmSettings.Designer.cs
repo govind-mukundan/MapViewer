@@ -39,17 +39,17 @@
             this.pg_Settings.CategoryForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.pg_Settings.Location = new System.Drawing.Point(12, 12);
             this.pg_Settings.Name = "pg_Settings";
-            this.pg_Settings.Size = new System.Drawing.Size(260, 238);
+            this.pg_Settings.Size = new System.Drawing.Size(729, 238);
             this.pg_Settings.TabIndex = 0;
             this.pg_Settings.ToolbarVisible = false;
             // 
-            // Settings
+            // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(753, 262);
             this.Controls.Add(this.pg_Settings);
-            this.Name = "Settings";
+            this.Name = "frmSettings";
             this.Text = "Settings";
             this.ResumeLayout(false);
 

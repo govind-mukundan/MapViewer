@@ -31,3 +31,5 @@ heat-ip/
 *.sdf
 *.d
 *.o
+diagrams/convert.txt
+diagrams/export.html
