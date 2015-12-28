@@ -57,9 +57,9 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_BrowseElfFile = new System.Windows.Forms.Button();
             this.txtBx_ElfFilepath = new System.Windows.Forms.TextBox();
             this.btn_Settings = new System.Windows.Forms.Button();
+            this.btn_BrowseElfFile = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lbl_DataSizeActual = new System.Windows.Forms.Label();
@@ -96,7 +96,7 @@
             this.chkBx_ShowStatic.AutoSize = true;
             this.chkBx_ShowStatic.Checked = true;
             this.chkBx_ShowStatic.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkBx_ShowStatic.Location = new System.Drawing.Point(130, 8);
+            this.chkBx_ShowStatic.Location = new System.Drawing.Point(113, 8);
             this.chkBx_ShowStatic.Name = "chkBx_ShowStatic";
             this.chkBx_ShowStatic.Size = new System.Drawing.Size(122, 17);
             this.chkBx_ShowStatic.TabIndex = 31;
@@ -106,7 +106,7 @@
             // 
             // btn_BrowseMapFile
             // 
-            this.btn_BrowseMapFile.Location = new System.Drawing.Point(474, 3);
+            this.btn_BrowseMapFile.Location = new System.Drawing.Point(472, 3);
             this.btn_BrowseMapFile.Name = "btn_BrowseMapFile";
             this.btn_BrowseMapFile.Size = new System.Drawing.Size(37, 22);
             this.btn_BrowseMapFile.TabIndex = 30;
@@ -117,9 +117,9 @@
             // btn_Analyze
             // 
             this.btn_Analyze.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_Analyze.Location = new System.Drawing.Point(536, 3);
+            this.btn_Analyze.Location = new System.Drawing.Point(534, 3);
             this.btn_Analyze.Name = "btn_Analyze";
-            this.btn_Analyze.Size = new System.Drawing.Size(67, 22);
+            this.btn_Analyze.Size = new System.Drawing.Size(69, 22);
             this.btn_Analyze.TabIndex = 29;
             this.btn_Analyze.Text = "Analyze";
             this.btn_Analyze.UseVisualStyleBackColor = true;
@@ -130,7 +130,7 @@
             this.txtBx_MapFilepath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBx_MapFilepath.Location = new System.Drawing.Point(3, 4);
             this.txtBx_MapFilepath.Name = "txtBx_MapFilepath";
-            this.txtBx_MapFilepath.Size = new System.Drawing.Size(465, 20);
+            this.txtBx_MapFilepath.Size = new System.Drawing.Size(463, 20);
             this.txtBx_MapFilepath.TabIndex = 28;
             // 
             // groupBox9
@@ -150,9 +150,11 @@
             // 
             // textBoxFilterSimple
             // 
+            this.textBoxFilterSimple.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxFilterSimple.Location = new System.Drawing.Point(7, 19);
             this.textBoxFilterSimple.Name = "textBoxFilterSimple";
-            this.textBoxFilterSimple.Size = new System.Drawing.Size(230, 20);
+            this.textBoxFilterSimple.Size = new System.Drawing.Size(374, 20);
             this.textBoxFilterSimple.TabIndex = 0;
             this.textBoxFilterSimple.TextChanged += new System.EventHandler(this.textBoxFilterSimple_TextChanged);
             // 
@@ -408,7 +410,7 @@
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 88.31169F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.68831F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 72F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.tableLayoutPanel3.Controls.Add(this.txtBx_ElfFilepath, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.txtBx_MapFilepath, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.btn_Analyze, 2, 0);
@@ -423,9 +425,28 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(606, 56);
             this.tableLayoutPanel3.TabIndex = 28;
             // 
+            // txtBx_ElfFilepath
+            // 
+            this.txtBx_ElfFilepath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBx_ElfFilepath.Location = new System.Drawing.Point(3, 32);
+            this.txtBx_ElfFilepath.Name = "txtBx_ElfFilepath";
+            this.txtBx_ElfFilepath.Size = new System.Drawing.Size(463, 20);
+            this.txtBx_ElfFilepath.TabIndex = 31;
+            // 
+            // btn_Settings
+            // 
+            this.btn_Settings.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_Settings.Location = new System.Drawing.Point(534, 31);
+            this.btn_Settings.Name = "btn_Settings";
+            this.btn_Settings.Size = new System.Drawing.Size(69, 22);
+            this.btn_Settings.TabIndex = 33;
+            this.btn_Settings.Text = "Settings";
+            this.btn_Settings.UseVisualStyleBackColor = true;
+            this.btn_Settings.Click += new System.EventHandler(this.btn_Settings_Click);
+            // 
             // btn_BrowseElfFile
             // 
-            this.btn_BrowseElfFile.Location = new System.Drawing.Point(474, 31);
+            this.btn_BrowseElfFile.Location = new System.Drawing.Point(472, 31);
             this.btn_BrowseElfFile.Name = "btn_BrowseElfFile";
             this.btn_BrowseElfFile.Size = new System.Drawing.Size(37, 22);
             this.btn_BrowseElfFile.TabIndex = 32;
@@ -433,50 +454,32 @@
             this.btn_BrowseElfFile.UseVisualStyleBackColor = true;
             this.btn_BrowseElfFile.Click += new System.EventHandler(this.btn_BrowseElfFile_Click);
             // 
-            // txtBx_ElfFilepath
-            // 
-            this.txtBx_ElfFilepath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBx_ElfFilepath.Location = new System.Drawing.Point(3, 32);
-            this.txtBx_ElfFilepath.Name = "txtBx_ElfFilepath";
-            this.txtBx_ElfFilepath.Size = new System.Drawing.Size(465, 20);
-            this.txtBx_ElfFilepath.TabIndex = 31;
-            // 
-            // btn_Settings
-            // 
-            this.btn_Settings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_Settings.Location = new System.Drawing.Point(536, 31);
-            this.btn_Settings.Name = "btn_Settings";
-            this.btn_Settings.Size = new System.Drawing.Size(67, 22);
-            this.btn_Settings.TabIndex = 33;
-            this.btn_Settings.Text = "Settings";
-            this.btn_Settings.UseVisualStyleBackColor = true;
-            this.btn_Settings.Click += new System.EventHandler(this.btn_Settings_Click);
-            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 219F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Controls.Add(this.groupBox3, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel6, 0, 0);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(621, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(489, 125);
             this.tableLayoutPanel4.TabIndex = 36;
             // 
             // groupBox3
             // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.lbl_DataSizeActual);
             this.groupBox3.Controls.Add(this.olv_SymbolSum);
             this.groupBox3.Controls.Add(this.lbl_TextSizeActual);
             this.groupBox3.Controls.Add(this.lbl_BssSizeActual);
-            this.groupBox3.Location = new System.Drawing.Point(273, 3);
+            this.groupBox3.Location = new System.Drawing.Point(252, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(213, 119);
+            this.groupBox3.Size = new System.Drawing.Size(234, 119);
             this.groupBox3.TabIndex = 35;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Actuals";
@@ -504,11 +507,11 @@
             this.olvColumn8});
             this.olv_SymbolSum.Cursor = System.Windows.Forms.Cursors.Default;
             this.olv_SymbolSum.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.olv_SymbolSum.Location = new System.Drawing.Point(1, 70);
+            this.olv_SymbolSum.Location = new System.Drawing.Point(0, 67);
             this.olv_SymbolSum.Name = "olv_SymbolSum";
             this.olv_SymbolSum.SelectColumnsMenuStaysOpen = false;
             this.olv_SymbolSum.ShowGroups = false;
-            this.olv_SymbolSum.Size = new System.Drawing.Size(213, 48);
+            this.olv_SymbolSum.Size = new System.Drawing.Size(234, 52);
             this.olv_SymbolSum.SortGroupItemsByPrimaryColumn = false;
             this.olv_SymbolSum.Sorting = System.Windows.Forms.SortOrder.Descending;
             this.olv_SymbolSum.TabIndex = 38;
@@ -573,7 +576,7 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 34.45378F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 65.54622F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(264, 119);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(238, 119);
             this.tableLayoutPanel6.TabIndex = 37;
             // 
             // groupBox2
@@ -584,7 +587,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(0);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(0);
-            this.groupBox2.Size = new System.Drawing.Size(261, 34);
+            this.groupBox2.Size = new System.Drawing.Size(236, 34);
             this.groupBox2.TabIndex = 35;
             this.groupBox2.TabStop = false;
             // 
@@ -600,22 +603,23 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.txtBx_SymFilter);
             this.groupBox1.Controls.Add(this.rb_SimpleFilter2);
             this.groupBox1.Controls.Add(this.rb_RegexFilter2);
-            this.groupBox1.Location = new System.Drawing.Point(3, 58);
+            this.groupBox1.Location = new System.Drawing.Point(3, 43);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(258, 58);
+            this.groupBox1.Size = new System.Drawing.Size(232, 73);
             this.groupBox1.TabIndex = 35;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filter";
             // 
             // txtBx_SymFilter
             // 
-            this.txtBx_SymFilter.Location = new System.Drawing.Point(6, 20);
+            this.txtBx_SymFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBx_SymFilter.Location = new System.Drawing.Point(6, 29);
             this.txtBx_SymFilter.Name = "txtBx_SymFilter";
-            this.txtBx_SymFilter.Size = new System.Drawing.Size(246, 20);
+            this.txtBx_SymFilter.Size = new System.Drawing.Size(220, 20);
             this.txtBx_SymFilter.TabIndex = 0;
             this.txtBx_SymFilter.TextChanged += new System.EventHandler(this.txtBx_SymFilter_TextChanged);
             // 
@@ -624,7 +628,7 @@
             this.rb_SimpleFilter2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rb_SimpleFilter2.AutoSize = true;
             this.rb_SimpleFilter2.Checked = true;
-            this.rb_SimpleFilter2.Location = new System.Drawing.Point(6, 40);
+            this.rb_SimpleFilter2.Location = new System.Drawing.Point(6, 57);
             this.rb_SimpleFilter2.Name = "rb_SimpleFilter2";
             this.rb_SimpleFilter2.Size = new System.Drawing.Size(127, 17);
             this.rb_SimpleFilter2.TabIndex = 20;
@@ -636,7 +640,7 @@
             // 
             this.rb_RegexFilter2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rb_RegexFilter2.AutoSize = true;
-            this.rb_RegexFilter2.Location = new System.Drawing.Point(136, 40);
+            this.rb_RegexFilter2.Location = new System.Drawing.Point(136, 57);
             this.rb_RegexFilter2.Name = "rb_RegexFilter2";
             this.rb_RegexFilter2.Size = new System.Drawing.Size(97, 17);
             this.rb_RegexFilter2.TabIndex = 21;

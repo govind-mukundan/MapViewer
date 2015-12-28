@@ -7,8 +7,8 @@
     <ProjectGuid>{9025B292-CF59-40B5-870C-D846B60A08FF}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MapParser</RootNamespace>
-    <AssemblyName>MapParser</AssemblyName>
+    <RootNamespace>MapViewer</RootNamespace>
+    <AssemblyName>MapViewer</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

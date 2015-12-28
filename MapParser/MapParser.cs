@@ -390,7 +390,7 @@ namespace MapViewer
                                 //Debug.WriteLine("Found sub match at : " + j.ToString() + " " + Map[j].ToString());
                                 Debug.WriteLine(Map[j].ToString());
                                 ele = Map[j].Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
-                                string path = Map[i].Substring(Map[i].LastIndexOf(ele[1]) + ele[1].Length).TrimStart();//Map[j].Substring(C_MODULE_NAME_CHAR_POS); // FIXME: looks like the map file is so generates so that the module path is always at the 38th character. There should be a more portable way to calculate this
+                                string path = Map[j].Substring(Map[j].LastIndexOf(ele[1]) + ele[1].Length).TrimStart();//Map[j].Substring(C_MODULE_NAME_CHAR_POS); // FIXME: looks like the map file is so generates so that the module path is always at the 38th character. There should be a more portable way to calculate this
                                 seg.Add(new Symbol(String.Empty, path, Convert.ToUInt32(ele[0], 16), Convert.ToUInt32(ele[1], 16), id));
                                 i++;
                             }
