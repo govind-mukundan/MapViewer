@@ -78,21 +78,29 @@ namespace MapViewer
             foreach (string line in symTable)
             {
                 // Split using spaces - note that the module path may itself contain spaces
-                string[] entries = line.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+                string[] entries = line.Split(new char[0], 4, StringSplitOptions.RemoveEmptyEntries );
                 if (entries.Length < 4) continue;
                 string path = "";
                 int type = Symbol.TYPE_STATIC;
                 string secName = "unknown";
                 // Extract the module path, we also take into account paths with spaces in between
 
+                entries[3] = entries[3].Trim();
                 if (entries[3] == "_setlocale_r")
                     Debug.Write("_setlocale_r");
 
-                 if (UseDWARF)
+
+                if (UseDWARF)
                 {
                     // Extract module path from DARF info
                     if (entries[2].ToLower() == "t")
                     {
+                        if (entries[3].Contains("Ft_Gpu_Copro_SendCmd"))
+                        {
+                            
+                            Debug.Write(entries[3].TrimEnd(' '));
+                        }
+                        //Debug.Write("GuiManager");
                         // Subroutines
                         path = DwarfParser.Instance.FindSubRoutineCUnit(entries[3], Convert.ToUInt32(entries[0], 16));
                     }
