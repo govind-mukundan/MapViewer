@@ -49,13 +49,14 @@ namespace MapViewer
         */
         SymParser _syms;
         Settings _settings;
+        bool _UIUpdateInProgress; // disable filtering while UI is being updated
 
         System.Timers.Timer _timer = new System.Timers.Timer(1000);
 
         public MapViewer()
         {
             InitializeComponent();
-
+            _UIUpdateInProgress = false;
             //Log.Instance.Print += PrintLog;
             _settings = new Settings();
             _settings.LoadAppSettings();
@@ -186,8 +187,11 @@ namespace MapViewer
             _timer.Enabled = true;
             _timer.Elapsed += (object s, ElapsedEventArgs e1) =>
             {
-                PopulateSymbolLV(FilterSymbols(olv_ModuleView.FilteredObjects.Cast<Module>().ToList()));
-                olv_ModuleView.Invalidate();
+                if (!_UIUpdateInProgress)
+                {
+                    PopulateSymbolLV(FilterSymbols(olv_ModuleView.FilteredObjects.Cast<Module>().ToList()));
+                    olv_ModuleView.Invalidate();
+                }
             };
             _timer.Start();
 
@@ -258,7 +262,7 @@ namespace MapViewer
         // [^\/(]+(?=.o\)?$) => extracts lib_a-vfiprintf from both (lib_a-vfiprintf.o) and lib_a-vfiprintf.o
         private void olv_ModuleView_SelectionChanged(object sender, EventArgs e)
         {
-            if (_syms == null) return;
+            if (_syms == null || _UIUpdateInProgress) return;
             PopulateSymbolLV(FilterSymbols(olv_ModuleView.SelectedObjects.Cast<Module>().ToList()));
             return;
         }
@@ -310,6 +314,7 @@ namespace MapViewer
 
         void AnalyzeSymbols()
         {
+            _UIUpdateInProgress = true;
             // Parse the MAP file alone
             if (!MAPParser.Instance.Run(txtBx_MapFilepath.Text)) return;
             // Update the ListView for Modules
@@ -383,6 +388,8 @@ namespace MapViewer
             //    }
 
             //}
+            
+            _UIUpdateInProgress = false;
         }
 
         private void btn_BrowseElfFile_Click(object sender, EventArgs e)
@@ -413,8 +420,11 @@ namespace MapViewer
             _timer.Enabled = true;
             _timer.Elapsed += (object s, ElapsedEventArgs e1) =>
             {
-                AddSumRow(olv_SymbolView.FilteredObjects.Cast<Symbol>().ToList());
-                olv_SymbolView.Invalidate();
+                if (!_UIUpdateInProgress)
+                {
+                    AddSumRow(olv_SymbolView.FilteredObjects.Cast<Symbol>().ToList());
+                    olv_SymbolView.Invalidate();
+                }
             };
             _timer.Start();
 
