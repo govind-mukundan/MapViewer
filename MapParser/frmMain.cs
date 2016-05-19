@@ -325,6 +325,7 @@ namespace MapViewer
             if (txtBx_ElfFilepath.Text == "" || !File.Exists(txtBx_MapFilepath.Text))
             {
                 MessageBox.Show("Please enter a valid ELF file path for symbol analysis!");
+                hide_sym_column();
                 return;
             }
             if (BINUTIL_READ_ELF == "" || !File.Exists(BINUTIL_READ_ELF) ||
@@ -445,6 +446,15 @@ namespace MapViewer
             fm.Show();
             // reload settings on close of settings form
             fm.FormClosed += (object s, FormClosedEventArgs x) => RefreshSettings();
+        }
+
+        private void hide_sym_column()
+        {
+            this.BeginInvoke(new MethodInvoker(() =>
+            { 
+           // Hide Symbol view if there's no elf file
+           tlp_Main.ColumnStyles[1].Width = 0;
+            }));
         }
 
     }

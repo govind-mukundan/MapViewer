@@ -54,7 +54,7 @@
             this.olvColumn7 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.colFileName = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.OFD = new System.Windows.Forms.OpenFileDialog();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tlp_Main = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.txtBx_ElfFilepath = new System.Windows.Forms.TextBox();
@@ -69,24 +69,24 @@
             this.lbl_DataSizeActual = new System.Windows.Forms.Label();
             this.lbl_TextSizeActual = new System.Windows.Forms.Label();
             this.lbl_BssSizeActual = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_ResetSyms = new System.Windows.Forms.Button();
             this.olv_SymbolSum = new BrightIdeasSoftware.ObjectListView();
             this.olvColumn4 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn5 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn8 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btn_ResetSyms = new System.Windows.Forms.Button();
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olv_ModuleSum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.olv_ModuleView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.olv_SymbolView)).BeginInit();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.tlp_Main.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.olv_SymbolSum)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.olv_SymbolSum)).BeginInit();
             this.SuspendLayout();
             // 
             // chkBx_ShowStatic
@@ -104,7 +104,7 @@
             // 
             // btn_BrowseMapFile
             // 
-            this.btn_BrowseMapFile.Location = new System.Drawing.Point(471, 3);
+            this.btn_BrowseMapFile.Location = new System.Drawing.Point(470, 3);
             this.btn_BrowseMapFile.Name = "btn_BrowseMapFile";
             this.btn_BrowseMapFile.Size = new System.Drawing.Size(37, 22);
             this.btn_BrowseMapFile.TabIndex = 30;
@@ -115,9 +115,9 @@
             // btn_Analyze
             // 
             this.btn_Analyze.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_Analyze.Location = new System.Drawing.Point(532, 3);
+            this.btn_Analyze.Location = new System.Drawing.Point(531, 3);
             this.btn_Analyze.Name = "btn_Analyze";
-            this.btn_Analyze.Size = new System.Drawing.Size(71, 22);
+            this.btn_Analyze.Size = new System.Drawing.Size(72, 22);
             this.btn_Analyze.TabIndex = 29;
             this.btn_Analyze.Text = "Analyze";
             this.btn_Analyze.UseVisualStyleBackColor = true;
@@ -128,7 +128,7 @@
             this.txtBx_MapFilepath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBx_MapFilepath.Location = new System.Drawing.Point(3, 4);
             this.txtBx_MapFilepath.Name = "txtBx_MapFilepath";
-            this.txtBx_MapFilepath.Size = new System.Drawing.Size(462, 20);
+            this.txtBx_MapFilepath.Size = new System.Drawing.Size(461, 20);
             this.txtBx_MapFilepath.TabIndex = 28;
             // 
             // groupBox9
@@ -365,25 +365,25 @@
             this.colFileName.Text = "MODULE";
             this.colFileName.Width = 400;
             // 
-            // tableLayoutPanel1
+            // tlp_Main
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tlp_Main.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.55556F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.44444F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.olv_ModuleView, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.olv_SymbolView, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 1);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1113, 510);
-            this.tableLayoutPanel1.TabIndex = 35;
+            this.tlp_Main.ColumnCount = 2;
+            this.tlp_Main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.55556F));
+            this.tlp_Main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.44444F));
+            this.tlp_Main.Controls.Add(this.tableLayoutPanel2, 0, 0);
+            this.tlp_Main.Controls.Add(this.olv_ModuleView, 0, 1);
+            this.tlp_Main.Controls.Add(this.olv_SymbolView, 1, 1);
+            this.tlp_Main.Controls.Add(this.tableLayoutPanel4, 1, 0);
+            this.tlp_Main.Location = new System.Drawing.Point(3, 1);
+            this.tlp_Main.Name = "tlp_Main";
+            this.tlp_Main.RowCount = 2;
+            this.tlp_Main.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlp_Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlp_Main.Size = new System.Drawing.Size(1113, 510);
+            this.tlp_Main.TabIndex = 35;
             // 
             // tableLayoutPanel2
             // 
@@ -407,7 +407,7 @@
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 88.31169F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.68831F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 76F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
             this.tableLayoutPanel3.Controls.Add(this.txtBx_ElfFilepath, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.txtBx_MapFilepath, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.btn_Analyze, 2, 0);
@@ -427,15 +427,15 @@
             this.txtBx_ElfFilepath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBx_ElfFilepath.Location = new System.Drawing.Point(3, 32);
             this.txtBx_ElfFilepath.Name = "txtBx_ElfFilepath";
-            this.txtBx_ElfFilepath.Size = new System.Drawing.Size(462, 20);
+            this.txtBx_ElfFilepath.Size = new System.Drawing.Size(461, 20);
             this.txtBx_ElfFilepath.TabIndex = 31;
             // 
             // btn_Settings
             // 
             this.btn_Settings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_Settings.Location = new System.Drawing.Point(532, 31);
+            this.btn_Settings.Location = new System.Drawing.Point(531, 31);
             this.btn_Settings.Name = "btn_Settings";
-            this.btn_Settings.Size = new System.Drawing.Size(71, 22);
+            this.btn_Settings.Size = new System.Drawing.Size(72, 22);
             this.btn_Settings.TabIndex = 33;
             this.btn_Settings.Text = "Settings";
             this.btn_Settings.UseVisualStyleBackColor = true;
@@ -443,7 +443,7 @@
             // 
             // btn_BrowseElfFile
             // 
-            this.btn_BrowseElfFile.Location = new System.Drawing.Point(471, 31);
+            this.btn_BrowseElfFile.Location = new System.Drawing.Point(470, 31);
             this.btn_BrowseElfFile.Name = "btn_BrowseElfFile";
             this.btn_BrowseElfFile.Size = new System.Drawing.Size(37, 22);
             this.btn_BrowseElfFile.TabIndex = 32;
@@ -561,6 +561,31 @@
             this.lbl_BssSizeActual.TabIndex = 40;
             this.lbl_BssSizeActual.Text = "BSS";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.btn_ResetSyms);
+            this.groupBox2.Controls.Add(this.chkBx_ShowStatic);
+            this.groupBox2.Location = new System.Drawing.Point(0, 0);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(0);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(0);
+            this.groupBox2.Size = new System.Drawing.Size(249, 76);
+            this.groupBox2.TabIndex = 35;
+            this.groupBox2.TabStop = false;
+            // 
+            // btn_ResetSyms
+            // 
+            this.btn_ResetSyms.Location = new System.Drawing.Point(3, 8);
+            this.btn_ResetSyms.Name = "btn_ResetSyms";
+            this.btn_ResetSyms.Size = new System.Drawing.Size(75, 23);
+            this.btn_ResetSyms.TabIndex = 32;
+            this.btn_ResetSyms.Text = "Reset Syms";
+            this.btn_ResetSyms.UseVisualStyleBackColor = true;
+            this.btn_ResetSyms.Click += new System.EventHandler(this.btn_ResetSyms_Click);
+            // 
             // olv_SymbolSum
             // 
             this.olv_SymbolSum.AllColumns.Add(this.olvColumn4);
@@ -611,37 +636,12 @@
             this.olvColumn8.Text = "DATA";
             this.olvColumn8.Width = 74;
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.btn_ResetSyms);
-            this.groupBox2.Controls.Add(this.chkBx_ShowStatic);
-            this.groupBox2.Location = new System.Drawing.Point(0, 0);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(0);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(0);
-            this.groupBox2.Size = new System.Drawing.Size(249, 76);
-            this.groupBox2.TabIndex = 35;
-            this.groupBox2.TabStop = false;
-            // 
-            // btn_ResetSyms
-            // 
-            this.btn_ResetSyms.Location = new System.Drawing.Point(3, 8);
-            this.btn_ResetSyms.Name = "btn_ResetSyms";
-            this.btn_ResetSyms.Size = new System.Drawing.Size(75, 23);
-            this.btn_ResetSyms.TabIndex = 32;
-            this.btn_ResetSyms.Text = "Reset Syms";
-            this.btn_ResetSyms.UseVisualStyleBackColor = true;
-            this.btn_ResetSyms.Click += new System.EventHandler(this.btn_ResetSyms_Click);
-            // 
             // MapViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1117, 509);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.tlp_Main);
             this.Font = new System.Drawing.Font("Consolas", 8.25F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MapViewer";
@@ -652,7 +652,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.olv_ModuleSum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.olv_ModuleView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.olv_SymbolView)).EndInit();
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tlp_Main.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
@@ -661,9 +661,9 @@
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.olv_SymbolSum)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.olv_SymbolSum)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -694,7 +694,7 @@
         private BrightIdeasSoftware.OLVColumn olvColumn1;
         private BrightIdeasSoftware.OLVColumn olvColumn2;
         private BrightIdeasSoftware.OLVColumn olvColumn3;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tlp_Main;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.GroupBox groupBox1;
