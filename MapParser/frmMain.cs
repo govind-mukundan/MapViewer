@@ -457,5 +457,23 @@ namespace MapViewer
             }));
         }
 
-    }
+		private void olv_ModuleView_DoubleClick(object sender, EventArgs e)
+		{
+			SaveFileDialog sfd = new SaveFileDialog();
+			DialogResult dr = sfd.ShowDialog();
+			if (dr == DialogResult.OK)
+			{
+				Stream file = sfd.OpenFile();
+				byte[] headers = Encoding.ASCII.GetBytes("TEXT,BSS,DATA,Module\n");
+				file.Write(headers, 0, headers.Length);
+				foreach (var x in olv_ModuleView.FilteredObjects.Cast<Module>().ToList())
+				{
+					byte[] line = Encoding.ASCII.GetBytes( x.TextSize + "," + x.BSSSize + "," + x.DataSize + "," + x.ModuleName + "\n");
+					file.Write(line, 0, line.Length);
+				}
+				file.Close();
+				MessageBox.Show("File saved");
+			}
+		}
+	}
 }
