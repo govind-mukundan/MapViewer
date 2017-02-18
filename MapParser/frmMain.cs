@@ -53,6 +53,33 @@ namespace MapViewer
 
         System.Timers.Timer _timer = new System.Timers.Timer(1000);
 
+        public void Button_status(bool val)
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new Action<bool>(Button_status), val);
+                return;
+            }
+            else
+            {
+                this.btn_Analyze.Enabled = val;
+            }
+        }
+
+        public void Button_status_text(string text)
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new Action<string>(Button_status_text), text);
+                return;
+            }
+            else
+            {
+                this.btn_Analyze.Text = text;
+            }
+        }
+
+
         public MapViewer()
         {
             InitializeComponent();
@@ -93,15 +120,23 @@ namespace MapViewer
 
             Task task = Task.Factory.StartNew(() =>
             {
+                Button_status(false);
                 try
                 {
                     AnalyzeSymbols();
                 }
                 catch (System.Exception ex)
                 {
+                    Button_status(true);
+                    Button_status_text("Analyze");
                     MessageBox.Show("Error analyzing Map file!\n" + ex.ToString());
                 }
             });
+        }
+
+        private void InvokeEx(Func<object, object> p)
+        {
+            throw new NotImplementedException();
         }
 
         void PopulateModuleLV(List<Module> m)
@@ -338,7 +373,7 @@ namespace MapViewer
             DwarfParser.Instance.Run(BINUTIL_READ_ELF, txtBx_ElfFilepath.Text);
             // Extract the symbols using NM
             _syms = SymParser.Instance;
-            _syms.Run(BINUTIL_NM, txtBx_ElfFilepath.Text);
+            _syms.Run(BINUTIL_NM, txtBx_ElfFilepath.Text, this);            
 
             // Update symbols present in MAP but missing in NM output
             // FIXME: The size of these "hidden" symbols may not be accurate as of now..
@@ -389,7 +424,8 @@ namespace MapViewer
             //    }
 
             //}
-            
+            Button_status(true);
+            Button_status_text("Analyze");
             _UIUpdateInProgress = false;
         }
 

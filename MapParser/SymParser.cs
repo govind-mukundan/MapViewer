@@ -62,9 +62,10 @@ namespace MapViewer
         {
             get { return _instance; }
         }
-
-        public void Run(string nmPath, string elfPath)
+        MapViewer MapViewerObj = null;
+        public void Run(string nmPath, string elfPath, MapViewer ownerForm)
         {
+            this.MapViewerObj = ownerForm;
             string result = "";
             Symbols = new List<Symbol>();
             if (elfPath == "") return;
@@ -74,9 +75,20 @@ namespace MapViewer
             // 00800744 00000004 b LoaderIPMode  --> b means static BSS symbol, B beans global BSS symbol, same for d/D data
             // 00006364 00000018 T vTaskSuspendAll	/cygdrive/d/Freelance/Study/FTDI/VFWLoaderDemo/lib/FreeRTOS/Source/tasks.c:1632
             string[] symTable = result.Split(new[] { '\r', '\n' });
-
+            bool flip = false;
             foreach (string line in symTable)
-            {
+            {           
+                if (flip)
+                {
+                    this.MapViewerObj.Button_status_text("Analyze" + " +");
+                    flip = false;
+                }
+                else
+                {                    
+                    this.MapViewerObj.Button_status_text("Analyze" + " -");
+                    flip = true;
+                }
+
                 // Split using spaces - note that the module path may itself contain spaces
                 string[] entries = line.Split(new char[0], 4, StringSplitOptions.RemoveEmptyEntries);
                 if (entries.Length < 4) continue;
