@@ -120,16 +120,19 @@ namespace MapViewer
 
             Task task = Task.Factory.StartNew(() =>
             {
-                Button_status(false);
                 try
                 {
+                    Button_status(false);
                     AnalyzeSymbols();
                 }
                 catch (System.Exception ex)
                 {
+                    MessageBox.Show("Error analyzing Map file!\n" + ex.ToString());
+                }
+                finally
+                {
                     Button_status(true);
                     Button_status_text("Analyze");
-                    MessageBox.Show("Error analyzing Map file!\n" + ex.ToString());
                 }
             });
         }
@@ -424,8 +427,6 @@ namespace MapViewer
             //    }
 
             //}
-            Button_status(true);
-            Button_status_text("Analyze");
             _UIUpdateInProgress = false;
         }
 
