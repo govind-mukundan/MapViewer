@@ -1,4 +1,6 @@
-﻿#region copyright
+﻿//#define TEST
+
+#region copyright
 /*
 Copyright 2015 Govind Mukundan
 
@@ -120,6 +122,12 @@ namespace MapViewer
 
             Task task = Task.Factory.StartNew(() =>
             {
+#if TEST
+                Cref cref = new Cref();
+                cref.Build(txtBx_MapFilepath.Text);
+
+#else
+                Button_status(false);
                 try
                 {
                     Button_status(false);
