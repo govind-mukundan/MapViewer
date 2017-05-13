@@ -158,7 +158,7 @@ namespace MapViewer
             List<string> Map = File.ReadAllLines(filePath).ToList();
 
             int MMap_index = Map.FindIndex(x => String.Equals(C_MEM_MAP_HEADER, x));
-            int MMap_end = Map.Count; ; // No need to use an end marker! //Map.FindIndex(x => String.Equals(C_MEM_MAP_END_MARKER, x));  
+            int MMap_end = Map.Count; // No need to use an end marker! //Map.FindIndex(x => String.Equals(C_MEM_MAP_END_MARKER, x));  
             if ((MMap_index == -1) || (MMap_end == -1))
             {
                 MessageBox.Show("Couldn't find module info in map file! Can't proceed!", "Oops!", MessageBoxButtons.OK); return false;

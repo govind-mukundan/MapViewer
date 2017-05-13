@@ -68,7 +68,7 @@ namespace MapViewer
             this.MapViewerObj = ownerForm;
             string result = "";
             Symbols = new List<Symbol>();
-            if (elfPath == "") return;
+            if (nmPath == "" || elfPath == "") return;
             ProcessAdapter.Execute(ref result, nmPath, "--demangle --print-size --size-sort " + Quote(elfPath)); //--line-numbers
 
             // Parse the resultant table
@@ -96,9 +96,6 @@ namespace MapViewer
                 int type = Symbol.TYPE_STATIC;
                 string secName = "unknown";
                 // Extract the module path, we also take into account paths with spaces in between
-
-                if (entries[3] == "_setlocale_r")
-                    Debug.Write("_setlocale_r");
 
                 entries[3] = entries[3].TrimEnd(' '); // trim spaces from the end of function name
 

@@ -360,18 +360,19 @@ namespace MapViewer
             PopulateModuleLV(MAPParser.Instance.ModuleMap);
 
             // Analyze Symbols
-            if (txtBx_ElfFilepath.Text == "" || !File.Exists(txtBx_MapFilepath.Text))
-            {
-                MessageBox.Show("Please enter a valid ELF file path for symbol analysis!");
-                hide_sym_column();
-                return;
-            }
-            if (BINUTIL_READ_ELF == "" || !File.Exists(BINUTIL_READ_ELF) ||
-                BINUTIL_NM == "" || !File.Exists(BINUTIL_NM))
-            {
-                MessageBox.Show("Please enter a valid ObjectDump and NM path for symbol analysis!\n Click the Settings button!");
-                return;
-            }
+            //if (txtBx_ElfFilepath.Text == "" || !File.Exists(txtBx_MapFilepath.Text))
+            //{
+            //    MessageBox.Show("Please enter a valid ELF file path for symbol analysis!");
+            //    hide_sym_column();
+            //    return;
+            //}
+            //if (BINUTIL_READ_ELF == "" || !File.Exists(BINUTIL_READ_ELF) ||
+            //    BINUTIL_NM == "" || !File.Exists(BINUTIL_NM))
+            //{
+            //    MessageBox.Show("Please enter a valid ObjectDump and NM path for symbol analysis!\n Click the Settings button!");
+            //    return;
+            //}
+
             // Parse the dwarf information to get all the compilation units
             DwarfParser.Instance.Run(BINUTIL_READ_ELF, txtBx_ElfFilepath.Text);
             // Extract the symbols using NM
