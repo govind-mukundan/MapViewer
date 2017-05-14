@@ -14,19 +14,33 @@ namespace MapViewer
     //                      User Module 2 ..
     class CrefEntry
     {
-        string SymbolName;
-        string SouceModule;
-        List<string> Users;
+        public string SymbolName;
+        public string SouceModule;
+        public List<string> Users;
+
+        public CrefEntry()
+        {
+            Users = new List<string>();
+        }
+
+        public override string ToString()
+        {
+            string s = "Cref: " + SymbolName + " " + SouceModule + "\n";
+            foreach(string l in Users) s += l + "\n";
+
+            return s;
+        }
     }
 
     class Cref
     {
+        bool DEBUG = true;
         string CrefHeader = "Cross Reference Table";
         List<CrefEntry> CrefTable;
-        enum Parser
+
+        public Cref()
         {
-            FindSym,
-            FindUsers
+            CrefTable = new List<CrefEntry>();
         }
 
         public bool Build(string mapFile)
@@ -38,27 +52,35 @@ namespace MapViewer
             {
                 MessageBox.Show("Couldn't find Cross Reference Table in map file! Can't proceed!", "Oops!", MessageBoxButtons.OK); return false;
             }
-            Debug.WriteLine("Found Cref at index :" + Cref_index.ToString());
+            Debug.WriteLineIf(DEBUG, "Found Cref at index :" + Cref_index.ToString());
 
-            Parser parser = Parser.FindSym;
+            Cref_index += 3; // skip over the first 3 lines
             foreach (string line in Map.GetRange(Cref_index, Map_end - Cref_index))
             {
-                switch (parser)
-                {
-                    // You get both the symbol namd and the source module
-                    case Parser.FindSym:
-                        if (!Char.IsLetterOrDigit(line[0])) continue; // Ignore invalid chars
+                if (line == "") break; // exit on encountering an empty line. Presumably the Cref section has ended
 
-                        break;
-
-                    case Parser.FindUsers:
-
-                        break;
-                }
-
+                Debug.WriteLineIf(DEBUG, CrefTable.LastOrDefault()?.ToString());
+                if (line[0] == ' ')
+                    CrefTable.LastOrDefault()?.Users.Add(line.TrimStart());
+                else
+                    AddNewCref(line);
             }
+            return true;
+        }
 
-            return false;
+        bool AddNewCref(string line)
+        {
+            string symName = "";
+            string modPath = "";
+            string[] ele = line.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+            Debug.Assert(ele.Length >= 2);
+
+            symName = ele[0];
+            modPath = line.Substring(ele[0].Length).TrimStart();
+
+            CrefTable.Add(new CrefEntry { SymbolName = symName, SouceModule = modPath });
+
+            return true;
         }
     }
 }
