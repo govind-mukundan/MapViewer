@@ -1,0 +1,82 @@
+{# Filename: .templates/layout.html #}
+{% extends '!layout.html' %}
+
+{% block extrahead %}
+  <link rel="shortcut icon" href="_static/icon.ico" type="image/x-icon" />
+  <link rel="icon" href="_static/icon.ico" type="image/x-icon" />
+{% endblock %}
+
+{% block rootrellink %}
+  <li>
+  <a href="{{ pathto('index') }}">ObjectListView (v{{ release }})</a>
+  &raquo;
+  </li>
+{% endblock %}
+
+{% block relbar1 %}
+    <div class="dialog">
+        <div class="content">
+            <div class="t"></div>
+            <table class="nomargin"><tr>
+            <td valign="bottom"><img src="_static/{{ current_page_name }}-icon.png" /></td>
+            <td><h1><span>{{ title }}</span></h1>
+            {% if current_page_name == "search" %}
+            <h2><span>Darn! Where is that needle?</span></h2>
+            {% else %}
+            {% if current_page_name == "genindex" %}
+            <h2><span>What should I put here?</span></h2>
+            {% else %}
+            <h2><span>{{ meta["Subtitle"] }}</span></h2>
+            {% endif %}
+            {% endif %}
+            </td></tr></table>
+        </div>
+        <div class="b"><div></div></div>
+    </div>
+    <div class="navBar">
+        <div class="dialog type2">
+            <div class="content">
+                <div class="t"></div>
+                <h3><span><a href="index.html">Home</a></span></h3>
+                <h3><span><a href="whatsnew.html">What&rsquo;s New?</a></span></h3>
+                <h3><span><a href="features.html">Features</a></span></h3>
+                <h3><span><a href="gettingStarted.html">Getting Started </a></span></h3>
+                <h3><span><a href="recipes.html">Cookbook</a></span></h3>
+                <h3><span><a href="faq.html">FAQ</a></span></h3>
+                <h3><span><a href="blog.html">Blog</a></span></h3>
+                <h3><span><a href="download.html">Download</a></span></h3>
+                <p>Version {{ release }} (2015-11-07)</p>
+                <h3><span><a href="http://sourceforge.net/p/objectlistview/discussion/812922/">Discussion</a></span></h3>
+                <h3><span><a href="samples.html">Samples</a></span></h3>
+                <form class="search" action="search.html" method="get">
+                <h3><span><a href="search.html">Search</a></span>
+                  <input type="text" name="q" size="10" />
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" /></h3>
+                </form>
+                <p>&nbsp;</p>
+                <p><a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=225207&amp;type=4" width="125" height="37" border="0" alt="SourceForge.net Logo" /></a></p>
+            </div>
+            <div class="b"><div></div></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block relbar2 %}
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-8783390-2', 'sourceforge.net');
+  ga('require', 'displayfeatures');
+  ga('require', 'linkid', 'linkid.js');
+  ga('send', 'pageview');
+</script>
+{% endblock %}
+
+{% block sidebar1 %}
+{% endblock %}
+
+{% block sidebar2 %}
+{% endblock %}

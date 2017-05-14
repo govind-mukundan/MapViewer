@@ -1,0 +1,178 @@
+
+body {
+	margin: 0 auto;
+	position: relative;
+	z-index: 1;
+	margin-bottom: 50px;
+	width:auto;
+	max-width:900px;
+	width:expression(document.body.clientWidth > 900 ? "900px": "auto" ); /* IE6 hack for missing max-width */
+	top: 0px;
+	background-color: #fafafa;
+}
+
+cite {
+    font-style: normal;
+    color: #cc6C00;
+}
+
+.docutils tr {
+    border: 1px solid #CCCCCC;
+}
+
+.pull-quote {
+	font-style: italic;
+}
+
+.pull-quote p {
+	padding: 1px 0px 2px 0px;
+}
+
+.attribution {
+	font-style: normal;
+	font-size: 0.9em;
+}
+
+.left-padded {
+    padding: 0 15px 0px 0px;
+    float: left;
+}
+
+.dialog h1 {
+	color: #FFFFFF;
+	padding: 20px 0 0 8px;
+	font-size: 3em;
+}
+.dialog h1 a {
+	color: #FFFFFF;
+}
+.dialog h2 {
+	color: #E0E0E0;
+	padding: 0 0 0 8px;
+	font-size: 1.5em;
+}
+.dialog h4 {
+	color: #E0E0E0;
+	padding: 20px 0 0 8px;
+	font-size: 1.5em;
+	text-align:center;
+}
+.dialog h4 a {
+	color: #E0E0E0;
+}
+
+.rubric {
+	margin: 20px 20px 0px 10px;
+	font: italic 1.2em georgia;
+	text-align:left;
+}
+
+div.navBar{
+	float:right;
+	width: 25%;
+	text-align:center;
+	padding: 0 0 0 20px;
+}
+		div.navBar h3 {
+			padding: 10px 0px 0px 0px;
+			font-size:  1.2em;
+			font-weight: normal;
+		}
+		div.navBar p {
+		    color: #333333;
+			font-size:  0.7em;
+			padding: 0;
+		}
+
+div.body {
+    width: 95%;
+	color: #333333;
+	margin: 0px 20px 0px 20px;
+}
+		div.body h1 {
+			display: none;
+			background-color: #00ff00;
+		}
+
+		div.body h2 {
+			padding: 0;
+			margin: 20px 0px 20px 0px;
+			border-bottom: dotted #0066FF 2px;
+		}
+
+		div.body h3 {
+			padding: 0;
+			margin:8px 0 12px;
+			border-bottom: solid #6699FF 1px;
+		}
+		
+		div.body h4 {
+			padding: 0;
+			margin:8px 0 12px;
+			border-bottom: dotted #6699FF 1px;
+		}
+
+.singlelinecallout.admonition {
+	margin: 0px 0px 20px 0px;
+	padding: 4px 4px 4px 4px;
+	background-color: #FFBF80;
+	border: solid #9999FF 1px;
+}
+		.first.admonition-title {
+			font: italic 1.2em georgia;
+			padding: 0px 0px 0px 0px;
+			text-align:center;
+		}
+
+.singlelinecallout.admonition .last {
+	display: none;
+}
+
+#sidebar {
+	float: right;
+	width: 40%;
+}
+		#sidebar h3 {
+			font: bold italic 1.2em georgia;
+			padding: 12px 0px 12px 0px;
+			text-align:center;
+		}
+		#sidebar p {
+			line-height: 1.4;
+			color: #333333;
+		}
+
+a.headerlink {
+    color: #c60f0f;
+    font-size: 0.8em;
+    padding: 0 4px 0 4px;
+    text-decoration: none;
+    visibility: hidden;
+}
+
+h1:hover > a.headerlink,
+h2:hover > a.headerlink,
+h3:hover > a.headerlink,
+h4:hover > a.headerlink,
+h5:hover > a.headerlink,
+h6:hover > a.headerlink,
+dt:hover > a.headerlink {
+    visibility: visible;
+}
+
+a.headerlink:hover {
+    background-color: #c60f0f;
+    color: white;
+}
+
+.footer {
+	margin-top: 16px;
+	padding-top: 8px;
+	border-top: dotted #6699FF 1px;
+	text-align: center;
+	color: #666666;
+}
+
+.recipes {
+    font-size: 1.1em;
+}

@@ -1,0 +1,307 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ObjectListViewDemo</RootNamespace>
+    <AssemblyName>ObjectListViewDemo</AssemblyName>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C5332EAB-17B3-48B9-948E-33934B341AB0}</ProjectGuid>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DelaySign>False</DelaySign>
+    <AssemblyOriginatorKeyMode>File</AssemblyOriginatorKeyMode>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <NoStdLib>False</NoStdLib>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <ApplicationIcon>Resources\Espresso Maker.ico</ApplicationIcon>
+    <TargetZone>LocalIntranet</TargetZone>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <IntermediateOutputPath>obj\Debug\</IntermediateOutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
+    <Optimize>False</Optimize>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DocumentationFile>bin\Debug\ObjectListViewDemo.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <IntermediateOutputPath>obj\Release\</IntermediateOutputPath>
+    <OutputPath>bin\Release\</OutputPath>
+    <Optimize>True</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DocumentationFile>bin\Debug\ObjectListViewDemo.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <BaseAddress>4194304</BaseAddress>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <FileAlignment>4096</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DefineConstants>DEBUG;WITHOUT_ANIMATION</DefineConstants>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <DocumentationFile>
+    </DocumentationFile>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <OutputPath>c:\jpp\ObjectListView\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DefineConstants>WITHOUT_ANIMATION</DefineConstants>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessCardOverlay.cs" />
+    <Compile Include="BusinessCardRenderer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\MaritalStatus.cs" />
+    <Compile Include="Models\MyFileSystemInfo.cs" />
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="OLVDemoCoordinator.cs" />
+    <Compile Include="OlvDemoTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Properties\Resource1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ShellUtilities.cs" />
+    <Compile Include="TabComplexExample.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TabComplexExample.Designer.cs">
+      <DependentUpon>TabComplexExample.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TabDataSet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TabDataSet.Designer.cs">
+      <DependentUpon>TabDataSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TabDataTreeListView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TabDataTreeListView.Designer.cs">
+      <DependentUpon>TabDataTreeListView.cs</DependentUpon>
+    </Compile>
+        <Compile Include="TabDescribedTask.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TabDescribedTask.Designer.cs">
+      <DependentUpon>TabDescribedTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TabDragAndDrop.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TabDragAndDrop.Designer.cs">
+      <DependentUpon>TabDragAndDrop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TabFastList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TabFastList.Designer.cs">
+      <DependentUpon>TabFastList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TabFileExplorer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TabFileExplorer.Designer.cs">
+      <DependentUpon>TabFileExplorer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TabPrinting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TabPrinting.Designer.cs">
+      <DependentUpon>TabPrinting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TabSimpleExample.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TabSimpleExample.Designer.cs">
+      <DependentUpon>TabSimpleExample.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TabTreeListView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TabTreeListView.Designer.cs">
+      <DependentUpon>TabTreeListView.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.Designer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resource1.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TabComplexExample.resx">
+      <DependentUpon>TabComplexExample.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TabDataSet.resx">
+      <DependentUpon>TabDataSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TabDataTreeListView.resx">
+      <DependentUpon>TabDataTreeListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TabDragAndDrop.resx">
+      <DependentUpon>TabDragAndDrop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TabFastList.resx">
+      <DependentUpon>TabFastList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TabDescribedTask.resx">
+      <DependentUpon>TabDescribedTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TabFileExplorer.resx">
+      <DependentUpon>TabFileExplorer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TabPrinting.resx">
+      <DependentUpon>TabPrinting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TabSimpleExample.resx">
+      <DependentUpon>TabSimpleExample.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TabTreeListView.resx">
+      <DependentUpon>TabTreeListView.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AnimatedGifs\3dlink1.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AnimatedGifs\cd1.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AnimatedGifs\circum.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AnimatedGifs\cool3.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AnimatedGifs\enter3.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AnimatedGifs\envelope.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AnimatedGifs\exclame.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AnimatedGifs\eye2.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AnimatedGifs\net2.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AnimatedGifs\new5.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\FamilyTree.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Photos\ak.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Photos\cp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Photos\cr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Photos\es.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Photos\gab.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Photos\gp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Photos\jp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Photos\jr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Photos\mb.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Photos\np.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Photos\ns.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Photos\sj.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Photos\sp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Espresso Maker.ico" />
+    <Content Include="Data\Persons.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\goldstar3.png" />
+    <None Include="Resources\goldstart-32.png" />
+    <None Include="Resources\fav32.png" />
+    <None Include="Resources\redback1.png" />
+    <None Include="Resources\redbull.png" />
+    <None Include="Resources\limeleaf.png" />
+    <None Include="Resources\star16.png" />
+    <None Include="Resources\down16.png" />
+    <None Include="Resources\tick16.png" />
+    <None Include="Resources\music16.png" />
+    <None Include="Resources\folder16.png" />
+    <None Include="Resources\movie16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ListViewPrinter\ListViewPrinter2005.csproj">
+      <Project>{E73A10BD-2B5A-4BAC-897F-3A58CFC07631}</Project>
+      <Name>ListViewPrinter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ObjectListView\ObjectListView2005.csproj">
+      <Project>{18FEDA0C-D147-4286-B39A-01204808106A}</Project>
+      <Name>ObjectListView</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
+</Project>

@@ -57,7 +57,7 @@ namespace MapViewer
             Cref_index += 3; // skip over the first 3 lines
             foreach (string line in Map.GetRange(Cref_index, Map_end - Cref_index))
             {
-                if (line == "") break; // exit on encountering an empty line. Presumably the Cref section has ended
+                if (line == "") break; // exit on encountering an empty line. Assume the Cref section has ended
 
                 Debug.WriteLineIf(DEBUG, CrefTable.LastOrDefault()?.ToString());
                 if (line[0] == ' ')
@@ -65,7 +65,17 @@ namespace MapViewer
                 else
                     AddNewCref(line);
             }
+            Test();
             return true;
+        }
+
+        public void Test()
+        {
+            foreach(CrefEntry e in CrefTable)
+            {
+                var u = FindUsers(e.SouceModule);
+                foreach (string s in u) Debug.WriteIf(DEBUG, s);
+            }
         }
 
         bool AddNewCref(string line)
@@ -81,6 +91,16 @@ namespace MapViewer
             CrefTable.Add(new CrefEntry { SymbolName = symName, SouceModule = modPath });
 
             return true;
+        }
+
+        public List<string> FindUsers(string module)
+        {
+            if (module.Contains("main.o"))
+                Debug.WriteLineIf(DEBUG, "test");
+            // Find all the symbols for the module
+            // SelectMany() helps to "flatten" the list, using Select() returns a IEnumerable<List<string>>
+            var ulst = CrefTable.Where(x => module == x.SouceModule).SelectMany(y => y.Users).ToList();
+            return ulst;
         }
     }
 }
