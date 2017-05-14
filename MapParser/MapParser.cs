@@ -115,7 +115,7 @@ namespace MapViewer
     /// </summary>
     class MAPParser
     {
-
+        bool DEBUG = false;
         const int C_OFFSET_ADDRESS = 0;
         const int C_OFFSET_SIZE = 1;
         const string C_MEM_MAP_HEADER = "Linker script and memory map";
@@ -163,7 +163,7 @@ namespace MapViewer
             {
                 MessageBox.Show("Couldn't find module info in map file! Can't proceed!", "Oops!", MessageBoxButtons.OK); return false;
             }
-            Debug.WriteLine("Found Memory map at index :" + MMap_index.ToString());
+            Debug.WriteLineIf(DEBUG,"Found Memory map at index :" + MMap_index.ToString());
             TextSegment = new List<Symbol>();
             BSS = new List<Symbol>();
             Data = new List<Symbol>();
@@ -180,16 +180,16 @@ namespace MapViewer
             //.rodata	802CB1	2A	42	D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_httpc_HttpClient.o)	
             //.rodata	802CB1	121	289	D:\Freelance\Study\FTDI\new_build_framework\projects\libihome\Debug/libihome.a(rpc_httpc_port.o)
             // print out data segment
-            Debug.WriteLine("---------------------------");
+            Debug.WriteLineIf(DEBUG,"---------------------------");
             long sum = 0;
             for (int i = 0; i + 1 < Data.Count; i++)
             {
-                Debug.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}\t", Data[i].SectionName, Data[i].LoadAddress.ToString("X"), Data[i].Size.ToString("X"), Data[i].Size, Data[i].ModuleName);
+                Debug.WriteLineIf(DEBUG,$"{Data[i].SectionName}\t{Data[i].LoadAddress.ToString("X")}\t{Data[i].Size.ToString("X")}\t{Data[i].Size}\t{Data[i].ModuleName}\t");
                 sum = sum + Data[i].Size;
                 if (sum > (long)(Data[i + 1].LoadAddress & (~SymParser.Instance.RAM_ADDRESS_MASK)))
-                    Debug.WriteLine("oops");
+                    Debug.WriteLineIf(DEBUG,"oops");
             }
-            Debug.WriteLine("{0}, {1}", Data.Sum(x => x.Size), sum);
+            Debug.WriteLineIf(DEBUG, $"{Data.Sum(x => x.Size)}, {sum}");
 
             bool valid_section = false;
             foreach (string line in Map.GetRange(MMap_index, MMap_end - MMap_index))
@@ -267,7 +267,7 @@ namespace MapViewer
                 }
             }
 
-            Debug.WriteLine("Total Text Size: " + TextSegment.Sum(item => item.Size).ToString());
+            Debug.WriteLineIf(DEBUG,"Total Text Size: " + TextSegment.Sum(item => item.Size).ToString());
 
             ModuleMap = new List<Module>();
             // For each entry in the Tmap, find it's module and sum over that module
@@ -293,16 +293,16 @@ namespace MapViewer
                 }
             }
 
-            Debug.WriteLine("Total Text Size (Module Sum): {0} (Linker): {1}", ModuleMap.Sum(item => item.TextSize), TextSegSize);
-            Debug.WriteLine("Total BSS Size (Module Sum): {0} (Linker): {1}", ModuleMap.Sum(item => item.BSSSize), BssSize);
-            Debug.WriteLine("Total DATA Size (Module Sum): {0} (Linker): {1}", ModuleMap.Sum(item => item.DataSize), DataSize);
+            Debug.WriteLineIf(DEBUG, $"Total Text Size (Module Sum): {ModuleMap.Sum(item => item.TextSize)} (Linker): {TextSegSize}");
+            Debug.WriteLineIf(DEBUG, $"Total BSS Size (Module Sum): {ModuleMap.Sum(item => item.BSSSize)} (Linker): {BssSize}");
+            Debug.WriteLineIf(DEBUG, $"Total DATA Size (Module Sum): {ModuleMap.Sum(item => item.DataSize)} (Linker): {DataSize}");
 
             // Sanity check
             if ((TextSegSize == ModuleMap.Sum(item => item.TextSize) && TextSegment.Sum(item => item.Size) == TextSegSize) &&
                 (BssSize == ModuleMap.Sum(item => item.BSSSize)) &&
                 (DataSize == ModuleMap.Sum(item => item.DataSize)))
             {
-                Debug.WriteLine("All size calculations match! Sanity check passed!");
+                Debug.WriteLineIf(DEBUG,"All size calculations match! Sanity check passed!");
                 PrintModuleMap();
             }
             return (true);
@@ -310,14 +310,14 @@ namespace MapViewer
 
         void AddModule(Symbol t)
         {
-            Debug.WriteLine("Found a new module : " + t.ModuleName);
+            Debug.WriteLineIf(DEBUG,"Found a new module : " + t.ModuleName);
             // Find sum of text size of this module
             UInt32 sumt = (UInt32)TextSegment.Where(x => String.Equals(x.ModuleName, t.ModuleName)).Sum(x => x.Size);
-            Debug.WriteLine("Module Text Size:" + sumt.ToString());
+            Debug.WriteLineIf(DEBUG,"Module Text Size:" + sumt.ToString());
             UInt32 sumb = (UInt32)BSS.Where(x => String.Equals(x.ModuleName, t.ModuleName)).Sum(x => x.Size);
-            Debug.WriteLine("Module BSS Size:" + sumb.ToString());
+            Debug.WriteLineIf(DEBUG,"Module BSS Size:" + sumb.ToString());
             UInt32 sumd = (UInt32)Data.Where(x => String.Equals(x.ModuleName, t.ModuleName)).Sum(x => x.Size);
-            Debug.WriteLine("Module DATA Size:" + sumd.ToString());
+            Debug.WriteLineIf(DEBUG,"Module DATA Size:" + sumd.ToString());
             ModuleMap.Add(new Module(t.ModuleName, sumt, sumb, sumd));
         }
 
@@ -325,7 +325,7 @@ namespace MapViewer
         {
             foreach (Module e in ModuleMap)
             {
-                Debug.WriteLine(e.TextSize + "\t\t" + e.ModuleName);
+                Debug.WriteLineIf(DEBUG,e.TextSize + "\t\t" + e.ModuleName);
             }
         }
 
@@ -339,8 +339,6 @@ namespace MapViewer
                     s.Symbols[i].Size = (uint)(s.Symbols[i + 1].LoadAddress - s.Symbols[i].LoadAddress);
                 }
             }
-
-
         }
 
         /// <summary>
@@ -360,7 +358,7 @@ namespace MapViewer
                     // Exact match of id with section name
                     if ((Map[i].Split(' ')[0].Trim(new char[] { ' ', '\n', '\r' }).Length == id.Length) && (String.Compare(id, 0, Map[i], 0, id.Length) == 0))
                     {
-                        Debug.WriteLine(Map[i]);
+                        Debug.WriteLineIf(DEBUG,Map[i]);
                         if (Map[i].Split(new char[0], StringSplitOptions.RemoveEmptyEntries).Count() >=2)
                         LinkerRepSize += Convert.ToUInt32(Map[i].Split(new char[0], StringSplitOptions.RemoveEmptyEntries)[2], 16); // this is the linker reported size eg: .text           0x00000000     0x5a48
                         i++;
@@ -369,8 +367,8 @@ namespace MapViewer
                     // Find a line that starts with .text
                     if ((Map[i].Length > id.Length) && (String.Compare(id, 0, Map[i], 1, id.Length) == 0))
                     {
-                        //Debug.WriteLine("Found match at : " + i.ToString() + " " + Map[i].ToString());
-                        Debug.WriteLine(Map[i].ToString());
+                        //Debug.WriteLineIf(DEBUG,"Found match at : " + i.ToString() + " " + Map[i].ToString());
+                        Debug.WriteLineIf(DEBUG,Map[i].ToString());
                         // if the line does not have the load address and other info, look for the next line
                         ele = Map[i].Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
                         // Note the path might itself contain spaces, so you have to take all the characters after the last split
@@ -387,8 +385,8 @@ namespace MapViewer
                             // Check if the next line ends with ".o" or ".o)"
                             if ((Map[j].Length > 2 && String.Compare(".o", 0, Map[j], Map[j].Length - 2, 2) == 0) || (Map[j].Length > 3 && String.Compare(".o)", 0, Map[j], Map[j].Length - 3, 3) == 0))
                             {
-                                //Debug.WriteLine("Found sub match at : " + j.ToString() + " " + Map[j].ToString());
-                                Debug.WriteLine(Map[j].ToString());
+                                //Debug.WriteLineIf(DEBUG,"Found sub match at : " + j.ToString() + " " + Map[j].ToString());
+                                Debug.WriteLineIf(DEBUG,Map[j].ToString());
                                 ele = Map[j].Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
                                 string path = Map[j].Substring(Map[j].LastIndexOf(ele[1]) + ele[1].Length).TrimStart();//Map[j].Substring(C_MODULE_NAME_CHAR_POS); // FIXME: looks like the map file is so generates so that the module path is always at the 38th character. There should be a more portable way to calculate this
                                 seg.Add(new Symbol(String.Empty, path, Convert.ToUInt32(ele[0], 16), Convert.ToUInt32(ele[1], 16), id));
@@ -422,7 +420,7 @@ namespace MapViewer
                     if (line.IndexOf(id) == 0)
                     {
                         valid = true;
-                        Debug.WriteLine("Found SECTION " + id + "\n" + line);
+                        Debug.WriteLineIf(DEBUG,"Found SECTION " + id + "\n" + line);
                         s = new Section(id, Convert.ToUInt64(ele[1], 16), Convert.ToUInt64(ele[2], 16));
                         break;
 
@@ -441,7 +439,7 @@ namespace MapViewer
             {
                 if (line.IndexOf(id + ".") == 1) // .text. etc
                 {
-                    Debug.WriteLine("Found SUB SECTION " + line.Split(new char[0], StringSplitOptions.RemoveEmptyEntries)[0] + "\n" + line);
+                    Debug.WriteLineIf(DEBUG,"Found SUB SECTION " + line.Split(new char[0], StringSplitOptions.RemoveEmptyEntries)[0] + "\n" + line);
                     ret = true;
                 }
             }
@@ -474,24 +472,24 @@ namespace MapViewer
                     // everything after the size is the module path
                     path = line.Substring(line.LastIndexOf(ele[1]) + ele[1].Length).TrimStart();
                     m = new Module(path, Convert.ToUInt32(ele[1], 16));
-                    Debug.WriteLine("Found MODULE " + path + "\n" + line);
+                    Debug.WriteLineIf(DEBUG,"Found MODULE " + path + "\n" + line);
                     ret = true;
                 }
                 else if (Regex.IsMatch(ele[1], @"0[xX][0-9a-fA-F]+"))
                 {
                     path = line.Substring(line.LastIndexOf(ele[2]) + ele[2].Length).TrimStart();
                     m = new Module(path, Convert.ToUInt32(ele[2], 16));
-                    Debug.WriteLine("Found MODULE " + path + "\n" + line);
+                    Debug.WriteLineIf(DEBUG,"Found MODULE " + path + "\n" + line);
                     ret = true;
                 }
 
                 //if (path != line.Substring(C_MODULE_NAME_CHAR_POS))
-                //    Debug.WriteLine("Error in Module Path substring repeats! probably");
+                //    Debug.WriteLineIf(DEBUG,"Error in Module Path substring repeats! probably");
             }
             return ret;
         }
 
-        // A symbol contains only a load address and name. Address matches the patters "0x[number N times]
+        // A symbol contains only a load address and name. Address matches the pattern "0x[number N times]
         bool IsGlobalSymbol(string line, out Symbol sym)
         {
             bool ret = false;
@@ -506,7 +504,7 @@ namespace MapViewer
             // The second check is to avoid adding linker script expressions like "_end = ." which appear in the map file into the symbol list
             if (Regex.IsMatch(ele[0], @"0[xX][0-9a-fA-F]+") && !Regex.IsMatch(symName, @"[\s=\+\.\#\(\)]+"))
             {
-                Debug.WriteLine("Found SYMBOL " + symName + "\n" + line);
+                Debug.WriteLineIf(DEBUG,"Found SYMBOL " + symName + "\n" + line);
                 sym = new Symbol(symName, "", Convert.ToUInt64(ele[0], 16), 0, "");
                 ret = true;
             }
@@ -525,7 +523,7 @@ namespace MapViewer
 
             if (ele[0].Contains(C_FILL_IDENTIFIER) && Regex.IsMatch(ele[1], @"0[xX][0-9a-fA-F]+"))
             {
-                Debug.WriteLine("Found SYMBOL " + C_FILL_IDENTIFIER + "\n" + line);
+                Debug.WriteLineIf(DEBUG,"Found SYMBOL " + C_FILL_IDENTIFIER + "\n" + line);
                 sym = new Symbol(C_FILL_IDENTIFIER, "", Convert.ToUInt64(ele[1], 16), (uint)Convert.ToUInt64(ele[2], 16), "");
                 ret = true;
             }
