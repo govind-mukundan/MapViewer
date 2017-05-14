@@ -38,6 +38,7 @@ namespace MapViewer
     // For more info on options: https://sourceware.org/binutils/docs/binutils/nm.html
     class SymParser
     {
+        bool DEBUG = false;
         public List<Symbol> Symbols;
         public List<Symbol> StaticSymbols
         { get { return Symbols.Where(x => x.GlobalScope == Symbol.TYPE_STATIC).ToList(); } }
@@ -51,10 +52,7 @@ namespace MapViewer
         // Symbols gathered from .o files - we use this to find the modules of static symbols
         public List<Symbol> UnresolvedSymols;
 
-        char[] TextChar = new char[] { 't', 'T' };
-
         public bool UseDWARF = true;
-
 
         static readonly SymParser _instance = new SymParser();
 
@@ -109,18 +107,18 @@ namespace MapViewer
                     }
                     else if (entries[2].ToLower() == "w") // Weak symbols could be either vars or subroutines
                     {
-                        Debug.WriteLine("Found a weak symbol " + entries[3]);
+                        Debug.WriteLineIf(DEBUG,"Found a weak symbol " + entries[3]);
                         path = DwarfParser.Instance.FindSubRoutineCUnit(entries[3], Convert.ToUInt32(entries[0], 16));
                         if (path != String.Empty)
                         {
-                            Debug.WriteLine("Is a subroutine " + path);
+                            Debug.WriteLineIf(DEBUG,"Is a subroutine " + path);
                         }
                         else
                         {
                             path = DwarfParser.Instance.FindSymbolCUnit(entries[3], Convert.ToUInt32(entries[0], 16) & (~RAM_ADDRESS_MASK));
                             if (path != String.Empty)
                             {
-                                Debug.WriteLine("Is a variable " + path);
+                                Debug.WriteLineIf(DEBUG,"Is a variable " + path);
                                 // FIXME: for now just assume all weak variable syms are in BSS
                                 entries[2] = "b";
                             }

@@ -40,7 +40,7 @@ namespace MapViewer
 {
     public partial class MapViewer : Form
     {
-
+        bool DEBUG = false;
         string BINUTIL_NM; //= Environment.GetEnvironmentVariable("FT90X_TOOLCHAIN") + "/tools/bin/" + "ft32-elf-nm.exe";
         string BINUTIL_READ_ELF; //= Environment.GetEnvironmentVariable("FT90X_TOOLCHAIN") + "/tools/bin/" + "ft32-elf-objdump.exe";
 
@@ -224,7 +224,7 @@ namespace MapViewer
             AddSumRow(olv_ModuleView.FilteredObjects);
             foreach (var x in olv_ModuleView.FilteredObjects)
             {
-                Debug.WriteLine("Selected:" + ((Module)x).ModuleName);
+                Debug.WriteLineIf(DEBUG,"Selected:" + ((Module)x).ModuleName);
             }
 
             // Use a timer to have a single update for more than "text changed" event, better UX
@@ -299,7 +299,7 @@ namespace MapViewer
 
         private void olv_SymbolView_SelectionChanged(object sender, EventArgs e)
         {
-            Debug.WriteLine("selected changed");
+            Debug.WriteLineIf(DEBUG,"selected changed");
         }
 
 
@@ -332,7 +332,7 @@ namespace MapViewer
 
                     if (m1.ToString() == m2.ToString() && ((filtGlobal == false) || (Symbol.TYPE_GLOBAL == s.GlobalScope)))
                     {
-                        //Debug.WriteLine("Match: " + m1.ToString());
+                        //Debug.WriteLineIf(DEBUG,"Match: " + m1.ToString());
                         return true;
                     }
                     else return false;
@@ -396,7 +396,7 @@ namespace MapViewer
                 {
                     s.GlobalScope = Symbol.TYPE_HIDDEN;
                     _syms.Symbols.Add(s);
-                    Debug.WriteLine(s.SymbolName + " : " + s.Size.ToString());
+                    Debug.WriteLineIf(DEBUG,s.SymbolName + " : " + s.Size.ToString());
                 }
             }
 
