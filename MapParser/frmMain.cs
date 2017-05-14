@@ -142,6 +142,7 @@ namespace MapViewer
                     Button_status(true);
                     Button_status_text("Analyze");
                 }
+#endif
             });
         }
 
