@@ -1,0 +1,71 @@
+/*
+  -- Even more rounded corners with CSS: Base stylesheet --
+*/
+
+.dialog {
+ position:relative;
+ margin:0px auto;
+ min-width:8em;
+ max-width:860px; /* based on image dimensions - not quite consistent with drip styles yet */
+ color:#fff;
+ z-index:1;
+ margin-left:24px; /* default, width of left corner */
+ margin-bottom:0.5em; /* spacing under dialog */
+}
+
+.dialog .content,
+.dialog .t,
+.dialog .b,
+.dialog .b div {
+ background:transparent url(dark-blue-800x1600.png) no-repeat top right;
+/* _background-image:url(../images/dark-blue-800x1600.png) no-repeat top right;*/
+}
+
+.dialog .content {
+ position:relative;
+ zoom:1;
+ _overflow-y:hidden;
+ padding:0px 24px 0px 0px;
+}
+
+.dialog .t {
+ /* top+left vertical slice */
+ position:absolute;
+ left:0px;
+ top:0px;
+ width:24px; /* top slice width */
+ margin-left:-24px;
+ height:100%;
+ _height:1600px; /* arbitrary long height, IE 6 */
+ background-position:top left;
+}
+
+.dialog .b {
+ /* bottom */
+ position:relative;
+ width:100%;
+}
+
+.dialog .b,
+.dialog .b div {
+ height:30px; /* height of bottom cap/shade */
+ font-size:1px;
+
+}
+
+.dialog .b {
+ background-position:bottom right;
+}
+
+.dialog .b div {
+ position:relative;
+ width:24px; /* bottom corner width */
+ margin-left:-24px;
+ background-position:bottom left;
+}
+
+.dialog .hd,
+.dialog .bd,
+.dialog .ft {
+ position:relative;
+}

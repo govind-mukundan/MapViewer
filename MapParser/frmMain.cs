@@ -1,4 +1,4 @@
-﻿//#define TEST
+﻿#define TEST
 
 #region copyright
 /*

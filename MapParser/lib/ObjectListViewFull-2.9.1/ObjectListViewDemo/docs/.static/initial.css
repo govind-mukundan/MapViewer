@@ -1,0 +1,163 @@
+/***** Global Settings *****/
+
+html, body {
+	border:0;
+	margin:0;
+	padding:0;
+	font-size:100.01%;
+/*	background-color: #d7d7ed;*/
+	background-color: #fafafa;
+}
+
+body {
+	font:1em "gill sans mt", arial, helvetica, sans-serif;
+}
+
+/***** Common Formatting *****/
+
+h1, h2, h3, h4, h5, h6 {
+	margin:0;
+	padding:0;
+	font-weight:normal;
+}
+
+h1 {
+	padding:30px 0 25px 0;
+	letter-spacing:-1px;
+	font:2em "gill sans mt", arial, helvetica, sans-serif;
+}
+
+h2 {
+	padding:20px 0;
+	letter-spacing:-1px;
+	font:1.5em "gill sans mt", arial, helvetica, sans-serif;
+}
+
+h3 {
+	padding:8px 0 8px;
+	font:1.2em "gill sans mt", arial, helvetica, sans-serif;
+}
+
+h4 {
+	padding:8px 0 8px;
+	font:1.0em "gill sans mt", arial, helvetica, sans-serif;
+	font-weight:bold;
+}
+
+p, ul, ol {
+	margin:0;
+	padding:0 0 18px 0;
+	border-top: 1;
+}
+
+ul, ol {
+	list-style:none;
+	padding:0 0 18px 40px;
+}
+
+blockquote {
+	margin:22px 40px;
+	padding:0;
+}
+
+small {
+	font-size:0.85em;
+}
+
+img {
+	border:0;
+}
+
+sup {
+	position:relative;
+	bottom:0.3em;
+	vertical-align:baseline;
+}
+
+sub {
+	position:relative;
+	bottom:-0.2em;
+	vertical-align:baseline;
+}
+
+acronym, abbr {
+	cursor:help;
+	letter-spacing:1px;
+	border-bottom:1px dashed;
+}
+
+/***** Links *****/
+
+a, a:visited {
+	text-decoration:none;
+}
+
+a:hover {
+	text-decoration:underline;
+}
+/***** Forms *****/
+
+form {
+	margin:0;
+	padding:0;
+	display:inline;
+}
+
+input, select, textarea {
+	font:1em "gill sans mt", arial, helvetica, sans-serif;
+}
+
+textarea {
+	line-height:1.25;
+}
+
+label {
+	cursor:pointer;
+}
+
+/***** Tables *****/
+
+table {
+	border:0;
+	margin:0 0 18px 0;
+	padding:0;
+}
+
+	table tr td {
+		padding:2px;
+	}
+
+/***** Wrapper *****/
+
+#wrap {
+	width:960px;
+	margin:0 auto;
+}
+
+/***** Global Classes *****/
+
+.clear 			{ clear:both; }
+
+.float-left 	{ float:left; }
+.float-right 	{ float:right; }
+
+.text-left 		{ text-align:left; }
+.text-right 	{ text-align:right; }
+.text-center 	{ text-align:center; }
+.text-justify 	{ text-align:justify; }
+
+.small 			{ font:0.5em; }
+.bold 			{ font-weight:bold; }
+.italic 		{ font-style:italic; }
+.underline 		{ border-bottom:1px solid; }
+.highlight 		{ background:#ffc; }
+
+.wrap 			{ width:960px;margin:0 auto; }
+
+.img-left 		{ float:left;margin:4px 10px 4px 0; }
+.img-right 		{ float:right;margin:4px 0 4px 10px; }
+
+.nomargin 		{ margin:0; }
+.nopadding 		{ padding:0; }
+.noindent 		{ margin-left:0;padding-left:0; }
+.nobullet 		{ list-style:none;list-style-image:none; }

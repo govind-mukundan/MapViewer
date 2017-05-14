@@ -1,0 +1,728 @@
+<?xml version="1.0"?>
+<Data>
+	<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" id="Persons" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xs:element name="Data" msdata:IsDataSet="true">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="Person">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="Name" type="xs:string" />
+								<xs:element name="Company" type="xs:string" />
+								<xs:element name="Occupation" type="xs:string" />
+								<xs:element name="Salary" type="xs:unsignedInt" />
+								<xs:element name="Height" type="xs:double" />
+								<xs:element name="TellsJokes" type="xs:boolean" />
+								<xs:element name="GifFileName" type="xs:string" />
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+	</xs:schema>
+	<Person>
+		<Name>Jonathan Phillip Piper</Name>
+		<Company>Bright Ideas Software</Company>
+		<Occupation>CEO &amp; Honorary Blue Meanie</Occupation>
+		<Salary>5000</Salary>
+		<Height>1.84</Height>
+		<TellsJokes>false</TellsJokes><GifFileName>.\AnimatedGifs\3dlink1.gif</GifFileName>
+	</Person>
+	<Person>
+		<Name>Nicola Piper</Name>
+		<Company>Bright Ideas Software</Company>
+		<Occupation>CFO</Occupation>
+		<Salary>10000</Salary>
+		<Height>1.7</Height>
+		<TellsJokes>true</TellsJokes><GifFileName>.\AnimatedGifs\cd1.gif</GifFileName>
+	</Person>
+	<Person>
+		<Name>Joshua Piper</Name>
+		<Company>Bright Ideas Software</Company>
+		<Occupation>Games Tester</Occupation>
+		<Salary>15000</Salary>
+		<Height>1.35</Height>
+		<TellsJokes>true</TellsJokes><GifFileName>.\AnimatedGifs\circum.gif</GifFileName>
+	</Person>
+	<Person>
+		<Name>Drew Piper</Name>
+		<Company>Bright Ideas Software</Company>
+		<Occupation>Creative Ideas</Occupation>
+		<Height>1.20</Height>
+		<Salary>15000</Salary>
+		<TellsJokes>true</TellsJokes><GifFileName>.\AnimatedGifs\enter3.gif</GifFileName>
+	</Person>
+	<Person>
+		<Name>Isabella Piper</Name>
+		<Company>Bright Ideas Software</Company>
+		<Occupation>VP - Marketing</Occupation>
+		<Height>0.9</Height>
+		<Salary>15000</Salary>
+		<TellsJokes>true</TellsJokes><GifFileName>.\AnimatedGifs\envelope.gif</GifFileName>
+	</Person>
+	<Person>
+		<Name>Bill Gates</Name>
+		<Company>Microsoft Corp</Company>
+		<Occupation>CTO</Occupation>
+		<Salary>1000000</Salary>
+		<Height>1.89</Height>
+		<TellsJokes>true</TellsJokes><GifFileName>.\AnimatedGifs\exclame.gif</GifFileName>
+	</Person>
+	<Person>
+		<Name>Alison Ashely</Name>
+		<Company>Trends Inc</Company>
+		<Occupation>Green Police</Occupation>
+		<Salary>20000</Salary>
+		<Height>1.6</Height>
+		<TellsJokes>true</TellsJokes><GifFileName>.\AnimatedGifs\cool3.gif</GifFileName>
+	</Person>
+	<Person>
+		<Name>Terry Pratt</Name>
+		<Company>Trends Inc</Company>
+		<Occupation>VP - Marketing</Occupation>
+		<Salary>200000</Salary>
+		<Height>1.8</Height>
+		<TellsJokes>true</TellsJokes><GifFileName>.\AnimatedGifs\net2.gif</GifFileName>
+	</Person>
+	<Person>
+		<Name>Brett Powder</Name>
+		<Company>Trends Inc</Company>
+		<Occupation>VP - Development</Occupation>
+		<Salary>200000</Salary>
+		<Height>1.84</Height>
+		<TellsJokes>true</TellsJokes><GifFileName>.\AnimatedGifs\new5.gif</GifFileName>
+	</Person>
+	<Person>
+		<Name>Brett Fowley</Name>
+		<Company>Trends Inc</Company>
+		<Occupation>Red Baron</Occupation>
+		<Salary>250000</Salary>
+		<Height>1.75</Height>
+		<TellsJokes>true</TellsJokes><GifFileName>.\AnimatedGifs\eye2.gif</GifFileName>
+	</Person>
+	<Person>
+		<Name>Henry Turner</Name>
+		<Company>Never Too Late Pty Ltd</Company>
+		<Occupation>Research Assistant</Occupation>
+		<Salary>13000</Salary>
+		<Height>1.87</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Steven Jobs</Name>
+		<Company>Trends Inc</Company>
+		<Occupation>Security</Occupation>
+		<Salary>18000</Salary>
+		<Height>1.72</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Jo Jobs</Name>
+		<Company>Never Too Late Pty Ltd</Company>
+		<Occupation>Marketing Director</Occupation>
+		<Salary>84000</Salary>
+		<Height>1.59</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Nicola Stiles</Name>
+		<Company>Energy Distribution Systems</Company>
+		<Occupation>Programmer</Occupation>
+		<Salary>130000</Salary>
+		<Height>2.04</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Maria MacMillian</Name>
+		<Company>TechnoBabble Inc</Company>
+		<Occupation>Marketing Director</Occupation>
+		<Salary>58000</Salary>
+		<Height>1.98</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Victor Lopez</Name>
+		<Company>TechnoBabble Inc</Company>
+		<Occupation>Filing Clerk</Occupation>
+		<Salary>90000</Salary>
+		<Height>1.56</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Steven MacMillian</Name>
+		<Company>Never Too Late Pty Ltd</Company>
+		<Occupation>Programmer</Occupation>
+		<Salary>28000</Salary>
+		<Height>1.87</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Flora Turner</Name>
+		<Company>Never Too Late Pty Ltd</Company>
+		<Occupation>Tester</Occupation>
+		<Salary>67000</Salary>
+		<Height>1.62</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Joshua Agafari</Name>
+		<Company>Trends Inc</Company>
+		<Occupation>Marketing Director</Occupation>
+		<Salary>103000</Salary>
+		<Height>1.61</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Henry Washington</Name>
+		<Company>SouthTel</Company>
+		<Occupation>Janitor</Occupation>
+		<Salary>181000</Salary>
+		<Height>1.53</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Phillip Hand</Name>
+		<Company>TechnoBabble Inc</Company>
+		<Occupation>Janitor</Occupation>
+		<Salary>38000</Salary>
+		<Height>1.52</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Henry Hand</Name>
+		<Company>Trends Inc</Company>
+		<Occupation>Tester</Occupation>
+		<Salary>191000</Salary>
+		<Height>1.78</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Steven Walls</Name>
+		<Company>Never Too Late Pty Ltd</Company>
+		<Occupation>Programmer</Occupation>
+		<Salary>72000</Salary>
+		<Height>1.72</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Flora Lopez</Name>
+		<Company>Bright Ideas Software</Company>
+		<Occupation>CFO</Occupation>
+		<Salary>118000</Salary>
+		<Height>2.00</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>William Washington</Name>
+		<Company>Never Too Late Pty Ltd</Company>
+		<Occupation>Research Assistant</Occupation>
+		<Salary>51000</Salary>
+		<Height>1.55</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Larry Stiles</Name>
+		<Company>SouthTel</Company>
+		<Occupation>Green Advocate</Occupation>
+		<Salary>114000</Salary>
+		<Height>1.82</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Victor Turner</Name>
+		<Company>Trends Inc</Company>
+		<Occupation>System Analyst</Occupation>
+		<Salary>140000</Salary>
+		<Height>1.54</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Maria Stiles</Name>
+		<Company>Energy Distribution Systems</Company>
+		<Occupation>Tester</Occupation>
+		<Salary>72000</Salary>
+		<Height>1.96</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Phillip Bowen</Name>
+		<Company>Bright Ideas Software</Company>
+		<Occupation>Programmer</Occupation>
+		<Salary>175000</Salary>
+		<Height>1.64</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Tony MacMillian</Name>
+		<Company>TechnoBabble Inc</Company>
+		<Occupation>Marketing Director</Occupation>
+		<Salary>117000</Salary>
+		<Height>1.85</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Nicola Walls</Name>
+		<Company>Trends Inc</Company>
+		<Occupation>Filing Clerk</Occupation>
+		<Salary>83000</Salary>
+		<Height>1.92</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Nicola Agafari</Name>
+		<Company>Energy Distribution Systems</Company>
+		<Occupation>Security</Occupation>
+		<Salary>153000</Salary>
+		<Height>1.85</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Ike Washington</Name>
+		<Company>Trends Inc</Company>
+		<Occupation>Tester</Occupation>
+		<Salary>123000</Salary>
+		<Height>1.68</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Steven Stiles</Name>
+		<Company>Bright Ideas Software</Company>
+		<Occupation>Security</Occupation>
+		<Salary>75000</Salary>
+		<Height>2.07</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>George McDuff</Name>
+		<Company>Never Too Late Pty Ltd</Company>
+		<Occupation>System Analyst</Occupation>
+		<Salary>158000</Salary>
+		<Height>1.93</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Larry Bowen</Name>
+		<Company>Wind Power Unlimited</Company>
+		<Occupation>CFO</Occupation>
+		<Salary>168000</Salary>
+		<Height>1.72</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Steven Lopez</Name>
+		<Company>Wind Power Unlimited</Company>
+		<Occupation>CFO</Occupation>
+		<Salary>173000</Salary>
+		<Height>1.62</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Flora Stiles</Name>
+		<Company>CompuService</Company>
+		<Occupation>Research Assistant</Occupation>
+		<Salary>74000</Salary>
+		<Height>1.62</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>George Agafari</Name>
+		<Company>Bright Ideas Software</Company>
+		<Occupation>Research Assistant</Occupation>
+		<Salary>77000</Salary>
+		<Height>1.84</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Henry McDuff</Name>
+		<Company>Energy Distribution Systems</Company>
+		<Occupation>Marketing Director</Occupation>
+		<Salary>125000</Salary>
+		<Height>1.50</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Jo Washington</Name>
+		<Company>Trends Inc</Company>
+		<Occupation>System Analyst</Occupation>
+		<Salary>40000</Salary>
+		<Height>2.05</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Phillip McDuff</Name>
+		<Company>SouthTel</Company>
+		<Occupation>Marketing Director</Occupation>
+		<Salary>14000</Salary>
+		<Height>1.74</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Larry Hand</Name>
+		<Company>Never Too Late Pty Ltd</Company>
+		<Occupation>Filing Clerk</Occupation>
+		<Salary>163000</Salary>
+		<Height>1.66</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>George Turner</Name>
+		<Company>Bright Ideas Software</Company>
+		<Occupation>System Analyst</Occupation>
+		<Salary>68000</Salary>
+		<Height>1.86</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Victor Jobs</Name>
+		<Company>TechnoBabble Inc</Company>
+		<Occupation>Programmer</Occupation>
+		<Salary>134000</Salary>
+		<Height>1.85</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Ike MacMillian</Name>
+		<Company>SouthTel</Company>
+		<Occupation>Janitor</Occupation>
+		<Salary>185000</Salary>
+		<Height>1.65</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Tony Hand</Name>
+		<Company>Never Too Late Pty Ltd</Company>
+		<Occupation>Filing Clerk</Occupation>
+		<Salary>158000</Salary>
+		<Height>1.70</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Ike Wheatley</Name>
+		<Company>TechnoBabble Inc</Company>
+		<Occupation>Tester</Occupation>
+		<Salary>57000</Salary>
+		<Height>1.88</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>William Turner</Name>
+		<Company>Bright Ideas Software</Company>
+		<Occupation>Green Advocate</Occupation>
+		<Salary>94000</Salary>
+		<Height>1.76</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>William Agafari</Name>
+		<Company>Energy Distribution Systems</Company>
+		<Occupation>Janitor</Occupation>
+		<Salary>48000</Salary>
+		<Height>1.65</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Ike McDuff</Name>
+		<Company>CompuService</Company>
+		<Occupation>Security</Occupation>
+		<Salary>117000</Salary>
+		<Height>1.52</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Henry Patton</Name>
+		<Company>Wind Power Unlimited</Company>
+		<Occupation>Programmer</Occupation>
+		<Salary>187000</Salary>
+		<Height>1.69</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Jo Wheatley</Name>
+		<Company>Trends Inc</Company>
+		<Occupation>Marketing Director</Occupation>
+		<Salary>132000</Salary>
+		<Height>1.75</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Henry Stiles</Name>
+		<Company>TechnoBabble Inc</Company>
+		<Occupation>Research Assistant</Occupation>
+		<Salary>180000</Salary>
+		<Height>1.98</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Joshua Walls</Name>
+		<Company>CompuService</Company>
+		<Occupation>Tester</Occupation>
+		<Salary>37000</Salary>
+		<Height>1.52</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>William Lopez</Name>
+		<Company>CompuService</Company>
+		<Occupation>Green Advocate</Occupation>
+		<Salary>78000</Salary>
+		<Height>2.02</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Steven Hand</Name>
+		<Company>TechnoBabble Inc</Company>
+		<Occupation>Research Assistant</Occupation>
+		<Salary>108000</Salary>
+		<Height>2.07</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Flora Walls</Name>
+		<Company>Trends Inc</Company>
+		<Occupation>System Analyst</Occupation>
+		<Salary>104000</Salary>
+		<Height>1.76</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Steven McDuff</Name>
+		<Company>Never Too Late Pty Ltd</Company>
+		<Occupation>Filing Clerk</Occupation>
+		<Salary>74000</Salary>
+		<Height>1.92</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Jo McDuff</Name>
+		<Company>TechnoBabble Inc</Company>
+		<Occupation>CFO</Occupation>
+		<Salary>113000</Salary>
+		<Height>1.58</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Tony Washington</Name>
+		<Company>CompuService</Company>
+		<Occupation>Marketing Director</Occupation>
+		<Salary>94000</Salary>
+		<Height>1.77</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Andrew Washington</Name>
+		<Company>Wind Power Unlimited</Company>
+		<Occupation>Research Assistant</Occupation>
+		<Salary>23000</Salary>
+		<Height>1.68</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Phillip Stiles</Name>
+		<Company>Energy Distribution Systems</Company>
+		<Occupation>Security</Occupation>
+		<Salary>27000</Salary>
+		<Height>1.83</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Andrew Jobs</Name>
+		<Company>Energy Distribution Systems</Company>
+		<Occupation>Blue Meanie</Occupation>
+		<Salary>99000</Salary>
+		<Height>1.89</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Jo Walls</Name>
+		<Company>TechnoBabble Inc</Company>
+		<Occupation>Research Assistant</Occupation>
+		<Salary>193000</Salary>
+		<Height>1.71</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Joshua Turner</Name>
+		<Company>CompuService</Company>
+		<Occupation>Security</Occupation>
+		<Salary>85000</Salary>
+		<Height>2.09</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Steven Agafari</Name>
+		<Company>Bright Ideas Software</Company>
+		<Occupation>Research Assistant</Occupation>
+		<Salary>44000</Salary>
+		<Height>1.63</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Nicola MacMillian</Name>
+		<Company>Wind Power Unlimited</Company>
+		<Occupation>CEO</Occupation>
+		<Salary>102000</Salary>
+		<Height>2.03</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Flora Hand</Name>
+		<Company>Energy Distribution Systems</Company>
+		<Occupation>Blue Meanie</Occupation>
+		<Salary>183000</Salary>
+		<Height>1.94</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Tony Patton</Name>
+		<Company>Bright Ideas Software</Company>
+		<Occupation>Marketing Director</Occupation>
+		<Salary>146000</Salary>
+		<Height>2.07</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Henry MacMillian</Name>
+		<Company>Trends Inc</Company>
+		<Occupation>Programmer</Occupation>
+		<Salary>131000</Salary>
+		<Height>1.85</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>George Jobs</Name>
+		<Company>SouthTel</Company>
+		<Occupation>Tester</Occupation>
+		<Salary>22000</Salary>
+		<Height>2.10</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Victor Nord</Name>
+		<Company>TechnoBabble Inc</Company>
+		<Occupation>Green Advocate</Occupation>
+		<Salary>158000</Salary>
+		<Height>1.91</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Maria Nord</Name>
+		<Company>Never Too Late Pty Ltd</Company>
+		<Occupation>System Analyst</Occupation>
+		<Salary>142000</Salary>
+		<Height>1.70</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Nicola Wheatley</Name>
+		<Company>Wind Power Unlimited</Company>
+		<Occupation>System Analyst</Occupation>
+		<Salary>122000</Salary>
+		<Height>1.54</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Nicola McDuff</Name>
+		<Company>Wind Power Unlimited</Company>
+		<Occupation>Filing Clerk</Occupation>
+		<Salary>200000</Salary>
+		<Height>2.06</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Henry Lopez</Name>
+		<Company>Never Too Late Pty Ltd</Company>
+		<Occupation>Security</Occupation>
+		<Salary>154000</Salary>
+		<Height>1.96</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Maria Hand</Name>
+		<Company>SouthTel</Company>
+		<Occupation>Green Advocate</Occupation>
+		<Salary>32000</Salary>
+		<Height>1.86</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Jo Stiles</Name>
+		<Company>Trends Inc</Company>
+		<Occupation>Filing Clerk</Occupation>
+		<Salary>81000</Salary>
+		<Height>1.56</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Maria McDuff</Name>
+		<Company>Trends Inc</Company>
+		<Occupation>Janitor</Occupation>
+		<Salary>45000</Salary>
+		<Height>1.89</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Ike Walls</Name>
+		<Company>SouthTel</Company>
+		<Occupation>Tester</Occupation>
+		<Salary>109000</Salary>
+		<Height>1.93</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Phillip Nord</Name>
+		<Company>Trends Inc</Company>
+		<Occupation>Programmer</Occupation>
+		<Salary>95000</Salary>
+		<Height>2.05</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>George Bowen</Name>
+		<Company>SouthTel</Company>
+		<Occupation>Filing Clerk</Occupation>
+		<Salary>120000</Salary>
+		<Height>1.53</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Andrew McDuff</Name>
+		<Company>Trends Inc</Company>
+		<Occupation>Filing Clerk</Occupation>
+		<Salary>124000</Salary>
+		<Height>1.79</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Ike Stiles</Name>
+		<Company>CompuService</Company>
+		<Occupation>CEO</Occupation>
+		<Salary>192000</Salary>
+		<Height>1.58</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Maria Agafari</Name>
+		<Company>Wind Power Unlimited</Company>
+		<Occupation>Programmer</Occupation>
+		<Salary>159000</Salary>
+		<Height>1.72</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Andrew Agafari</Name>
+		<Company>Wind Power Unlimited</Company>
+		<Occupation>Janitor</Occupation>
+		<Salary>20000</Salary>
+		<Height>1.80</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+	<Person>
+		<Name>Jo Lopez</Name>
+		<Company>CompuService</Company>
+		<Occupation>System Analyst</Occupation>
+		<Salary>121000</Salary>
+		<Height>1.77</Height>
+		<TellsJokes>true</TellsJokes><GifFileName></GifFileName>
+	</Person>
+</Data>
