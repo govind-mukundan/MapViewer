@@ -32,6 +32,17 @@ namespace MapViewer
         }
     }
 
+    public class CrefNode
+    {
+        public string Module { get; set; }
+        public List<CrefNode> Children { get; set; }
+        public CrefNode(string name)
+        {
+            Module = name;
+            Children = new List<CrefNode>();
+        }
+    }
+
     class Cref
     {
         bool DEBUG = true;

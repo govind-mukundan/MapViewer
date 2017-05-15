@@ -125,6 +125,7 @@ namespace MapViewer
 #if TEST
                 Cref cref = new Cref();
                 cref.Build(txtBx_MapFilepath.Text);
+                tlv_Init();
 
 #else
                 Button_status(false);
@@ -522,5 +523,24 @@ namespace MapViewer
 				MessageBox.Show("File saved");
 			}
 		}
-	}
+
+        #region     TREE LIST VIEW
+
+        private void tlv_Init()
+        {
+            tlv_Cref.CanExpandGetter = x => { return ((CrefNode)x).Children.Count > 0; };
+            tlv_Cref.ChildrenGetter = x => { return ((CrefNode)x).Children; };
+
+            var MyClasses = new List<CrefNode>();
+            MyClasses.Add(new CrefNode("Bob"));
+            MyClasses.Add(new CrefNode("John"));
+            var myClass = new CrefNode("Mike");
+            myClass.Children.Add(new CrefNode("Joe"));
+            MyClasses.Add(myClass);
+
+            tlv_Cref.SetObjects(MyClasses);
+        }
+
+        #endregion
+    }
 }
