@@ -36,6 +36,7 @@ namespace MapViewer
     {
         public string Module { get; set; }
         public List<CrefNode> Children { get; set; }
+        
         public CrefNode(string name)
         {
             Module = name;
@@ -47,7 +48,7 @@ namespace MapViewer
     {
         bool DEBUG = true;
         string CrefHeader = "Cross Reference Table";
-        List<CrefEntry> CrefTable;
+        public List<CrefEntry> CrefTable { get; set; }
 
         public Cref()
         {
@@ -76,7 +77,7 @@ namespace MapViewer
                 else
                     AddNewCref(line);
             }
-            Test();
+            //Test();
             return true;
         }
 

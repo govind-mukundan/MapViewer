@@ -116,7 +116,7 @@
             // 
             // btn_BrowseMapFile
             // 
-            this.btn_BrowseMapFile.Location = new System.Drawing.Point(466, 3);
+            this.btn_BrowseMapFile.Location = new System.Drawing.Point(465, 3);
             this.btn_BrowseMapFile.Name = "btn_BrowseMapFile";
             this.btn_BrowseMapFile.Size = new System.Drawing.Size(37, 22);
             this.btn_BrowseMapFile.TabIndex = 30;
@@ -127,9 +127,9 @@
             // btn_Analyze
             // 
             this.btn_Analyze.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_Analyze.Location = new System.Drawing.Point(527, 3);
+            this.btn_Analyze.Location = new System.Drawing.Point(526, 3);
             this.btn_Analyze.Name = "btn_Analyze";
-            this.btn_Analyze.Size = new System.Drawing.Size(76, 22);
+            this.btn_Analyze.Size = new System.Drawing.Size(77, 22);
             this.btn_Analyze.TabIndex = 29;
             this.btn_Analyze.Text = "Analyze";
             this.btn_Analyze.UseVisualStyleBackColor = true;
@@ -140,7 +140,7 @@
             this.txtBx_MapFilepath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBx_MapFilepath.Location = new System.Drawing.Point(3, 4);
             this.txtBx_MapFilepath.Name = "txtBx_MapFilepath";
-            this.txtBx_MapFilepath.Size = new System.Drawing.Size(457, 20);
+            this.txtBx_MapFilepath.Size = new System.Drawing.Size(456, 20);
             this.txtBx_MapFilepath.TabIndex = 28;
             // 
             // groupBox9
@@ -328,7 +328,7 @@
             this.olv_SymbolView.Name = "olv_SymbolView";
             this.olv_SymbolView.SelectColumnsMenuStaysOpen = false;
             this.olv_SymbolView.ShowGroups = false;
-            this.olv_SymbolView.Size = new System.Drawing.Size(781, 546);
+            this.olv_SymbolView.Size = new System.Drawing.Size(775, 586);
             this.olv_SymbolView.SortGroupItemsByPrimaryColumn = false;
             this.olv_SymbolView.Sorting = System.Windows.Forms.SortOrder.Descending;
             this.olv_SymbolView.TabIndex = 33;
@@ -424,7 +424,7 @@
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 88.31169F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.68831F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
             this.tableLayoutPanel3.Controls.Add(this.txtBx_ElfFilepath, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.txtBx_MapFilepath, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.btn_Analyze, 2, 0);
@@ -444,15 +444,15 @@
             this.txtBx_ElfFilepath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBx_ElfFilepath.Location = new System.Drawing.Point(3, 32);
             this.txtBx_ElfFilepath.Name = "txtBx_ElfFilepath";
-            this.txtBx_ElfFilepath.Size = new System.Drawing.Size(457, 20);
+            this.txtBx_ElfFilepath.Size = new System.Drawing.Size(456, 20);
             this.txtBx_ElfFilepath.TabIndex = 31;
             // 
             // btn_Settings
             // 
             this.btn_Settings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_Settings.Location = new System.Drawing.Point(527, 31);
+            this.btn_Settings.Location = new System.Drawing.Point(526, 31);
             this.btn_Settings.Name = "btn_Settings";
-            this.btn_Settings.Size = new System.Drawing.Size(76, 22);
+            this.btn_Settings.Size = new System.Drawing.Size(77, 22);
             this.btn_Settings.TabIndex = 33;
             this.btn_Settings.Text = "Settings";
             this.btn_Settings.UseVisualStyleBackColor = true;
@@ -460,7 +460,7 @@
             // 
             // btn_BrowseElfFile
             // 
-            this.btn_BrowseElfFile.Location = new System.Drawing.Point(466, 31);
+            this.btn_BrowseElfFile.Location = new System.Drawing.Point(465, 31);
             this.btn_BrowseElfFile.Name = "btn_BrowseElfFile";
             this.btn_BrowseElfFile.Size = new System.Drawing.Size(37, 22);
             this.btn_BrowseElfFile.TabIndex = 32;
@@ -657,22 +657,28 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox5.Controls.Add(this.tabControl1);
             this.groupBox5.Location = new System.Drawing.Point(621, 156);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(486, 289);
+            this.groupBox5.Size = new System.Drawing.Size(489, 351);
             this.groupBox5.TabIndex = 37;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "groupBox5";
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(492, 311);
+            this.tabControl1.Size = new System.Drawing.Size(486, 351);
             this.tabControl1.TabIndex = 22;
             // 
             // tabPage1
@@ -681,7 +687,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(484, 285);
+            this.tabPage1.Size = new System.Drawing.Size(478, 325);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -692,7 +698,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(484, 285);
+            this.tabPage2.Size = new System.Drawing.Size(478, 325);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -700,6 +706,9 @@
             // tlv_Cref
             // 
             this.tlv_Cref.AllColumns.Add(this.tlv_ColModule);
+            this.tlv_Cref.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tlv_Cref.CellEditUseWholeCell = false;
             this.tlv_Cref.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.tlv_ColModule});
@@ -707,7 +716,7 @@
             this.tlv_Cref.Location = new System.Drawing.Point(6, 6);
             this.tlv_Cref.Name = "tlv_Cref";
             this.tlv_Cref.ShowGroups = false;
-            this.tlv_Cref.Size = new System.Drawing.Size(472, 255);
+            this.tlv_Cref.Size = new System.Drawing.Size(472, 312);
             this.tlv_Cref.TabIndex = 35;
             this.tlv_Cref.UseCompatibleStateImageBehavior = false;
             this.tlv_Cref.View = System.Windows.Forms.View.Details;
@@ -718,7 +727,7 @@
             this.tlv_ColModule.AspectName = "Module";
             this.tlv_ColModule.HeaderFont = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tlv_ColModule.Text = "MODULE";
-            this.tlv_ColModule.Width = 455;
+            this.tlv_ColModule.Width = 1000;
             // 
             // MapViewer
             // 

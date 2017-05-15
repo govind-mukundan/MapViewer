@@ -55,6 +55,8 @@ namespace MapViewer
 
         System.Timers.Timer _timer = new System.Timers.Timer(1000);
 
+        Cref cref;
+
         public void Button_status(bool val)
         {
             if (InvokeRequired)
@@ -90,6 +92,7 @@ namespace MapViewer
             _settings = new Settings();
             _settings.LoadAppSettings();
             RefreshSettings();
+            cref = new Cref();
             //string val = @"/cygdrive/c/Program Files (x86)/FTDI/FT90x Toolchain/Toolchain/tools/bin/../lib/gcc/ft32-elf/5.0.0/../../../../ft32-elf/lib/libc.a(lib_a-locale.o)";
             //val = val.Replace("lib_a-", String.Empty);
             //Debug.Write(val);
@@ -123,7 +126,7 @@ namespace MapViewer
             Task task = Task.Factory.StartNew(() =>
             {
 #if TEST
-                Cref cref = new Cref();
+                
                 cref.Build(txtBx_MapFilepath.Text);
                 tlv_Init();
 
@@ -526,19 +529,70 @@ namespace MapViewer
 
         #region     TREE LIST VIEW
 
+        int depth;
         private void tlv_Init()
         {
             tlv_Cref.CanExpandGetter = x => { return ((CrefNode)x).Children.Count > 0; };
             tlv_Cref.ChildrenGetter = x => { return ((CrefNode)x).Children; };
 
-            var MyClasses = new List<CrefNode>();
-            MyClasses.Add(new CrefNode("Bob"));
-            MyClasses.Add(new CrefNode("John"));
-            var myClass = new CrefNode("Mike");
-            myClass.Children.Add(new CrefNode("Joe"));
-            MyClasses.Add(myClass);
+            //var MyClasses = new List<CrefNode>();
+            //MyClasses.Add(new CrefNode("Bob"));
+            //MyClasses.Add(new CrefNode("John"));
+            //var myClass = new CrefNode("Mike");
+            //myClass.Children.Add(new CrefNode("Joe"));
+            //MyClasses.Add(myClass);
 
-            tlv_Cref.SetObjects(MyClasses);
+            //tlv_Cref.SetObjects(MyClasses);
+            // findfp
+
+            /* First of all we need to know the root node module name */
+            string root_node_module = "findfp.o";
+            CrefEntry cr = cref.CrefTable.Where(x => x.SouceModule.Contains(root_node_module)).ToList().FirstOrDefault();
+            
+            var cref_tree = new List<CrefNode>();
+            cref_tree.Add(new CrefNode(cr.SouceModule));
+
+            Build(cref_tree[0]);
+            depth = 0;
+            /*
+            bool end = false;
+            int depth = 10;
+            for(int i=0; i < 1; i++)
+            {
+                List<CrefNode> c = FindChildren(cref_tree[i]);
+                cref_tree[i].Children = c;
+                
+                for (int j=0; j < c.Count; j++)
+                {
+                    c[j].Children = FindChildren(c[j]);
+                }
+            }
+            */
+            tlv_Cref.SetObjects(cref_tree);
+        }
+
+        
+
+        void Build(CrefNode n)
+        {
+            if (depth++ > 200) return;
+            List<CrefNode> c = FindChildren(n);
+            n.Children = c;
+            foreach(CrefNode k in c)
+            {
+                Build(k);
+            }
+        }
+
+        List<CrefNode> FindChildren(CrefNode n)
+        {
+            List<string> nodes = cref.FindUsers(n.Module);
+            List<CrefNode> childs = new List<CrefNode>();
+            for (int i = 0; i < nodes.Count; i++)
+            {
+                childs.Add(new CrefNode(nodes[i]));
+            }
+            return childs;
         }
 
         #endregion
