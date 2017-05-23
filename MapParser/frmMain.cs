@@ -575,13 +575,30 @@ namespace MapViewer
 
         void Build(CrefNode n)
         {
-            if (depth++ > 200) return;
+            //if (depth++ > 200) return;
+            /* If the node already exists in the tree, forget it */
+            if (!IsUnique(n, n.Parent)) return;
             List<CrefNode> c = FindChildren(n);
             n.Children = c;
             foreach(CrefNode k in c)
             {
+                k.Parent = n;
                 Build(k);
             }
+        }
+
+        /// <summary>
+        /// Walk the tree and see if any node contains this element 
+        /// </summary>
+        /// <param name="n"> The node which could have been duplicated in the tree </param>
+        /// <param name="p"> The next parent </param>
+        /// <returns></returns>
+        bool IsUnique(CrefNode n, CrefNode p)
+        {
+            if (p == null) return true;
+            if (n.Module == p.Module)
+                return false;
+            else return IsUnique(n, p.Parent);
         }
 
         List<CrefNode> FindChildren(CrefNode n)
