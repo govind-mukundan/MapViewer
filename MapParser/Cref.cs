@@ -36,11 +36,13 @@ namespace MapViewer
     {
         public string Module { get; set; }
         public List<CrefNode> Children { get; set; }
+        public CrefNode Parent;
         
         public CrefNode(string name)
         {
             Module = name;
             Children = new List<CrefNode>();
+            Parent = null;
         }
     }
 
