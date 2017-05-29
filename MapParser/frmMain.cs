@@ -1,4 +1,4 @@
-﻿#define TEST
+﻿//#define TEST
 
 #region copyright
 /*
@@ -136,6 +136,7 @@ namespace MapViewer
                 {
                     Button_status(false);
                     AnalyzeSymbols();
+                    cref.Build(txtBx_MapFilepath.Text);
                 }
                 catch (System.Exception ex)
                 {
@@ -314,8 +315,15 @@ namespace MapViewer
         private void olv_ModuleView_SelectionChanged(object sender, EventArgs e)
         {
             if (_syms == null || _UIUpdateInProgress) return;
+
             PopulateSymbolLV(FilterSymbols(olv_ModuleView.SelectedObjects.Cast<Module>().ToList()));
-            return;
+
+            tlv_Cref.CanExpandGetter = x => { return ((CrefNode)x).Children.Count > 0; };
+            tlv_Cref.ChildrenGetter = x => { return ((CrefNode)x).Children; };
+            var cref_tree = new List<CrefNode>();
+            cref_tree.Add(new CrefNode(olv_ModuleView.SelectedObjects.Cast<Module>().FirstOrDefault().ModuleName));
+            Build(cref_tree[0], 5);
+            tlv_Cref.SetObjects(cref_tree);
         }
 
         List<Symbol> FilterSymbols(List<Module> mods)
@@ -529,7 +537,7 @@ namespace MapViewer
 
         #region     TREE LIST VIEW
 
-        int depth;
+        int Depth;
         private void tlv_Init()
         {
             tlv_Cref.CanExpandGetter = x => { return ((CrefNode)x).Children.Count > 0; };
@@ -546,14 +554,14 @@ namespace MapViewer
             // findfp
 
             /* First of all we need to know the root node module name */
-            string root_node_module = "findfp.o";
+            string root_node_module = "ff.o";
             CrefEntry cr = cref.CrefTable.Where(x => x.SouceModule.Contains(root_node_module)).ToList().FirstOrDefault();
             
             var cref_tree = new List<CrefNode>();
             cref_tree.Add(new CrefNode(cr.SouceModule));
 
             Build(cref_tree[0]);
-            depth = 0;
+            Depth = 0;
             /*
             bool end = false;
             int depth = 10;
@@ -571,11 +579,27 @@ namespace MapViewer
             tlv_Cref.SetObjects(cref_tree);
         }
 
-        
+
+        void Build(CrefNode n, int depth)
+        {
+            //if (Depth++ > 2000) return;
+            depth--;
+            if ((depth == 0)) return;
+            Debug.WriteLineIf(DEBUG, "depth: " + depth.ToString());
+            /* If the node already exists in the tree, forget it */
+            if (!IsUnique(n, n.Parent)) return;
+            List<CrefNode> c = FindChildren(n);
+            n.Children = c;
+            foreach (CrefNode k in c)
+            {
+                k.Parent = n;
+                Build(k, depth);
+            }
+        }
 
         void Build(CrefNode n)
         {
-            //if (depth++ > 200) return;
+            if (Depth++ > 2000) return;
             /* If the node already exists in the tree, forget it */
             if (!IsUnique(n, n.Parent)) return;
             List<CrefNode> c = FindChildren(n);
