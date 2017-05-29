@@ -109,12 +109,12 @@ namespace MapViewer
 
         public List<string> FindUsers(string module)
         {
-            if (module.Contains("main.o"))
-                Debug.WriteLineIf(DEBUG, "test");
+            Debug.WriteLineIf(DEBUG, module);
             // Find all the symbols for the module
             // SelectMany() helps to "flatten" the list, using Select() returns a IEnumerable<List<string>>
-            var ulst = CrefTable.Where(x => module == x.SouceModule).SelectMany(y => y.Users).ToList();
-            return ulst;
+            List<string> ulst = CrefTable.Where(x => module == x.SouceModule).SelectMany(y => y.Users).ToList();
+            // Remove all duplicate entries
+            return ulst.Distinct().ToList();
         }
     }
 }
