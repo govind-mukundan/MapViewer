@@ -38,7 +38,7 @@ namespace MapViewer
     // For more info on options: https://sourceware.org/binutils/docs/binutils/nm.html
     class SymParser
     {
-        bool DEBUG = false;
+        bool DEBUG = true;
         public List<Symbol> Symbols;
         public List<Symbol> StaticSymbols
         { get { return Symbols.Where(x => x.GlobalScope == Symbol.TYPE_STATIC).ToList(); } }
@@ -66,7 +66,7 @@ namespace MapViewer
             this.MapViewerObj = ownerForm;
             string result = "";
             Symbols = new List<Symbol>();
-            if (nmPath == "" || elfPath == "") return;
+            if (nmPath == "" || elfPath == "" || !File.Exists(nmPath) || !File.Exists(elfPath)) return;
             ProcessAdapter.Execute(ref result, nmPath, "--demangle --print-size --size-sort " + Quote(elfPath)); //--line-numbers
 
             // Parse the resultant table
@@ -105,7 +105,7 @@ namespace MapViewer
                         // Subroutines
                         path = DwarfParser.Instance.FindSubRoutineCUnit(entries[3], Convert.ToUInt32(entries[0], 16));
                     }
-                    else if (entries[2].ToLower() == "w") // Weak symbols could be either vars or subroutines
+                    else if (entries[2].ToLower() == "w" || entries[2].ToLower() == "v") // Weak symbols could be either vars or subroutines
                     {
                         Debug.WriteLineIf(DEBUG,"Found a weak symbol " + entries[3]);
                         path = DwarfParser.Instance.FindSubRoutineCUnit(entries[3], Convert.ToUInt32(entries[0], 16));
@@ -121,6 +121,12 @@ namespace MapViewer
                                 Debug.WriteLineIf(DEBUG,"Is a variable " + path);
                                 // FIXME: for now just assume all weak variable syms are in BSS
                                 entries[2] = "b";
+                            }
+                            else
+                            {
+                                // Couldn't find this symbol, lets apply some hurestics to at least identify if its a subroutine or not
+                                // Check if the symbol contains () ==> C++ subroutine
+                                if (entries[3].Contains("(")) entries[2] = "t";
                             }
                         }
                     }
@@ -155,9 +161,12 @@ namespace MapViewer
                 if (Regex.IsMatch(entries[2], @"[TDBGSR]")) type = Symbol.TYPE_GLOBAL;
                 // Get the section
                 if (entries[2].ToLower() == "t") secName = SEC_NAME_TEXT;
-                if (entries[2].ToLower() == "d" || entries[2].ToLower() == "g" || entries[2].ToLower() == "r") secName = SEC_NAME_DATA;
-                if (entries[2].ToLower() == "b" || entries[2].ToLower() == "s" || entries[2].ToLower() == "c") secName = SEC_NAME_BSS;
-
+                else if (entries[2].ToLower() == "d" || entries[2].ToLower() == "g" || entries[2].ToLower() == "r") secName = SEC_NAME_DATA;
+                else if (entries[2].ToLower() == "b" || entries[2].ToLower() == "s" || entries[2].ToLower() == "c") secName = SEC_NAME_BSS;
+                else
+                {
+                    Debug.WriteLineIf(DEBUG, "Unknown section");
+                }
                 Symbol sym = new Symbol(entries[3], path, Convert.ToUInt32(entries[0], 16), Convert.ToUInt32(entries[1], 16), secName); sym.GlobalScope = type;
                 Symbols.Add(sym);
             }

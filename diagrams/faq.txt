@@ -1,0 +1,11 @@
+
+1. How do I find the total size of Flash/ROM consumed by my typical embedded application?
+Add the `TEXT + DATA` section size in the *Actuals* group. The Data section consumes both flash/rom and sram.
+
+2. How do I find the total SRAM consumed by my typical embedded application?
+Add the `BSS + DATA` section size in the *Actuals* group. The Data section consumes both flash/rom and sram. Note that dynamic memory / stack information is not available.
+
+3. Useful compiler options
+
+4. I have implemented/defined functions in a header file, information about the module size is not available. Why?
+Header files are considered part of one or the other source file that includes it. All the functions/globals defined in the header will appear as if defined inside that source file. Header.h does not result in a Header.o
