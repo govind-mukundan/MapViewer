@@ -154,7 +154,11 @@ namespace MapViewer
             name = cu[COMPILATION_UNIT_NAME_INDEX];
             string[] ele = name.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
             string[] e2 = cu[9].Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
-            name = Path.GetFullPath(e2[e2.Length - 1] + ele[ele.Length - 1]); // GetFullPath(baseDir, relativePath);
+            /* Sometimes we have the full path to the file in the DW_AT_name string, if so use it without combining it with DW_AT_comp_dir  */
+            if (Path.IsPathRooted(ele[ele.Length - 1]))
+                name = Path.GetFullPath(ele[ele.Length - 1]);
+            else
+                name = Path.GetFullPath(e2[e2.Length - 1] + ele[ele.Length - 1]); // GetFullPath(baseDir, relativePath);
 
             return name;
         }
