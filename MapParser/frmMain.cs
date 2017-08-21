@@ -571,7 +571,7 @@ namespace MapViewer
             // findfp
 
             /* First of all we need to know the root node module name */
-            string root_node_module = "lib_a-svfiprintf.o";
+            string root_node_module = "impure.o";
             CrefEntry cr = cref.CrefTable.Where(x => x.SouceModule.Contains(root_node_module)).ToList().FirstOrDefault();
             
             var cref_tree = new List<CrefNode>();
