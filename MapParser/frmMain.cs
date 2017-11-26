@@ -46,6 +46,7 @@ namespace MapViewer
         SymParser _syms;
         Settings _settings;
         bool _UIUpdateInProgress; // disable filtering while UI is being updated
+        private Control contextMenuSrc; // to know which control triggered the CSV/HTML export
 
         System.Timers.Timer _timer = new System.Timers.Timer(1000);
 
@@ -213,13 +214,13 @@ namespace MapViewer
         {
             if (txtBx_MapFilepath.Text == String.Empty || !File.Exists(txtBx_MapFilepath.Text))
             {
-                MessageBox.Show("Can't proceed! Please enter a valid MAP file path!");
+                MessageBox.Show("Can't proceed! Please enter a valid MAP file path!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (MAPParser.Instance.C_BSS_ID.Count() == 0 || MAPParser.Instance.C_TEXT_ID.Count() == 0 || MAPParser.Instance.C_DATA_ID.Count() == 0)
             {
-                MessageBox.Show("Can't proceed! Please enter valid Segment to Section mappings for TEXT, DATA and BSS!\nClick Settings button!");
+                MessageBox.Show("Can't proceed! Please enter valid Segment to Section mappings for TEXT, DATA and BSS!\nClick Settings button!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -237,7 +238,7 @@ namespace MapViewer
                 }
                 catch (System.Exception ex)
                 {
-                    MessageBox.Show("Error analyzing Map file!\n" + ex.ToString());
+                    MessageBox.Show("Error analyzing Map file!\n" + ex.ToString(), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -246,26 +247,6 @@ namespace MapViewer
                 }
             });
         }
-
-        private void olv_ModuleView_DoubleClick(object sender, EventArgs e)
-        {
-            SaveFileDialog sfd = new SaveFileDialog();
-            DialogResult dr = sfd.ShowDialog();
-            if (dr == DialogResult.OK)
-            {
-                Stream file = sfd.OpenFile();
-                byte[] headers = Encoding.ASCII.GetBytes("TEXT,BSS,DATA,Module\n");
-                file.Write(headers, 0, headers.Length);
-                foreach (var x in olv_ModuleView.FilteredObjects.Cast<Module>().ToList())
-                {
-                    byte[] line = Encoding.ASCII.GetBytes(x.TextSize + "," + x.BSSSize + "," + x.DataSize + "," + x.ModuleName + "\n");
-                    file.Write(line, 0, line.Length);
-                }
-                file.Close();
-                MessageBox.Show("File saved");
-            }
-        }
-
         public void Button_status(bool val)
         {
             if (InvokeRequired)
@@ -291,6 +272,46 @@ namespace MapViewer
                 this.btn_Analyze.Text = text;
             }
         }
+        // -----  Export to File via Context Menu Strip ----------
+        void ExportToFile(string name, ObjectListView olv, OLVExporter.ExportFormat f)
+        {
+            OLVExporter oex = new OLVExporter(olv, olv.FilteredObjects);
+            string s = oex.ExportTo(f);
+            File.WriteAllText(name, s);
+            MessageBox.Show(name + " saved", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void cSVToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+            sfd.RestoreDirectory = true;
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                ObjectListView olv = contextMenuSrc as ObjectListView;
+                if (olv != null) ExportToFile(sfd.FileName, olv, OLVExporter.ExportFormat.CSV);
+            }
+        }
+
+        private void hTMLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "HTML files (*.html)|*.html|All files (*.*)|*.*";
+            sfd.RestoreDirectory = true;
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                ObjectListView olv = contextMenuSrc as ObjectListView;
+                if (olv != null) ExportToFile(sfd.FileName, olv, OLVExporter.ExportFormat.CSV);
+            }
+        }
+
+        private void cms_export_Opening(object sender, CancelEventArgs e)
+        {
+            contextMenuSrc = ((ContextMenuStrip)sender).SourceControl;
+        }
+        // ----- [END] Export to File via Context Menu Strip ----------
 
         #endregion
 
@@ -324,14 +345,14 @@ namespace MapViewer
             // Analyze Symbols
             if (txtBx_ElfFilepath.Text == "" || !File.Exists(txtBx_ElfFilepath.Text))
             {
-                MessageBox.Show("Please enter a valid ELF file path for symbol analysis!");
+                MessageBox.Show("Please enter a valid ELF file path for symbol analysis!", "Gratutious Advice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 //hide_sym_column();
                 //return;
             }
             if (BINUTIL_READ_ELF == "" || !File.Exists(BINUTIL_READ_ELF) ||
                 BINUTIL_NM == "" || !File.Exists(BINUTIL_NM))
             {
-                MessageBox.Show("Please enter a valid ObjectDump and NM path for symbol analysis!\n Click the Settings button!");
+                MessageBox.Show("Please enter a valid ObjectDump and NM path for symbol analysis!\n Click the Settings button!", "Gratutious Advice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 //return;
             }
 
@@ -581,7 +602,7 @@ namespace MapViewer
 
 
 
-#region     TREE LIST VIEW
+       #region     TREE LIST VIEW - Dependencies
 
         int Depth;
         private void tlv_Init(string root_node_module)
@@ -682,6 +703,9 @@ namespace MapViewer
             return childs;
         }
 
-#endregion
+
+
+        #endregion
+
     }
 }
