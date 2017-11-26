@@ -47,6 +47,10 @@
             this.olvBSS = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvData = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvModName = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.cms_export = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hTMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.olv_SymbolView = new BrightIdeasSoftware.ObjectListView();
             this.colSection = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.columnGlobal = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -85,6 +89,7 @@
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olv_ModuleSum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.olv_ModuleView)).BeginInit();
+            this.cms_export.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olv_SymbolView)).BeginInit();
             this.tlp_Main.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -116,7 +121,7 @@
             // 
             // btn_BrowseMapFile
             // 
-            this.btn_BrowseMapFile.Location = new System.Drawing.Point(463, 3);
+            this.btn_BrowseMapFile.Location = new System.Drawing.Point(462, 3);
             this.btn_BrowseMapFile.Name = "btn_BrowseMapFile";
             this.btn_BrowseMapFile.Size = new System.Drawing.Size(37, 22);
             this.btn_BrowseMapFile.TabIndex = 30;
@@ -127,9 +132,9 @@
             // btn_Analyze
             // 
             this.btn_Analyze.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_Analyze.Location = new System.Drawing.Point(524, 3);
+            this.btn_Analyze.Location = new System.Drawing.Point(522, 3);
             this.btn_Analyze.Name = "btn_Analyze";
-            this.btn_Analyze.Size = new System.Drawing.Size(79, 22);
+            this.btn_Analyze.Size = new System.Drawing.Size(81, 22);
             this.btn_Analyze.TabIndex = 29;
             this.btn_Analyze.Text = "Analyze";
             this.btn_Analyze.UseVisualStyleBackColor = true;
@@ -140,7 +145,7 @@
             this.txtBx_MapFilepath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBx_MapFilepath.Location = new System.Drawing.Point(3, 4);
             this.txtBx_MapFilepath.Name = "txtBx_MapFilepath";
-            this.txtBx_MapFilepath.Size = new System.Drawing.Size(454, 20);
+            this.txtBx_MapFilepath.Size = new System.Drawing.Size(453, 20);
             this.txtBx_MapFilepath.TabIndex = 28;
             // 
             // groupBox9
@@ -257,6 +262,7 @@
             this.olvBSS,
             this.olvData,
             this.olvModName});
+            this.olv_ModuleView.ContextMenuStrip = this.cms_export;
             this.olv_ModuleView.Cursor = System.Windows.Forms.Cursors.Default;
             this.olv_ModuleView.FullRowSelect = true;
             this.olv_ModuleView.Location = new System.Drawing.Point(3, 156);
@@ -275,7 +281,6 @@
             this.olv_ModuleView.UseHotItem = true;
             this.olv_ModuleView.View = System.Windows.Forms.View.Details;
             this.olv_ModuleView.SelectionChanged += new System.EventHandler(this.olv_ModuleView_SelectionChanged);
-            this.olv_ModuleView.DoubleClick += new System.EventHandler(this.olv_ModuleView_DoubleClick);
             // 
             // olvText
             // 
@@ -302,6 +307,37 @@
             this.olvModName.Text = "Module";
             this.olvModName.Width = 1150;
             // 
+            // cms_export
+            // 
+            this.cms_export.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exportToolStripMenuItem});
+            this.cms_export.Name = "cms_export";
+            this.cms_export.Size = new System.Drawing.Size(131, 26);
+            this.cms_export.Opening += new System.ComponentModel.CancelEventHandler(this.cms_export_Opening);
+            // 
+            // exportToolStripMenuItem
+            // 
+            this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cSVToolStripMenuItem,
+            this.hTMLToolStripMenuItem});
+            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.exportToolStripMenuItem.Text = "Export as...";
+            // 
+            // cSVToolStripMenuItem
+            // 
+            this.cSVToolStripMenuItem.Name = "cSVToolStripMenuItem";
+            this.cSVToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.cSVToolStripMenuItem.Text = "CSV";
+            this.cSVToolStripMenuItem.Click += new System.EventHandler(this.cSVToolStripMenuItem_Click);
+            // 
+            // hTMLToolStripMenuItem
+            // 
+            this.hTMLToolStripMenuItem.Name = "hTMLToolStripMenuItem";
+            this.hTMLToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.hTMLToolStripMenuItem.Text = "HTML";
+            this.hTMLToolStripMenuItem.Click += new System.EventHandler(this.hTMLToolStripMenuItem_Click);
+            // 
             // olv_SymbolView
             // 
             this.olv_SymbolView.AllColumns.Add(this.colSection);
@@ -322,6 +358,7 @@
             this.olvColumn6,
             this.olvColumn7,
             this.colFileName});
+            this.olv_SymbolView.ContextMenuStrip = this.cms_export;
             this.olv_SymbolView.Cursor = System.Windows.Forms.Cursors.Default;
             this.olv_SymbolView.FullRowSelect = true;
             this.olv_SymbolView.Location = new System.Drawing.Point(0, 0);
@@ -424,7 +461,7 @@
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 88.31169F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.68831F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 86F));
             this.tableLayoutPanel3.Controls.Add(this.txtBx_ElfFilepath, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.txtBx_MapFilepath, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.btn_Analyze, 2, 0);
@@ -444,15 +481,15 @@
             this.txtBx_ElfFilepath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBx_ElfFilepath.Location = new System.Drawing.Point(3, 32);
             this.txtBx_ElfFilepath.Name = "txtBx_ElfFilepath";
-            this.txtBx_ElfFilepath.Size = new System.Drawing.Size(454, 20);
+            this.txtBx_ElfFilepath.Size = new System.Drawing.Size(453, 20);
             this.txtBx_ElfFilepath.TabIndex = 31;
             // 
             // btn_Settings
             // 
             this.btn_Settings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_Settings.Location = new System.Drawing.Point(524, 31);
+            this.btn_Settings.Location = new System.Drawing.Point(522, 31);
             this.btn_Settings.Name = "btn_Settings";
-            this.btn_Settings.Size = new System.Drawing.Size(79, 22);
+            this.btn_Settings.Size = new System.Drawing.Size(81, 22);
             this.btn_Settings.TabIndex = 33;
             this.btn_Settings.Text = "Settings";
             this.btn_Settings.UseVisualStyleBackColor = true;
@@ -460,7 +497,7 @@
             // 
             // btn_BrowseElfFile
             // 
-            this.btn_BrowseElfFile.Location = new System.Drawing.Point(463, 31);
+            this.btn_BrowseElfFile.Location = new System.Drawing.Point(462, 31);
             this.btn_BrowseElfFile.Name = "btn_BrowseElfFile";
             this.btn_BrowseElfFile.Size = new System.Drawing.Size(37, 22);
             this.btn_BrowseElfFile.TabIndex = 32;
@@ -703,7 +740,7 @@
             this.tabpg_deps.Text = "Dependencies";
             this.tabpg_deps.UseVisualStyleBackColor = true;
             // 
-            // tlv_Cref
+            // olv_Cref
             // 
             this.olv_Cref.AllColumns.Add(this.tlv_ColModule);
             this.olv_Cref.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -712,9 +749,10 @@
             this.olv_Cref.CellEditUseWholeCell = false;
             this.olv_Cref.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.tlv_ColModule});
+            this.olv_Cref.ContextMenuStrip = this.cms_export;
             this.olv_Cref.Cursor = System.Windows.Forms.Cursors.Default;
             this.olv_Cref.Location = new System.Drawing.Point(6, 6);
-            this.olv_Cref.Name = "tlv_Cref";
+            this.olv_Cref.Name = "olv_Cref";
             this.olv_Cref.ShowGroups = false;
             this.olv_Cref.Size = new System.Drawing.Size(472, 312);
             this.olv_Cref.TabIndex = 35;
@@ -747,6 +785,7 @@
             this.groupBox9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olv_ModuleSum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.olv_ModuleView)).EndInit();
+            this.cms_export.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.olv_SymbolView)).EndInit();
             this.tlp_Main.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -823,6 +862,10 @@
         private System.Windows.Forms.TabPage tabpg_deps;
         private BrightIdeasSoftware.TreeListView olv_Cref;
         private BrightIdeasSoftware.OLVColumn tlv_ColModule;
+        private System.Windows.Forms.ContextMenuStrip cms_export;
+        private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cSVToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hTMLToolStripMenuItem;
     }
 }
 
