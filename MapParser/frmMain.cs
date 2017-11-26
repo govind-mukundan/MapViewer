@@ -1,4 +1,4 @@
-﻿//#define TEST
+﻿#define CREF
 
 #region copyright
 /*
@@ -50,6 +50,7 @@ namespace MapViewer
         System.Timers.Timer _timer = new System.Timers.Timer(1000);
 
         Cref cref;
+        int CREF_MAX_DEPS_DEPTH = 100; // Don't go more than 100 levels deep for the dependency list
 
         public MapViewer()
         {
@@ -105,33 +106,55 @@ namespace MapViewer
             }
         }
 
+        /// <summary>
+        /// Called when you type something inside the text box above the symbols/details view.
+        /// Depending on the selected tab, either the dependency tree or symbol list will be filtered
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtBx_SymFilter_TextChanged(object sender, EventArgs e)
         {
+            if (_UIUpdateInProgress) return;
+
             TextMatchFilter filter = null;
 
-            if (rb_RegexFilter2.Checked)
-                filter = TextMatchFilter.Regex(olv_SymbolView, txtBx_SymFilter.Text);
-            else
-                filter = TextMatchFilter.Contains(olv_SymbolView, txtBx_SymFilter.Text);
-
-            olv_SymbolView.AdditionalFilter = filter;
-
-            // Use a timer to have a single update for more than "text changed" event, better UX
-
-            _timer.Stop(); // Stop an existing timer
-            _timer.AutoReset = false; // one shot
-            _timer.Enabled = true;
-            _timer.Elapsed += (object s, ElapsedEventArgs e1) =>
+            if (tab_details.SelectedIndex == 0)
             {
-                if (!_UIUpdateInProgress)
+                if (rb_RegexFilter2.Checked)
+                    filter = TextMatchFilter.Regex(olv_SymbolView, txtBx_SymFilter.Text);
+                else
+                    filter = TextMatchFilter.Contains(olv_SymbolView, txtBx_SymFilter.Text);
+
+                olv_SymbolView.AdditionalFilter = filter;
+                // Use a timer to have a single update for more than "text changed" event, better UX
+                _timer.Stop(); // Stop an existing timer
+                _timer.AutoReset = false; // one shot
+                _timer.Enabled = true;
+                _timer.Elapsed += (object s, ElapsedEventArgs e1) =>
                 {
-                    AddSumRow(olv_SymbolView.FilteredObjects.Cast<Symbol>().ToList());
-                    olv_SymbolView.Invalidate();
-                }
-            };
-            _timer.Start();
+                    {
+                        AddSumRow(olv_SymbolView.FilteredObjects.Cast<Symbol>().ToList());
+                        olv_SymbolView.Invalidate();
+                    }
+                };
+                _timer.Start();
+            }
+            else // dependency view
+            {
+                if (rb_RegexFilter2.Checked)
+                    filter = TextMatchFilter.Regex(olv_Cref, txtBx_SymFilter.Text);
+                else
+                    filter = TextMatchFilter.Contains(olv_Cref, txtBx_SymFilter.Text);
+                olv_Cref.AdditionalFilter = filter;
+            }
+
         }
 
+        /// <summary>
+        /// Called when you type something inside the text box above the main module list view.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void textBoxFilterSimple_TextChanged(object sender, EventArgs e)
         {
             TextMatchFilter filter = null;
@@ -149,8 +172,7 @@ namespace MapViewer
                 Debug.WriteLineIf(DEBUG, "Selected:" + ((Module)x).ModuleName);
             }
 
-            // Use a timer to have a single update for more than "text changed" event, better UX
-
+            // Use a timer to have a single update for more than one "text changed" event, better UX
             _timer.Stop(); // Stop an existing timer
             _timer.AutoReset = false; // one shot
             _timer.Enabled = true;
@@ -165,6 +187,11 @@ namespace MapViewer
             _timer.Start();
         }
 
+        /// <summary>
+        /// Reset all the filtering options and show all the symbols detected
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_ResetSyms_Click(object sender, EventArgs e)
         {
             if (_syms == null) return;
@@ -198,18 +225,15 @@ namespace MapViewer
 
             Task task = Task.Factory.StartNew(() =>
             {
-#if TEST
-                
-                cref.Build(txtBx_MapFilepath.Text);
-                tlv_Init();
-
-#else
                 Button_status(false);
                 try
                 {
                     Button_status(false);
                     AnalyzeSymbols();
+#if CREF
+                    tlv_Init(String.Empty); /* remove old stuff */
                     cref.Build(txtBx_MapFilepath.Text);
+#endif
                 }
                 catch (System.Exception ex)
                 {
@@ -220,7 +244,6 @@ namespace MapViewer
                     Button_status(true);
                     Button_status_text("Analyze");
                 }
-#endif
             });
         }
 
@@ -419,13 +442,17 @@ namespace MapViewer
             if (_syms == null || _UIUpdateInProgress) return;
 
             PopulateSymbolLV(FilterSymbols(olv_ModuleView.SelectedObjects.Cast<Module>().ToList()));
-#if TEST
-            tlv_Cref.CanExpandGetter = x => { return ((CrefNode)x).Children.Count > 0; };
-            tlv_Cref.ChildrenGetter = x => { return ((CrefNode)x).Children; };
-            var cref_tree = new List<CrefNode>();
-            cref_tree.Add(new CrefNode(olv_ModuleView.SelectedObjects.Cast<Module>().FirstOrDefault().ModuleName));
-            Build(cref_tree[0], 5);
-            tlv_Cref.SetObjects(cref_tree);
+#if CREF
+
+            //tlv_Cref.CanExpandGetter = x => { return ((CrefNode)x).Children.Count > 0; };
+            //tlv_Cref.ChildrenGetter = x => { return ((CrefNode)x).Children; };
+            //var cref_tree = new List<CrefNode>();
+            //cref_tree.Add(new CrefNode(olv_ModuleView.SelectedObjects.Cast<Module>().FirstOrDefault().ModuleName));
+            //Build(cref_tree[0], 5);
+            //tlv_Cref.SetObjects(cref_tree);
+
+            if(olv_ModuleView.SelectedObjects.Cast<Module>().FirstOrDefault().ModuleName != null)
+                tlv_Init(olv_ModuleView.SelectedObjects.Cast<Module>().FirstOrDefault().ModuleName);
 #endif
         }
 
@@ -438,9 +465,14 @@ namespace MapViewer
             }));
         }
 
-#endregion
+        private void InvokeEx(Func<object, object> p)
+        {
+            throw new NotImplementedException();
+        }
 
-#region OLV Helpers
+ #endregion
+
+        #region OLV Helpers
 
         /// <summary>
         /// Builds the list of items for the Module View
@@ -546,33 +578,29 @@ namespace MapViewer
 
 #endregion
 
-        private void InvokeEx(Func<object, object> p)
-        {
-            throw new NotImplementedException();
-        }
+
 
 
 #region     TREE LIST VIEW
 
         int Depth;
-        private void tlv_Init()
+        private void tlv_Init(string root_node_module)
         {
-            tlv_Cref.CanExpandGetter = x => { return ((CrefNode)x).Children.Count > 0; };
-            tlv_Cref.ChildrenGetter = x => { return ((CrefNode)x).Children; };
+            olv_Cref.CanExpandGetter = x => { return ((CrefNode)x).Children.Count > 0; };
+            olv_Cref.ChildrenGetter = x => { return ((CrefNode)x).Children; };
 
-            //var MyClasses = new List<CrefNode>();
-            //MyClasses.Add(new CrefNode("Bob"));
-            //MyClasses.Add(new CrefNode("John"));
-            //var myClass = new CrefNode("Mike");
-            //myClass.Children.Add(new CrefNode("Joe"));
-            //MyClasses.Add(myClass);
+            if (root_node_module == String.Empty)
+            {
+                olv_Cref.SetObjects(new List<CrefNode>());
+                return;
+            }
 
-            //tlv_Cref.SetObjects(MyClasses);
-            // findfp
+            Debug.WriteLineIf(DEBUG, "Building Cref Table for module " + root_node_module);
 
             /* First of all we need to know the root node module name */
-            string root_node_module = "impure.o";
+            //string root_node_module = "impure.o";
             CrefEntry cr = cref.CrefTable.Where(x => x.SouceModule.Contains(root_node_module)).ToList().FirstOrDefault();
+            if (cr == null) return;
             
             var cref_tree = new List<CrefNode>();
             cref_tree.Add(new CrefNode(cr.SouceModule));
@@ -593,7 +621,8 @@ namespace MapViewer
                 }
             }
             */
-            tlv_Cref.SetObjects(cref_tree);
+            olv_Cref.SetObjects(cref_tree);
+            olv_Cref.ExpandAll();
         }
 
 
@@ -616,7 +645,7 @@ namespace MapViewer
 
         void Build(CrefNode n)
         {
-            if (Depth++ > 2000) return;
+            if (Depth++ > CREF_MAX_DEPS_DEPTH) return;
             /* If the node already exists in the tree, forget it */
             if (!IsUnique(n, n.Parent)) return;
             List<CrefNode> c = FindChildren(n);
