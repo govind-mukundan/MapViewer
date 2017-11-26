@@ -64,7 +64,7 @@ namespace MapViewer
             int Map_end = Map.Count;
             if ((Cref_index == -1) || (Map_end == -1))
             {
-                MessageBox.Show("Couldn't find Cross Reference Table in map file! Can't proceed!", "Oops!", MessageBoxButtons.OK); return false;
+                MessageBox.Show("Couldn't find Cross Reference Table in map file! Ignoring Cross references..!", "Oops!", MessageBoxButtons.OK); return false;
             }
             Debug.WriteLineIf(DEBUG, "Found Cref at index :" + Cref_index.ToString());
 
