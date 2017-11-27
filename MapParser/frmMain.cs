@@ -599,10 +599,7 @@ namespace MapViewer
 
 #endregion
 
-
-
-
-       #region     TREE LIST VIEW - Dependencies
+        #region     TREE LIST VIEW - Dependencies
 
         int Depth;
         private void tlv_Init(string root_node_module)

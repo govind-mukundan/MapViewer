@@ -13,4 +13,6 @@ I've written a blog post with more details on the application [here](http://www.
 2. Click on the Settings button and configure the path to Binutils NM and READELF provided by your toolchain.
 3. Update the Segment to Sections mapping if your target is not FT32 or XC16 (PIC24)
 4. Close the settings and click on the "Analyze" button. 
+5. [new feature] If you built the MAP file with the `-cref` linker option, you can view the module level dependencies in the **Dependencies** tab by selecting a module on the left pane. Note that this lists the modules that *depend on/use* symbols from the selected module.
+6. Right clicking on any of the tabs gives you an option to export the visible data into either a CSV or HTML file.
 
