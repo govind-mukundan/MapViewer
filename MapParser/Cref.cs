@@ -48,7 +48,7 @@ namespace MapViewer
 
     class Cref
     {
-        bool DEBUG = true;
+        bool DEBUG = false;
         string CrefHeader = "Cross Reference Table";
         public List<CrefEntry> CrefTable { get; set; }
 

@@ -40,7 +40,7 @@ namespace MapViewer
 {
     public partial class MapViewer : Form
     {
-        bool DEBUG = false;
+        bool DEBUG = true;
         string BINUTIL_NM;
         string BINUTIL_READ_ELF;
         SymParser _syms;
@@ -311,6 +311,19 @@ namespace MapViewer
         {
             contextMenuSrc = ((ContextMenuStrip)sender).SourceControl;
         }
+
+        /// <summary>
+        /// This is called whenever the user double clicks or presses the ENTER key, so it's a good place to toggle expand/collapse
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void olv_Cref_ItemActivate(object sender, EventArgs e)
+        {
+            Object model = olv_Cref.SelectedObject;
+            if (model != null)
+                olv_Cref.ToggleExpansion(model);
+        }
+
         // ----- [END] Export to File via Context Menu Strip ----------
 
         #endregion
@@ -599,10 +612,7 @@ namespace MapViewer
 
 #endregion
 
-
-
-
-       #region     TREE LIST VIEW - Dependencies
+        #region     TREE LIST VIEW - Dependencies
 
         int Depth;
         private void tlv_Init(string root_node_module)
@@ -618,15 +628,15 @@ namespace MapViewer
 
             Debug.WriteLineIf(DEBUG, "Building Cref Table for module " + root_node_module);
 
-            /* First of all we need to know the root node module name */
+            /* Verify that the we have at least some entries that match our root */
             //string root_node_module = "impure.o";
             CrefEntry cr = cref.CrefTable.Where(x => x.SouceModule.Contains(root_node_module)).ToList().FirstOrDefault();
             if (cr == null) return;
             
             var cref_tree = new List<CrefNode>();
-            cref_tree.Add(new CrefNode(cr.SouceModule));
+            cref_tree.Add(new CrefNode(root_node_module));
 
-            Build(cref_tree[0]);
+            Build(cref_tree[0], CREF_MAX_DEPS_DEPTH);
             Depth = 0;
             /*
             bool end = false;
@@ -651,10 +661,18 @@ namespace MapViewer
         {
             //if (Depth++ > 2000) return;
             depth--;
-            if ((depth == 0)) return;
-            Debug.WriteLineIf(DEBUG, "depth: " + depth.ToString());
+            if ((depth == 0))
+            {
+                Debug.WriteLineIf(DEBUG, "Depth limit exceeded..");
+                return;
+            }
+            //Debug.WriteLineIf(DEBUG, "depth: " + depth.ToString());
             /* If the node already exists in the tree, forget it */
-            if (!IsUnique(n, n.Parent)) return;
+            if (!IsUnique(n, n.Parent))
+            {
+                Debug.WriteLineIf(DEBUG, "Discarding: " + n.Module.ToString());
+                return;
+            }
             List<CrefNode> c = FindChildren(n);
             n.Children = c;
             foreach (CrefNode k in c)
@@ -668,7 +686,11 @@ namespace MapViewer
         {
             if (Depth++ > CREF_MAX_DEPS_DEPTH) return;
             /* If the node already exists in the tree, forget it */
-            if (!IsUnique(n, n.Parent)) return;
+            if (!IsUnique(n, n.Parent))
+            {
+                Debug.WriteLineIf(DEBUG, "Discarding: " + n.Module.ToString());
+                return;
+            }
             List<CrefNode> c = FindChildren(n);
             n.Children = c;
             foreach(CrefNode k in c)
@@ -679,7 +701,7 @@ namespace MapViewer
         }
 
         /// <summary>
-        /// Walk the tree and see if any node contains this element 
+        /// Walk the current path and see if any node contains this element 
         /// </summary>
         /// <param name="n"> The node which could have been duplicated in the tree </param>
         /// <param name="p"> The next parent </param>
@@ -706,6 +728,5 @@ namespace MapViewer
 
 
         #endregion
-
     }
 }

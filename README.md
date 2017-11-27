@@ -13,4 +13,7 @@ I've written a blog post with more details on the application [here](http://www.
 2. Click on the Settings button and configure the path to Binutils NM and READELF provided by your toolchain.
 3. Update the Segment to Sections mapping if your target is not FT32 or XC16 (PIC24)
 4. Close the settings and click on the "Analyze" button. 
+5. Right click on the Lists to export to CSV/HTML files
+6. [new feature] If you linked with the `-cref` option, a tree view of the module "dependcies" is shown for each module you select. 
+This shows you the modules that *depend on/are users of* the selected module. This allows you to easily answer questions like "which application files are responsible for the inclusion of libm floating point routines in my project?" for instance. Note that the this view is a bit incomplete in that paths are truncated if the same node appears twice on it, despite that it's quite useful.
 
