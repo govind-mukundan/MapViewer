@@ -76,16 +76,16 @@ namespace MapViewer
             bool flip = false;
             foreach (string line in symTable)
             {           
-                if (flip)
-                {
-                    this.MapViewerObj.Button_status_text("Analyze" + " +");
-                    flip = false;
-                }
-                else
-                {                    
-                    this.MapViewerObj.Button_status_text("Analyze" + " -");
-                    flip = true;
-                }
+                //if (flip)
+                //{
+                //    this.MapViewerObj.Button_status_text("Analyze" + " +");
+                //    flip = false;
+                //}
+                //else
+                //{                    
+                //    this.MapViewerObj.Button_status_text("Analyze" + " -");
+                //    flip = true;
+                //}
 
                 // Split using spaces - note that the module path may itself contain spaces
                 string[] entries = line.Split(new char[0], 4, StringSplitOptions.RemoveEmptyEntries);

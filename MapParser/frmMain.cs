@@ -52,6 +52,7 @@ namespace MapViewer
 
         Cref cref;
         int CREF_MAX_DEPS_DEPTH = 100; // Don't go more than 100 levels deep for the dependency list
+        int CREF_TOTAL_ELEMENT_COUNT = 5000; // Don't show more than so many nodes - it's not worth toiling forever!
 
         public MapViewer()
         {
@@ -229,7 +230,6 @@ namespace MapViewer
                 Button_status(false);
                 try
                 {
-                    Button_status(false);
                     AnalyzeSymbols();
 #if CREF
                     tlv_Init(String.Empty); /* remove old stuff */
@@ -243,10 +243,12 @@ namespace MapViewer
                 finally
                 {
                     Button_status(true);
-                    Button_status_text("Analyze");
+                    //Button_status_text("Analyze");
                 }
             });
         }
+
+        bool _flip;
         public void Button_status(bool val)
         {
             if (InvokeRequired)
@@ -257,6 +259,33 @@ namespace MapViewer
             else
             {
                 this.btn_Analyze.Enabled = val;
+                if (!val)
+                {
+                    // Use a timer to have a single update for more than one "text changed" event, better UX
+                    _timer.Stop(); // Stop an existing timer
+                    _timer.AutoReset = true; // restart
+                    _timer.Enabled = true;
+                    _timer.Interval = 50;
+                    _timer.Elapsed += (object s, ElapsedEventArgs e1) =>
+                    {
+                        if (_flip)
+                        {
+                            Button_status_text("Analyze" + " +");
+                            _flip = false;
+                        }
+                        else
+                        {
+                            Button_status_text("Analyze" + " -");
+                            _flip = true;
+                        }
+                    };
+                    _timer.Start();
+                }
+                else
+                {
+                    Button_status_text("Analyze");
+                    _timer.Stop();
+                }
             }
         }
 
@@ -475,6 +504,7 @@ namespace MapViewer
         {
             if (_syms == null || _UIUpdateInProgress) return;
 
+            Button_status(false);
             PopulateSymbolLV(FilterSymbols(olv_ModuleView.SelectedObjects.Cast<Module>().ToList()));
 #if CREF
 
@@ -485,9 +515,10 @@ namespace MapViewer
             //Build(cref_tree[0], 5);
             //tlv_Cref.SetObjects(cref_tree);
 
-            if(olv_ModuleView.SelectedObjects.Cast<Module>().FirstOrDefault().ModuleName != null)
+            if (olv_ModuleView.SelectedObjects.Cast<Module>().FirstOrDefault().ModuleName != null)
                 tlv_Init(olv_ModuleView.SelectedObjects.Cast<Module>().FirstOrDefault().ModuleName);
 #endif
+            Button_status(true);
         }
 
         private void hide_sym_column()
@@ -614,7 +645,7 @@ namespace MapViewer
 
         #region     TREE LIST VIEW - Dependencies
 
-        int Depth;
+        int TotalNodeCnt;
         private void tlv_Init(string root_node_module)
         {
             olv_Cref.CanExpandGetter = x => { return ((CrefNode)x).Children.Count > 0; };
@@ -637,7 +668,7 @@ namespace MapViewer
             cref_tree.Add(new CrefNode(root_node_module));
 
             Build(cref_tree[0], CREF_MAX_DEPS_DEPTH);
-            Depth = 0;
+            TotalNodeCnt = 0;
             /*
             bool end = false;
             int depth = 10;
@@ -659,18 +690,19 @@ namespace MapViewer
 
         void Build(CrefNode n, int depth)
         {
-            //if (Depth++ > 2000) return;
+            if (TotalNodeCnt++ > CREF_TOTAL_ELEMENT_COUNT) return;
+
             depth--;
             if ((depth == 0))
             {
-                Debug.WriteLineIf(DEBUG, "Depth limit exceeded..");
+                //Debug.WriteLineIf(DEBUG, "Depth limit exceeded..");
                 return;
             }
             //Debug.WriteLineIf(DEBUG, "depth: " + depth.ToString());
             /* If the node already exists in the tree, forget it */
             if (!IsUnique(n, n.Parent))
             {
-                Debug.WriteLineIf(DEBUG, "Discarding: " + n.Module.ToString());
+                //Debug.WriteLineIf(DEBUG, "Discarding: " + n.Module.ToString());
                 return;
             }
             List<CrefNode> c = FindChildren(n);
@@ -684,11 +716,11 @@ namespace MapViewer
 
         void Build(CrefNode n)
         {
-            if (Depth++ > CREF_MAX_DEPS_DEPTH) return;
+            if (TotalNodeCnt++ > CREF_MAX_DEPS_DEPTH) return;
             /* If the node already exists in the tree, forget it */
             if (!IsUnique(n, n.Parent))
             {
-                Debug.WriteLineIf(DEBUG, "Discarding: " + n.Module.ToString());
+                //Debug.WriteLineIf(DEBUG, "Discarding: " + n.Module.ToString());
                 return;
             }
             List<CrefNode> c = FindChildren(n);
