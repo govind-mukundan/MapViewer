@@ -45,6 +45,7 @@ namespace MapViewer
         string BINUTIL_READ_ELF;
         SymParser _syms;
         Settings _settings;
+        List<CrefNode> _tree;
         bool _UIUpdateInProgress; // disable filtering while UI is being updated
         private Control contextMenuSrc; // to know which control triggered the CSV/HTML export
 
@@ -225,7 +226,7 @@ namespace MapViewer
                 return;
             }
 
-            Task task = Task.Factory.StartNew(() =>
+            Task task = Task.Run(() =>
             {
                 Button_status(false);
                 try
@@ -243,7 +244,6 @@ namespace MapViewer
                 finally
                 {
                     Button_status(true);
-                    //Button_status_text("Analyze");
                 }
             });
         }
@@ -505,20 +505,26 @@ namespace MapViewer
             if (_syms == null || _UIUpdateInProgress) return;
 
             Button_status(false);
-            PopulateSymbolLV(FilterSymbols(olv_ModuleView.SelectedObjects.Cast<Module>().ToList()));
+            var list = olv_ModuleView.SelectedObjects.Cast<Module>().ToList();
+
+            // Move the processing into the non-UI context
+            Task t = Task.Run(() =>
+            {
+                PopulateSymbolLV(FilterSymbols(list));
 #if CREF
-
-            //tlv_Cref.CanExpandGetter = x => { return ((CrefNode)x).Children.Count > 0; };
-            //tlv_Cref.ChildrenGetter = x => { return ((CrefNode)x).Children; };
-            //var cref_tree = new List<CrefNode>();
-            //cref_tree.Add(new CrefNode(olv_ModuleView.SelectedObjects.Cast<Module>().FirstOrDefault().ModuleName));
-            //Build(cref_tree[0], 5);
-            //tlv_Cref.SetObjects(cref_tree);
-
-            if (olv_ModuleView.SelectedObjects.Cast<Module>().FirstOrDefault().ModuleName != null)
-                tlv_Init(olv_ModuleView.SelectedObjects.Cast<Module>().FirstOrDefault().ModuleName);
+                if (list.FirstOrDefault().ModuleName != null)
+                    _tree = tlv_Init(list.FirstOrDefault().ModuleName);
 #endif
-            Button_status(true);
+            }).ContinueWith(antecedent => {Button_status(true);}); /* do always */
+
+            t.ContinueWith(antecedent =>
+            {
+                BeginInvoke(new MethodInvoker(() =>
+                {
+                    olv_Cref.SetObjects(_tree);
+                    olv_Cref.ExpandAll();
+                }));
+            }, TaskContinuationOptions.OnlyOnRanToCompletion); /* do only if there were no errors */
         }
 
         private void hide_sym_column()
@@ -646,7 +652,7 @@ namespace MapViewer
         #region     TREE LIST VIEW - Dependencies
 
         int TotalNodeCnt;
-        private void tlv_Init(string root_node_module)
+        private List<CrefNode> tlv_Init(string root_node_module)
         {
             olv_Cref.CanExpandGetter = x => { return ((CrefNode)x).Children.Count > 0; };
             olv_Cref.ChildrenGetter = x => { return ((CrefNode)x).Children; };
@@ -654,7 +660,7 @@ namespace MapViewer
             if (root_node_module == String.Empty)
             {
                 olv_Cref.SetObjects(new List<CrefNode>());
-                return;
+                return null;
             }
 
             Debug.WriteLineIf(DEBUG, "Building Cref Table for module " + root_node_module);
@@ -662,29 +668,15 @@ namespace MapViewer
             /* Verify that the we have at least some entries that match our root */
             //string root_node_module = "impure.o";
             CrefEntry cr = cref.CrefTable.Where(x => x.SouceModule.Contains(root_node_module)).ToList().FirstOrDefault();
-            if (cr == null) return;
+            if (cr == null) return null;
             
             var cref_tree = new List<CrefNode>();
             cref_tree.Add(new CrefNode(root_node_module));
 
             Build(cref_tree[0], CREF_MAX_DEPS_DEPTH);
             TotalNodeCnt = 0;
-            /*
-            bool end = false;
-            int depth = 10;
-            for(int i=0; i < 1; i++)
-            {
-                List<CrefNode> c = FindChildren(cref_tree[i]);
-                cref_tree[i].Children = c;
-                
-                for (int j=0; j < c.Count; j++)
-                {
-                    c[j].Children = FindChildren(c[j]);
-                }
-            }
-            */
-            olv_Cref.SetObjects(cref_tree);
-            olv_Cref.ExpandAll();
+
+            return cref_tree;
         }
 
 
