@@ -79,6 +79,16 @@ namespace MapViewer
             Match m2 = Regex.Match(file, @"[^\/\\(]+(\.o|\.c)$");
             FileName = m2.ToString();
         }
+
+        public void GetFileFromModuleName(string mod)
+        {
+            // Special for newlib, module name turns out to be of the form ..lib/libc.a(lib_a-rget.o), while dwarf file name = rget.c, so we takeout all "lib_a" prefix
+            if (mod.Contains("lib_a-"))
+                mod = mod.Replace("lib_a-", String.Empty);
+
+            Match m2 = Regex.Match(mod, @"[^\/\\(]+(\.o|\.c)$");
+            FileName = m2.ToString();
+        }
     }
 
     public class Module
@@ -147,7 +157,7 @@ namespace MapViewer
             get { return _instance; }
         }
 
-        public bool Run(string filePath)
+        public bool Run(string filePath, Action prog_ind)
         {
             Sections = new List<Section>();
             AllSections = new string[C_TEXT_ID.Length + C_DATA_ID.Length + C_BSS_ID.Length];
@@ -194,6 +204,8 @@ namespace MapViewer
             bool valid_section = false;
             foreach (string line in Map.GetRange(MMap_index, MMap_end - MMap_index))
             {
+                prog_ind?.Invoke();
+
                 Section s; bool valid;
 
                 if (line == "") // A blank line indicates a break in the section
@@ -240,6 +252,7 @@ namespace MapViewer
                     //if (sym.SymbolName.Contains("*fill*"))
                     //    Debug.Write("oops");
                     sym.ModuleName = mod.ModuleName;
+                    sym.GetFileFromModuleName(mod.ModuleName);
                     uint siz = 0;
                     // update the size of the previous symbol, given that we know the address of the current symbol
                     if (mod.Symbols != null && mod.Symbols.Count > 0)

@@ -60,10 +60,9 @@ namespace MapViewer
         {
             get { return _instance; }
         }
-        MapViewer MapViewerObj = null;
-        public void Run(string nmPath, string elfPath, MapViewer ownerForm)
+        
+        public void Run(string nmPath, string elfPath, Action prog_ind)
         {
-            this.MapViewerObj = ownerForm;
             string result = "";
             Symbols = new List<Symbol>();
             if (nmPath == "" || elfPath == "" || !File.Exists(nmPath) || !File.Exists(elfPath)) return;
@@ -75,17 +74,8 @@ namespace MapViewer
             string[] symTable = result.Split(new[] { '\r', '\n' });
             bool flip = false;
             foreach (string line in symTable)
-            {           
-                //if (flip)
-                //{
-                //    this.MapViewerObj.Button_status_text("Analyze" + " +");
-                //    flip = false;
-                //}
-                //else
-                //{                    
-                //    this.MapViewerObj.Button_status_text("Analyze" + " -");
-                //    flip = true;
-                //}
+            {
+                prog_ind?.Invoke();
 
                 // Split using spaces - note that the module path may itself contain spaces
                 string[] entries = line.Split(new char[0], 4, StringSplitOptions.RemoveEmptyEntries);

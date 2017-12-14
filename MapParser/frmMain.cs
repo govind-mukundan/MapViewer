@@ -248,7 +248,25 @@ namespace MapViewer
             });
         }
 
-        bool _flip;
+        int _flip;
+        public void Progress_indication()
+        {
+            string text = "";
+            if (_flip == 0)
+            {
+                text = "Analyze" + " +";
+                _flip = 1;
+                _timer.Start();
+            }
+
+            else if (_flip == 1)
+            {
+                text = "Analyze" + " -";
+                _flip = 0;
+                _timer.Start();
+            }
+            Button_status_text(text);
+        }
         public void Button_status(bool val)
         {
             if (InvokeRequired)
@@ -259,33 +277,7 @@ namespace MapViewer
             else
             {
                 this.btn_Analyze.Enabled = val;
-                if (!val)
-                {
-                    // Use a timer to have a single update for more than one "text changed" event, better UX
-                    _timer.Stop(); // Stop an existing timer
-                    _timer.AutoReset = true; // restart
-                    _timer.Enabled = true;
-                    _timer.Interval = 50;
-                    _timer.Elapsed += (object s, ElapsedEventArgs e1) =>
-                    {
-                        if (_flip)
-                        {
-                            Button_status_text("Analyze" + " +");
-                            _flip = false;
-                        }
-                        else
-                        {
-                            Button_status_text("Analyze" + " -");
-                            _flip = true;
-                        }
-                    };
-                    _timer.Start();
-                }
-                else
-                {
-                    Button_status_text("Analyze");
-                    _timer.Stop();
-                }
+                if (val) Button_status_text("Analyze");
             }
         }
 
@@ -379,7 +371,7 @@ namespace MapViewer
         {
             _UIUpdateInProgress = true;
             // Parse the MAP file alone
-            if (!MAPParser.Instance.Run(txtBx_MapFilepath.Text)) return;
+            if (!MAPParser.Instance.Run(txtBx_MapFilepath.Text, Progress_indication)) return;
             // Update the ListView for Modules
             AddSumRow(MAPParser.Instance.ModuleMap);
             PopulateModuleLV(MAPParser.Instance.ModuleMap);
@@ -402,7 +394,7 @@ namespace MapViewer
             DwarfParser.Instance.Run(BINUTIL_READ_ELF, txtBx_ElfFilepath.Text);
             // Extract the symbols using NM
             _syms = SymParser.Instance;
-            _syms.Run(BINUTIL_NM, txtBx_ElfFilepath.Text, this);
+            _syms.Run(BINUTIL_NM, txtBx_ElfFilepath.Text, Progress_indication);
 
             // Update symbols present in MAP but missing in NM output
             // FIXME: The size of these "hidden" symbols may not be accurate as of now..
@@ -505,6 +497,7 @@ namespace MapViewer
             if (_syms == null || _UIUpdateInProgress) return;
 
             Button_status(false);
+            _flip = 0;
             var list = olv_ModuleView.SelectedObjects.Cast<Module>().ToList();
 
             // Move the processing into the non-UI context
@@ -628,13 +621,15 @@ namespace MapViewer
             // Go through all the symbols and select those that match the currently selected modules
             List<Symbol> syms = mods.SelectMany(m => _syms.Symbols.Where(s =>
             {
+                Progress_indication(); // Update UI
+
                 string mod = m.ModuleName;
                 // Special for newlib, module name turns out to be of the form ..lib/libc.a(lib_a-rget.o), while dwarf file name = rget.c, so we takeout all "lib_a" prefix
                 if (m.ModuleName.Contains("lib_a-"))
                     mod = mod.Replace("lib_a-", String.Empty);
 
                 Match m2 = Regex.Match(mod, @"[^\/\\(]+(?=.o\)?$)");
-                Match m1 = Regex.Match(s.ModuleName, @"[^\/\\(]+(?=.c\)?$)");
+                Match m1 = Regex.Match(s.ModuleName, @"[^\/\\(]+(?=.[co]\)?$)"); /* look for modules with .c (nm) and .o (standalone map files) */
 
                 if (m1.ToString() == m2.ToString() && ((filtGlobal == false) || (Symbol.TYPE_GLOBAL == s.GlobalScope)))
                 {
@@ -668,7 +663,12 @@ namespace MapViewer
             /* Verify that the we have at least some entries that match our root */
             //string root_node_module = "impure.o";
             CrefEntry cr = cref.CrefTable.Where(x => x.SouceModule.Contains(root_node_module)).ToList().FirstOrDefault();
-            if (cr == null) return null;
+            if (cr == null)
+            {
+                Debug.WriteLineIf(DEBUG, "Nothing to build " + root_node_module);
+                return null;
+
+            }
             
             var cref_tree = new List<CrefNode>();
             cref_tree.Add(new CrefNode(root_node_module));
@@ -683,6 +683,8 @@ namespace MapViewer
         void Build(CrefNode n, int depth)
         {
             if (TotalNodeCnt++ > CREF_TOTAL_ELEMENT_COUNT) return;
+
+            Progress_indication(); // Update UI
 
             depth--;
             if ((depth == 0))
