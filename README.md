@@ -7,6 +7,7 @@ The application looks like this:
 It was primarily developed for use with the **FTDI [FT900](http://www.ftdichip.com/MCU.html)** Microcontroller and associated toolchain but is generic enough to be useable for other GCC based toolchains. I've tested it with **Microchip's XC16 compiler** and should also be useful for XC32 (with some minimal porting).
 
 I've written a blog post with more details on the application [here](http://www.embeddedrelated.com/showarticle/900.php).
+Prebuild executables are available under the [releases](https://github.com/govind-mukundan/MapViewer/releases).
 
 # Usage Guide
 1. Input the paths to the MAP and ELF image in the text boxes.
