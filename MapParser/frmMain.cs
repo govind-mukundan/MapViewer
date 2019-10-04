@@ -210,7 +210,7 @@ namespace MapViewer
                     if (!_UIUpdateInProgress)
                     {
                         AddSumRow(olv_ModuleView.FilteredObjects);
-                        //PopulateSymbolLV(FilterSymbols(olv_ModuleView.FilteredObjects.Cast<Module>().ToList()));
+                        PopulateSymbolLV(FilterSymbols(olv_ModuleView.FilteredObjects.Cast<Module>().ToList()));
                         olv_ModuleView.Invalidate();
                     }
                 }));
@@ -545,6 +545,8 @@ namespace MapViewer
             _flip = 0;
             var list = olv_ModuleView.SelectedObjects.Cast<Module>().ToList();
 
+            if (list.Count == 0) return;
+
             // Move the processing into the non-UI context
             Task t = Task.Run(() =>
             {
@@ -680,7 +682,7 @@ namespace MapViewer
 
                 if (m1.ToString() == m2.ToString() && ((filtGlobal == false) || (Symbol.TYPE_GLOBAL == s.GlobalScope)))
                 {
-                    //Debug.WriteLineIf(DEBUG,"Match: " + m1.ToString());
+                    Debug.WriteLineIf(DEBUG,"Match: " + m1.ToString());
                     return true;
                 }
                 else return false;
