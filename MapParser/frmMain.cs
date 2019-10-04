@@ -51,6 +51,9 @@ namespace MapViewer
 
         System.Timers.Timer _timer = new System.Timers.Timer(1000);
 
+        FilteredTimer _moduleFilter;
+        FilteredTimer _symFilter;
+
         Cref cref;
         int CREF_MAX_DEPS_DEPTH = 100; // Don't go more than 100 levels deep for the dependency list
         int CREF_TOTAL_ELEMENT_COUNT = 5000; // Don't show more than so many nodes - it's not worth toiling forever!
@@ -63,6 +66,8 @@ namespace MapViewer
             _settings.LoadAppSettings();
             RefreshSettings();
             cref = new Cref();
+            _moduleFilter = new FilteredTimer(500);
+            _symFilter = new FilteredTimer(500);
         }
 
         #region Form UI Handlers
@@ -130,6 +135,14 @@ namespace MapViewer
 
                 olv_SymbolView.AdditionalFilter = filter;
                 // Use a timer to have a single update for more than "text changed" event, better UX
+                _moduleFilter.Restart(false, (object s, ElapsedEventArgs e1) =>
+                {
+                    {
+                        AddSumRow(olv_SymbolView.FilteredObjects.Cast<Symbol>().ToList());
+                        olv_SymbolView.Invalidate();
+                    }
+                });
+                /*
                 _timer.Stop(); // Stop an existing timer
                 _timer.AutoReset = false; // one shot
                 _timer.Enabled = true;
@@ -141,6 +154,7 @@ namespace MapViewer
                     }
                 };
                 _timer.Start();
+                */
             }
             else // dependency view
             {
@@ -160,7 +174,9 @@ namespace MapViewer
         /// <param name="e"></param>
         private void textBoxFilterSimple_TextChanged(object sender, EventArgs e)
         {
+            /*
             TextMatchFilter filter = null;
+            Debug.WriteLineIf(DEBUG, "Text Changed!");
 
             if (rb_RegexFilter.Checked)
                 filter = TextMatchFilter.Regex(olv_ModuleView, textBoxFilterSimple.Text);
@@ -170,12 +186,38 @@ namespace MapViewer
             olv_ModuleView.AdditionalFilter = filter;
 
             AddSumRow(olv_ModuleView.FilteredObjects);
-            foreach (var x in olv_ModuleView.FilteredObjects)
-            {
-                Debug.WriteLineIf(DEBUG, "Selected:" + ((Module)x).ModuleName);
-            }
+            //foreach (var x in olv_ModuleView.FilteredObjects)
+            //{
+            //    Debug.WriteLineIf(DEBUG, "Selected:" + ((Module)x).ModuleName);
+            //}
+            */
 
             // Use a timer to have a single update for more than one "text changed" event, better UX
+            _symFilter.Restart(false, (object s, ElapsedEventArgs e1) =>
+            {
+                BeginInvoke(new MethodInvoker(() =>
+                {
+                    TextMatchFilter filter = null;
+                    Debug.WriteLineIf(DEBUG, "Text Changed!");
+
+                    if (rb_RegexFilter.Checked)
+                        filter = TextMatchFilter.Regex(olv_ModuleView, textBoxFilterSimple.Text);
+                    else
+                        filter = TextMatchFilter.Contains(olv_ModuleView, textBoxFilterSimple.Text);
+
+                    olv_ModuleView.AdditionalFilter = filter;
+
+                    if (!_UIUpdateInProgress)
+                    {
+                        AddSumRow(olv_ModuleView.FilteredObjects);
+                        //PopulateSymbolLV(FilterSymbols(olv_ModuleView.FilteredObjects.Cast<Module>().ToList()));
+                        olv_ModuleView.Invalidate();
+                    }
+                }));
+
+
+            });
+            /*
             _timer.Stop(); // Stop an existing timer
             _timer.AutoReset = false; // one shot
             _timer.Enabled = true;
@@ -188,6 +230,7 @@ namespace MapViewer
                 }
             };
             _timer.Start();
+            */
         }
 
         /// <summary>
@@ -251,21 +294,23 @@ namespace MapViewer
         int _flip;
         public void Progress_indication()
         {
-            string text = "";
-            if (_flip == 0)
-            {
-                text = "Analyze" + " +";
-                _flip = 1;
-                _timer.Start();
-            }
+            return;
 
-            else if (_flip == 1)
-            {
-                text = "Analyze" + " -";
-                _flip = 0;
-                _timer.Start();
-            }
-            Button_status_text(text);
+            //string text = "";
+            //if (_flip == 0)
+            //{
+            //    text = "Analyze" + " +";
+            //    _flip = 1;
+            //    _timer.Start();
+            //}
+
+            //else if (_flip == 1)
+            //{
+            //    text = "Analyze" + " -";
+            //    _flip = 0;
+            //    _timer.Start();
+            //}
+            //Button_status_text(text);
         }
         public void Button_status(bool val)
         {
@@ -505,7 +550,7 @@ namespace MapViewer
             {
                 PopulateSymbolLV(FilterSymbols(list));
 #if CREF
-                if (list.FirstOrDefault().ModuleName != null)
+                if ((list.Count > 0) && (list.FirstOrDefault().ModuleName != null))
                     _tree = tlv_Init(list.FirstOrDefault().ModuleName);
 #endif
             }).ContinueWith(antecedent => {Button_status(true);}); /* do always */
@@ -516,6 +561,7 @@ namespace MapViewer
                 {
                     olv_Cref.SetObjects(_tree);
                     olv_Cref.ExpandAll();
+                    Button_status(true);
                 }));
             }, TaskContinuationOptions.OnlyOnRanToCompletion); /* do only if there were no errors */
         }
@@ -576,6 +622,7 @@ namespace MapViewer
         /// <param name="s"></param>
         void PopulateSymbolLV(List<Symbol> s)
         {
+            Debug.WriteLineIf(DEBUG, "PopulateSymbolLV!");
             // Make the decoration
             RowBorderDecoration rbd = new RowBorderDecoration();
             rbd.BorderPen = new Pen(Color.FromArgb(128, Color.LightSeaGreen), 2);

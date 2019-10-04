@@ -70,7 +70,7 @@ namespace MapViewer
         [Editor(@"System.Windows.Forms.Design.StringCollectionEditor," + "System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
         typeof(System.Drawing.Design.UITypeEditor))]
         [TypeConverter(typeof(CsvConverter))]
-        [DefaultValue(".text, .reset, .init, .user_init, .handle, .isr, .libc, .libm, .libdsp, .lib, usercode, userconst, .dinit, .const"), Category("Segment To Section Map")]
+        [DefaultValue(".text, ._pm, .reset, .init, .user_init, .handle, .isr, .libc, .libm, .libdsp, .lib, usercode, userconst, .dinit, .const"), Category("Segment To Section Map")]
         public List<string> TextSeg2SecMap
         { 
             get { return _textSeg2SecMap; }
@@ -89,7 +89,7 @@ namespace MapViewer
         [Editor(@"System.Windows.Forms.Design.StringCollectionEditor," + "System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
         typeof(System.Drawing.Design.UITypeEditor))]
         [TypeConverter(typeof(CsvConverter))]
-        [DefaultValue(".data, .rodata, .strings, ._pm, .ndata"), Category("Segment To Section Map")]
+        [DefaultValue(".data, .rodata, .strings, .ndata"), Category("Segment To Section Map")]
         public List<string> DataSeg2SecMap
         {
             get { return _dataSeg2SecMap; }

@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Cref.cs" />
     <Compile Include="DwarfParser.cs" />
+    <Compile Include="FilteredTimer.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
