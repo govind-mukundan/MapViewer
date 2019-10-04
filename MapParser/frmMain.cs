@@ -57,6 +57,7 @@ namespace MapViewer
         Cref cref;
         int CREF_MAX_DEPS_DEPTH = 100; // Don't go more than 100 levels deep for the dependency list
         int CREF_TOTAL_ELEMENT_COUNT = 5000; // Don't show more than so many nodes - it's not worth toiling forever!
+        bool _crefOn = false; // Don't attempt any dependency analysis if Cref table is not available
 
         public MapViewer()
         {
@@ -126,45 +127,32 @@ namespace MapViewer
 
             TextMatchFilter filter = null;
 
-            if (tab_details.SelectedIndex == 0)
+            _symFilter.Restart(false, (object s, ElapsedEventArgs e1) =>
             {
-                if (rb_RegexFilter2.Checked)
-                    filter = TextMatchFilter.Regex(olv_SymbolView, txtBx_SymFilter.Text);
-                else
-                    filter = TextMatchFilter.Contains(olv_SymbolView, txtBx_SymFilter.Text);
-
-                olv_SymbolView.AdditionalFilter = filter;
-                // Use a timer to have a single update for more than "text changed" event, better UX
-                _moduleFilter.Restart(false, (object s, ElapsedEventArgs e1) =>
+                BeginInvoke(new MethodInvoker(() =>
                 {
+                    if (tab_details.SelectedIndex == 0)
                     {
+                        if (rb_RegexFilter2.Checked)
+                            filter = TextMatchFilter.Regex(olv_SymbolView, txtBx_SymFilter.Text);
+                        else
+                            filter = TextMatchFilter.Contains(olv_SymbolView, txtBx_SymFilter.Text);
+
+                        olv_SymbolView.AdditionalFilter = filter;
                         AddSumRow(olv_SymbolView.FilteredObjects.Cast<Symbol>().ToList());
                         olv_SymbolView.Invalidate();
-                    }
-                });
-                /*
-                _timer.Stop(); // Stop an existing timer
-                _timer.AutoReset = false; // one shot
-                _timer.Enabled = true;
-                _timer.Elapsed += (object s, ElapsedEventArgs e1) =>
-                {
-                    {
-                        AddSumRow(olv_SymbolView.FilteredObjects.Cast<Symbol>().ToList());
-                        olv_SymbolView.Invalidate();
-                    }
-                };
-                _timer.Start();
-                */
-            }
-            else // dependency view
-            {
-                if (rb_RegexFilter2.Checked)
-                    filter = TextMatchFilter.Regex(olv_Cref, txtBx_SymFilter.Text);
-                else
-                    filter = TextMatchFilter.Contains(olv_Cref, txtBx_SymFilter.Text);
-                olv_Cref.AdditionalFilter = filter;
-            }
 
+                    }
+                    else // dependency view
+                    {
+                        if (rb_RegexFilter2.Checked)
+                            filter = TextMatchFilter.Regex(olv_Cref, txtBx_SymFilter.Text);
+                        else
+                            filter = TextMatchFilter.Contains(olv_Cref, txtBx_SymFilter.Text);
+                        olv_Cref.AdditionalFilter = filter;
+                    }
+                }));
+            });
         }
 
         /// <summary>
@@ -174,26 +162,8 @@ namespace MapViewer
         /// <param name="e"></param>
         private void textBoxFilterSimple_TextChanged(object sender, EventArgs e)
         {
-            /*
-            TextMatchFilter filter = null;
-            Debug.WriteLineIf(DEBUG, "Text Changed!");
-
-            if (rb_RegexFilter.Checked)
-                filter = TextMatchFilter.Regex(olv_ModuleView, textBoxFilterSimple.Text);
-            else
-                filter = TextMatchFilter.Contains(olv_ModuleView, textBoxFilterSimple.Text);
-
-            olv_ModuleView.AdditionalFilter = filter;
-
-            AddSumRow(olv_ModuleView.FilteredObjects);
-            //foreach (var x in olv_ModuleView.FilteredObjects)
-            //{
-            //    Debug.WriteLineIf(DEBUG, "Selected:" + ((Module)x).ModuleName);
-            //}
-            */
-
             // Use a timer to have a single update for more than one "text changed" event, better UX
-            _symFilter.Restart(false, (object s, ElapsedEventArgs e1) =>
+            _moduleFilter.Restart(false, (object s, ElapsedEventArgs e1) =>
             {
                 BeginInvoke(new MethodInvoker(() =>
                 {
@@ -214,23 +184,8 @@ namespace MapViewer
                         olv_ModuleView.Invalidate();
                     }
                 }));
-
-
             });
-            /*
-            _timer.Stop(); // Stop an existing timer
-            _timer.AutoReset = false; // one shot
-            _timer.Enabled = true;
-            _timer.Elapsed += (object s, ElapsedEventArgs e1) =>
-            {
-                if (!_UIUpdateInProgress)
-                {
-                    PopulateSymbolLV(FilterSymbols(olv_ModuleView.FilteredObjects.Cast<Module>().ToList()));
-                    olv_ModuleView.Invalidate();
-                }
-            };
-            _timer.Start();
-            */
+
         }
 
         /// <summary>
@@ -277,7 +232,7 @@ namespace MapViewer
                     AnalyzeSymbols();
 #if CREF
                     tlv_Init(String.Empty); /* remove old stuff */
-                    cref.Build(txtBx_MapFilepath.Text);
+                    _crefOn = cref.Build(txtBx_MapFilepath.Text);
 #endif
                 }
                 catch (System.Exception ex)
@@ -541,29 +496,33 @@ namespace MapViewer
         {
             if (_syms == null || _UIUpdateInProgress) return;
 
-            Button_status(false);
-            _flip = 0;
             var list = olv_ModuleView.SelectedObjects.Cast<Module>().ToList();
 
             if (list.Count == 0) return;
+
+            Button_status(false);
+            _flip = 0;
 
             // Move the processing into the non-UI context
             Task t = Task.Run(() =>
             {
                 PopulateSymbolLV(FilterSymbols(list));
 #if CREF
-                if ((list.Count > 0) && (list.FirstOrDefault().ModuleName != null))
+                if (_crefOn && (list.Count > 0) && (list.FirstOrDefault().ModuleName != null))
                     _tree = tlv_Init(list.FirstOrDefault().ModuleName);
 #endif
-            }).ContinueWith(antecedent => {Button_status(true);}); /* do always */
+            }).ContinueWith(antecedent => { Button_status(true); }); /* do always */
 
             t.ContinueWith(antecedent =>
             {
                 BeginInvoke(new MethodInvoker(() =>
                 {
+                    if (_crefOn)
+                    {
                     olv_Cref.SetObjects(_tree);
                     olv_Cref.ExpandAll();
                     Button_status(true);
+					}
                 }));
             }, TaskContinuationOptions.OnlyOnRanToCompletion); /* do only if there were no errors */
         }
@@ -582,7 +541,7 @@ namespace MapViewer
             throw new NotImplementedException();
         }
 
- #endregion
+        #endregion
 
         #region OLV Helpers
 
@@ -639,7 +598,8 @@ namespace MapViewer
             // Special aspect getter for address coz we want to see that in hex
             this.symAddrColumn.AspectGetter = (x) => { return ((Symbol)x).LoadAddress.ToString("X6"); };
             colSection.AspectGetter = x => { return ((Symbol)x).SectionName[1].ToString().ToUpper(); };
-            columnGlobal.AspectGetter = x => {
+            columnGlobal.AspectGetter = x =>
+            {
                 int type = ((Symbol)x).GlobalScope;
                 if (type == Symbol.TYPE_GLOBAL) return "G";
                 else if (type == Symbol.TYPE_STATIC) return "S";
@@ -682,7 +642,7 @@ namespace MapViewer
 
                 if (m1.ToString() == m2.ToString() && ((filtGlobal == false) || (Symbol.TYPE_GLOBAL == s.GlobalScope)))
                 {
-                    Debug.WriteLineIf(DEBUG,"Match: " + m1.ToString());
+                    //Debug.WriteLineIf(DEBUG,"Match: " + m1.ToString());
                     return true;
                 }
                 else return false;
@@ -691,7 +651,7 @@ namespace MapViewer
             return syms;
         }
 
-#endregion
+        #endregion
 
         #region     TREE LIST VIEW - Dependencies
 
@@ -718,7 +678,7 @@ namespace MapViewer
                 return null;
 
             }
-            
+
             var cref_tree = new List<CrefNode>();
             cref_tree.Add(new CrefNode(root_node_module));
 
@@ -768,7 +728,7 @@ namespace MapViewer
             }
             List<CrefNode> c = FindChildren(n);
             n.Children = c;
-            foreach(CrefNode k in c)
+            foreach (CrefNode k in c)
             {
                 k.Parent = n;
                 Build(k);
