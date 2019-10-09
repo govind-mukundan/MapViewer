@@ -29,9 +29,8 @@ using System.Timers;
 namespace MapViewer
 {
     /// <summary>
-    /// Class to encapsulate the system timer. The following features are available
-    /// 1. Calling Restart() on an already started timer restarts it
-    /// 2. Callbacks are not executed if the timer was stopped
+    /// Class to filter events so that you only get an indication if there has not been any new event in the last X mS
+    /// Also works as a auto-retriggerable timer that will never execute a callback after it has been stopped
     /// </summary>
     class FilteredTimer
     {
@@ -41,9 +40,10 @@ namespace MapViewer
         Stopwatch _sysTime;
         long _startTime;
         long _interval;
+        bool _autoReset;
 
         bool _started;
-        bool DEBUG = true;
+        bool DEBUG = false;
 
         public FilteredTimer(double period)
         {
@@ -63,7 +63,7 @@ namespace MapViewer
             if (!_started)
             {
                 _timer.Stop(); // restart the timer
-                Debug.WriteLineIf(DEBUG, "RE-Started!");
+                Debug.WriteLineIf(DEBUG, "RE-Starting!");
             }
             else
             {
@@ -77,7 +77,7 @@ namespace MapViewer
             _timer.Start();
             _started = true;
             _interval = (long)_period;
-            
+            _autoReset = autoReset;
 
             Debug.WriteLineIf(DEBUG, "Started! " + _sysTime.ElapsedMilliseconds.ToString());
         }
@@ -90,7 +90,8 @@ namespace MapViewer
             if (_sysTime.ElapsedMilliseconds >= _period)
             {
                 _cb(s, e1);
-                Stop();
+                if(!_autoReset)
+                    Stop();
             }
             else
             {
@@ -100,14 +101,16 @@ namespace MapViewer
             
         }
 
-        void Stop()
+        public void Stop()
         {
             _started = false;
             _timer.Enabled = false;
             _timer.Stop();
             _sysTime.Stop();
+            _cb = null;
 
             Debug.WriteLineIf(DEBUG, "Stopped" + _sysTime.ElapsedMilliseconds.ToString());
         }
+
     }
 }

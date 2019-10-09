@@ -157,7 +157,7 @@ namespace MapViewer
             get { return _instance; }
         }
 
-        public bool Run(string filePath, Action prog_ind)
+        public bool Run(string filePath, Action<bool> prog_ind)
         {
             Sections = new List<Section>();
             AllSections = new string[C_TEXT_ID.Length + C_DATA_ID.Length + C_BSS_ID.Length];
@@ -204,7 +204,7 @@ namespace MapViewer
             bool valid_section = false;
             foreach (string line in Map.GetRange(MMap_index, MMap_end - MMap_index))
             {
-                prog_ind?.Invoke();
+                prog_ind?.Invoke(false);
 
                 Section s; bool valid;
 
@@ -318,6 +318,9 @@ namespace MapViewer
                 Debug.WriteLineIf(DEBUG,"All size calculations match! Sanity check passed!");
                 PrintModuleMap();
             }
+
+            prog_ind?.Invoke(true);
+
             return (true);
         }
 

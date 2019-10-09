@@ -53,6 +53,7 @@ namespace MapViewer
 
         FilteredTimer _moduleFilter;
         FilteredTimer _symFilter;
+        FilteredTimer _progTimer;
 
         Cref cref;
         int CREF_MAX_DEPS_DEPTH = 100; // Don't go more than 100 levels deep for the dependency list
@@ -69,6 +70,7 @@ namespace MapViewer
             cref = new Cref();
             _moduleFilter = new FilteredTimer(500);
             _symFilter = new FilteredTimer(500);
+            _progTimer = new FilteredTimer(500);
         }
 
         #region Form UI Handlers
@@ -247,26 +249,43 @@ namespace MapViewer
         }
 
         int _flip;
-        public void Progress_indication()
+        bool _progIndication;
+        public void Progress_indication(bool complete)
         {
-            return;
+            //return;
+            if (!complete)
+            {
+                if (!_progIndication)
+                {
+                    _progTimer.Restart(true, (object s, ElapsedEventArgs e1) =>
+                    {
+                        //Debug.WriteLineIf(DEBUG, "Progress_indication!");
+                        string text = "";
+                        if (_flip == 0)
+                        {
+                            text = "Analyze" + " +";
+                            _flip = 1;
+                            //_timer.Start();
+                        }
+                        else
+                        {
+                            text = "Analyze" + " -";
+                            _flip = 0;
+                            //_timer.Start();
+                        }
+                        Button_status_text(text);
+                    });
+                    _progIndication = true;
+                }
 
-            //string text = "";
-            //if (_flip == 0)
-            //{
-            //    text = "Analyze" + " +";
-            //    _flip = 1;
-            //    _timer.Start();
-            //}
-
-            //else if (_flip == 1)
-            //{
-            //    text = "Analyze" + " -";
-            //    _flip = 0;
-            //    _timer.Start();
-            //}
-            //Button_status_text(text);
+            }
+            else
+            {
+                _progTimer.Stop();
+                _progIndication = false;
+            }
         }
+
         public void Button_status(bool val)
         {
             if (InvokeRequired)
@@ -630,7 +649,7 @@ namespace MapViewer
             // Go through all the symbols and select those that match the currently selected modules
             List<Symbol> syms = mods.SelectMany(m => _syms.Symbols.Where(s =>
             {
-                Progress_indication(); // Update UI
+                //Progress_indication(false); // Update UI
 
                 string mod = m.ModuleName;
                 // Special for newlib, module name turns out to be of the form ..lib/libc.a(lib_a-rget.o), while dwarf file name = rget.c, so we takeout all "lib_a" prefix
@@ -648,6 +667,7 @@ namespace MapViewer
                 else return false;
             })).ToList();
 
+            //Progress_indication(true);
             return syms;
         }
 
@@ -693,7 +713,7 @@ namespace MapViewer
         {
             if (TotalNodeCnt++ > CREF_TOTAL_ELEMENT_COUNT) return;
 
-            Progress_indication(); // Update UI
+            //Progress_indication(false); // Update UI
 
             depth--;
             if ((depth == 0))

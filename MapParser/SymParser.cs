@@ -61,7 +61,7 @@ namespace MapViewer
             get { return _instance; }
         }
         
-        public void Run(string nmPath, string elfPath, Action prog_ind)
+        public void Run(string nmPath, string elfPath, Action<bool> prog_ind)
         {
             string result = "";
             Symbols = new List<Symbol>();
@@ -75,7 +75,7 @@ namespace MapViewer
             bool flip = false;
             foreach (string line in symTable)
             {
-                prog_ind?.Invoke();
+                prog_ind?.Invoke(false);
 
                 // Split using spaces - note that the module path may itself contain spaces
                 string[] entries = line.Split(new char[0], 4, StringSplitOptions.RemoveEmptyEntries);
@@ -160,6 +160,8 @@ namespace MapViewer
                 Symbol sym = new Symbol(entries[3], path, Convert.ToUInt32(entries[0], 16), Convert.ToUInt32(entries[1], 16), secName); sym.GlobalScope = type;
                 Symbols.Add(sym);
             }
+
+            prog_ind?.Invoke(true);
         }
 
 

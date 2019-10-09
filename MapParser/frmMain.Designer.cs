@@ -121,7 +121,7 @@
             // 
             // btn_BrowseMapFile
             // 
-            this.btn_BrowseMapFile.Location = new System.Drawing.Point(458, 3);
+            this.btn_BrowseMapFile.Location = new System.Drawing.Point(457, 3);
             this.btn_BrowseMapFile.Name = "btn_BrowseMapFile";
             this.btn_BrowseMapFile.Size = new System.Drawing.Size(37, 22);
             this.btn_BrowseMapFile.TabIndex = 30;
@@ -132,9 +132,9 @@
             // btn_Analyze
             // 
             this.btn_Analyze.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_Analyze.Location = new System.Drawing.Point(518, 3);
+            this.btn_Analyze.Location = new System.Drawing.Point(517, 3);
             this.btn_Analyze.Name = "btn_Analyze";
-            this.btn_Analyze.Size = new System.Drawing.Size(85, 22);
+            this.btn_Analyze.Size = new System.Drawing.Size(86, 22);
             this.btn_Analyze.TabIndex = 29;
             this.btn_Analyze.Text = "Analyze";
             this.btn_Analyze.UseVisualStyleBackColor = true;
@@ -145,7 +145,7 @@
             this.txtBx_MapFilepath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBx_MapFilepath.Location = new System.Drawing.Point(3, 4);
             this.txtBx_MapFilepath.Name = "txtBx_MapFilepath";
-            this.txtBx_MapFilepath.Size = new System.Drawing.Size(449, 20);
+            this.txtBx_MapFilepath.Size = new System.Drawing.Size(448, 20);
             this.txtBx_MapFilepath.TabIndex = 28;
             // 
             // groupBox9
@@ -461,7 +461,7 @@
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 88.31169F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.68831F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 91F));
             this.tableLayoutPanel3.Controls.Add(this.txtBx_ElfFilepath, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.txtBx_MapFilepath, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.btn_Analyze, 2, 0);
@@ -481,15 +481,15 @@
             this.txtBx_ElfFilepath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBx_ElfFilepath.Location = new System.Drawing.Point(3, 32);
             this.txtBx_ElfFilepath.Name = "txtBx_ElfFilepath";
-            this.txtBx_ElfFilepath.Size = new System.Drawing.Size(449, 20);
+            this.txtBx_ElfFilepath.Size = new System.Drawing.Size(448, 20);
             this.txtBx_ElfFilepath.TabIndex = 31;
             // 
             // btn_Settings
             // 
             this.btn_Settings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_Settings.Location = new System.Drawing.Point(518, 31);
+            this.btn_Settings.Location = new System.Drawing.Point(517, 31);
             this.btn_Settings.Name = "btn_Settings";
-            this.btn_Settings.Size = new System.Drawing.Size(85, 22);
+            this.btn_Settings.Size = new System.Drawing.Size(86, 22);
             this.btn_Settings.TabIndex = 33;
             this.btn_Settings.Text = "Settings";
             this.btn_Settings.UseVisualStyleBackColor = true;
@@ -497,7 +497,7 @@
             // 
             // btn_BrowseElfFile
             // 
-            this.btn_BrowseElfFile.Location = new System.Drawing.Point(458, 31);
+            this.btn_BrowseElfFile.Location = new System.Drawing.Point(457, 31);
             this.btn_BrowseElfFile.Name = "btn_BrowseElfFile";
             this.btn_BrowseElfFile.Size = new System.Drawing.Size(37, 22);
             this.btn_BrowseElfFile.TabIndex = 32;
@@ -782,7 +782,7 @@
             this.Font = new System.Drawing.Font("Consolas", 8.25F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MapViewer";
-            this.Text = "MapViewer v0.2";
+            this.Text = "MapViewer v0.3";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
