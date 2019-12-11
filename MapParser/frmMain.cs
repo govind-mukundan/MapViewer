@@ -649,7 +649,7 @@ namespace MapViewer
             // Go through all the symbols and select those that match the currently selected modules
             List<Symbol> syms = mods.SelectMany(m => _syms.Symbols.Where(s =>
             {
-                //Progress_indication(false); // Update UI
+                if (m.ModuleName == "") return false;
 
                 string mod = m.ModuleName;
                 // Special for newlib, module name turns out to be of the form ..lib/libc.a(lib_a-rget.o), while dwarf file name = rget.c, so we takeout all "lib_a" prefix
