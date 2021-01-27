@@ -19,4 +19,7 @@ Prebuild executables are available under the [releases](https://github.com/govin
 This shows you the modules that *depend on/are users of* the selected module. And allows you to easily answer questions like "which application files are responsible for the inclusion of floating point library routines in my project?" for instance. Note that the this view is a bit incomplete in that paths are truncated if the same node appears twice on it. The information looks like this:
 ![](https://i.imgur.com/i3CP5Gi.png)
 
+# Support
+<a href='https://ko-fi.com/govindm' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi1.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+
 
