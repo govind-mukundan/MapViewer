@@ -191,6 +191,35 @@ namespace MapViewer
         public int TARGET_FT32 = 1;
         public int TARGET_MICROCHIP_XC = 2;
 
+        int _minimumNodeValue = 8;
+        [DefaultValue(8), Category("Treemap View")]
+        public int MinimumNodeValue
+        {
+            get { return _minimumNodeValue; }
+            set
+            {
+                if (value != _minimumNodeValue)
+                {
+                    appSettingsChanged = true;
+                    _minimumNodeValue = value;
+                }
+            }
+        }
+
+        TreemapViewColoringMode _treemapColorMode = TreemapViewColoringMode.FileName;
+        [DefaultValue(TreemapViewColoringMode.FileName), Category("Treemap View")]
+        public TreemapViewColoringMode TreemapColorMode
+        {
+            get { return _treemapColorMode; }
+            set
+            {
+                if (value != _treemapColorMode)
+                {
+                    appSettingsChanged = true;
+                    _treemapColorMode = value;
+                }
+            }
+        }
 
         public class CsvConverter : TypeConverter
         {

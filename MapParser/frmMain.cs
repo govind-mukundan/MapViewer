@@ -22,6 +22,7 @@ along with MapViewer.  If not, see <http://www.gnu.org/licenses/>.
 #endregion
 
 using BrightIdeasSoftware;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,7 +31,6 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Timers;
@@ -86,9 +86,15 @@ namespace MapViewer
             if (olv_ModuleView.SelectedObjects.Count == 0)
             {
                 if (!chkBx_ShowStatic.Checked)
+                {
                     PopulateSymbolLV(_syms.GlobalSymbols);
+                    PopulateSymbolTV(_syms.GlobalSymbols);
+                }
                 else
+                {
                     PopulateSymbolLV(_syms.Symbols);
+                    PopulateSymbolTV(_syms.Symbols);
+                }
             }
             else
             {
@@ -145,13 +151,17 @@ namespace MapViewer
                         olv_SymbolView.Invalidate();
 
                     }
-                    else // dependency view
+                    else if (tab_details.SelectedIndex == 1) // dependency view
                     {
                         if (rb_RegexFilter2.Checked)
                             filter = TextMatchFilter.Regex(olv_Cref, txtBx_SymFilter.Text);
                         else
                             filter = TextMatchFilter.Contains(olv_Cref, txtBx_SymFilter.Text);
                         olv_Cref.AdditionalFilter = filter;
+                    }
+                    else if (tab_details.SelectedIndex == 2) // treemap view
+                    {
+                        // #todo: filter for treemapview
                     }
                 }));
             });
@@ -182,7 +192,9 @@ namespace MapViewer
                     if (!_UIUpdateInProgress)
                     {
                         AddSumRow(olv_ModuleView.FilteredObjects);
-                        PopulateSymbolLV(FilterSymbols(olv_ModuleView.FilteredObjects.Cast<Module>().ToList()));
+                        var filtered = FilterSymbols(olv_ModuleView.FilteredObjects.Cast<Module>().ToList());
+                        PopulateSymbolLV(filtered);
+                        PopulateSymbolTV(filtered);
                         olv_ModuleView.Invalidate();
                     }
                 }));
@@ -202,6 +214,8 @@ namespace MapViewer
             chkBx_ShowStatic.Checked = true;
             olv_SymbolView.ClearObjects();
             PopulateSymbolLV(_syms.Symbols);
+            tmv_SymbolView.Nodes.Clear();
+            PopulateSymbolTV(_syms.Symbols);
         }
 
         private void btn_Settings_Click(object sender, EventArgs e)
@@ -431,9 +445,15 @@ namespace MapViewer
             _syms.FilterDuplicates();
             // Finally update the symbol view
             if (!chkBx_ShowStatic.Checked)
+            {
                 PopulateSymbolLV(_syms.GlobalSymbols);
+                PopulateSymbolTV(_syms.GlobalSymbols);
+            }
             else
+            {
                 PopulateSymbolLV(_syms.Symbols);
+                PopulateSymbolTV(_syms.Symbols);
+            }
 
             //PrintLog("\n-------------------------------------------------\n", C_LOG_APPLICATION);
             //foreach (Section s in MAPParser.Instance.Sections)
@@ -525,7 +545,9 @@ namespace MapViewer
             // Move the processing into the non-UI context
             Task t = Task.Run(() =>
             {
-                PopulateSymbolLV(FilterSymbols(list));
+                var filtered = FilterSymbols(list);
+                PopulateSymbolLV(filtered);
+                PopulateSymbolTV(filtered);
 #if CREF
                 if (_crefOn && (list.Count > 0) && (list.FirstOrDefault().ModuleName != null))
                     _tree = tlv_Init(list.FirstOrDefault().ModuleName);
@@ -538,10 +560,10 @@ namespace MapViewer
                 {
                     if (_crefOn)
                     {
-                    olv_Cref.SetObjects(_tree);
-                    olv_Cref.ExpandAll();
-                    Button_status(true);
-					}
+                        olv_Cref.SetObjects(_tree);
+                        olv_Cref.ExpandAll();
+                        Button_status(true);
+                    }
                 }));
             }, TaskContinuationOptions.OnlyOnRanToCompletion); /* do only if there were no errors */
         }
@@ -615,16 +637,9 @@ namespace MapViewer
             olv_SymbolView.UseHotItem = true;
 
             // Special aspect getter for address coz we want to see that in hex
-            this.symAddrColumn.AspectGetter = (x) => { return ((Symbol)x).LoadAddress.ToString("X6"); };
-            colSection.AspectGetter = x => { return ((Symbol)x).SectionName[1].ToString().ToUpper(); };
-            columnGlobal.AspectGetter = x =>
-            {
-                int type = ((Symbol)x).GlobalScope;
-                if (type == Symbol.TYPE_GLOBAL) return "G";
-                else if (type == Symbol.TYPE_STATIC) return "S";
-                else if (type == Symbol.TYPE_HIDDEN) return "H";
-                else return "X";
-            };
+            symAddrColumn.AspectGetter = GetSymbolAddressHex;
+            colSection.AspectGetter = GetSymbolSectionNameCharacter;
+            columnGlobal.AspectGetter = GetSymbolGlobalScopeCharacter;
 
             olv_SymbolView.SetObjects(s);
 
@@ -634,6 +649,87 @@ namespace MapViewer
             olv_SymbolView.SecondarySortOrder = SortOrder.Descending;
             olv_SymbolView.Sort("SEC");
             AddSumRow(s); // Update the sum over currently displayed symbols
+        }
+
+        /// <summary>
+        /// Converts a <see cref="Symbol"/>'s <see cref="Symbol.LoadAddress"/>
+        /// to a 6 digit hex string.
+        /// </summary>
+        /// <param name="symbolObj">The <see cref="Symbol"/> to create the string for.</param>
+        /// <returns>A 6 digit hex string.</returns>
+        /// <exception cref="ArgumentException">If <paramref name="symbolObj"/> isn't a <see cref="Symbol"/></exception>
+        private string GetSymbolAddressHex(object symbolObj)
+        {
+            if (symbolObj is Symbol symbol)
+            {
+                return symbol.LoadAddress.ToString("X6");
+            }
+
+            throw new ArgumentException($"{nameof(GetSymbolAddressHex)} expects it's argument to be a {nameof(Symbol)}.", nameof(symbolObj));
+        }
+
+        /// <summary>
+        /// Converts a <see cref="Symbol"/>'s <see cref="Symbol.SectionName"/>
+        /// to a 1 character abbreviation string.
+        /// </summary>
+        /// <param name="symbolObj">The <see cref="Symbol"/> to create the string for.</param>
+        /// <returns>A 1 character string.</returns>
+        /// <exception cref="ArgumentException">If <paramref name="symbolObj"/> isn't a <see cref="Symbol"/></exception>
+        private string GetSymbolSectionNameCharacter(object symbolObj)
+        {
+            if (symbolObj is Symbol symbol)
+            {
+                return symbol.SectionName[1].ToString().ToUpper();
+            }
+
+            throw new ArgumentException($"{nameof(GetSymbolSectionNameCharacter)} expects it's argument to be a {nameof(Symbol)}.", nameof(symbolObj));
+        }
+
+        /// <summary>
+        /// Converts a <see cref="Symbol"/>'s <see cref="Symbol.GlobalScope"/>
+        /// to a 1 character abbreviation string.
+        /// </summary>
+        /// <param name="symbolObj">The <see cref="Symbol"/> to create the string for.</param>
+        /// <returns>A 1 character string.</returns>
+        /// <exception cref="ArgumentException">If <paramref name="symbolObj"/> isn't a <see cref="Symbol"/></exception>
+        private string GetSymbolGlobalScopeCharacter(object symbolObj)
+        {
+            if (symbolObj is Symbol symbol)
+            {
+                switch (symbol.GlobalScope)
+                {
+                    case Symbol.TYPE_GLOBAL: return "G";
+                    case Symbol.TYPE_STATIC: return "S";
+                    case Symbol.TYPE_HIDDEN: return "H";
+                    default: return "X";
+                };
+            }
+
+            throw new ArgumentException($"{nameof(GetSymbolGlobalScopeCharacter)} expects it's argument to be a {nameof(Symbol)}.", nameof(symbolObj));
+        }
+
+
+        /// <summary>
+        /// Converts a <see cref="Symbol"/>'s <see cref="Symbol.SectionName"/>
+        /// to a string.
+        /// </summary>
+        /// <param name="symbolObj">The <see cref="Symbol"/> to create the string for.</param>
+        /// <returns>The string that represents the scope.</returns>
+        /// <exception cref="ArgumentException">If <paramref name="symbolObj"/> isn't a <see cref="Symbol"/></exception>
+        private string GetSymbolGlobalScopeString(object symbolObj)
+        {
+            if (symbolObj is Symbol symbol)
+            {
+                switch (symbol.GlobalScope)
+                {
+                    case Symbol.TYPE_GLOBAL: return "Global";
+                    case Symbol.TYPE_STATIC: return "Static";
+                    case Symbol.TYPE_HIDDEN: return "Hidden";
+                    default: return "Unknown Scope";
+                };
+            }
+
+            throw new ArgumentException($"{nameof(GetSymbolGlobalScopeString)} expects it's argument to be a {nameof(Symbol)}.", nameof(symbolObj));
         }
 
         /// <summary>
@@ -672,6 +768,51 @@ namespace MapViewer
         }
 
         #endregion
+
+        #region TreemapView Helpers
+
+        /// <summary>
+        /// Builds the list of nodes for the Symbol <see cref="cmdwtf.Treemap.TreemapView"/>.
+        /// </summary>
+        /// <param name="symbols">The symbols to represent in the <see cref="cmdwtf.Treemap.TreemapView"/></param>
+        void PopulateSymbolTV(List<Symbol> symbols)
+        {
+            Debug.WriteLineIf(DEBUG, "PopulateSymbolTV!");
+
+            tmv_SymbolView.SuspendLayout();
+
+            tmv_SymbolView.Nodes.Clear();
+
+            foreach (Symbol sym in symbols)
+            {
+                // skip tiny symbols.
+                if (sym.Size < _settings.MinimumNodeValue)
+                {
+                    continue;
+                }
+
+                string toolTip = $"{sym.SymbolName}\n" +
+                    $"{sym.ModuleName ?? "<unknown module>"}\n" + // #todo - is there a better string for no module?
+                    $"{sym.Size} bytes @0x{GetSymbolAddressHex(sym)}\n" +
+                    $"{sym.SectionName} ({GetSymbolGlobalScopeString(sym)})";
+
+                cmdwtf.Treemap.TreemapNode node = new cmdwtf.Treemap.TreemapNode()
+                {
+                    Text = sym.SymbolName,
+                    Value = sym.Size,
+                    ToolTipText = toolTip,
+                    Tag = sym,
+                };
+
+                node.ColorNode(sym, _settings.TreemapColorMode);
+
+                tmv_SymbolView.Nodes.Add(node);
+            }
+
+            tmv_SymbolView.ResumeLayout();
+        }
+
+        #endregion TreemapView Helpers
 
         #region     TREE LIST VIEW - Dependencies
 
@@ -756,7 +897,7 @@ namespace MapViewer
         }
 
         /// <summary>
-        /// Walk the current path and see if any node contains this element 
+        /// Walk the current path and see if any node contains this element
         /// </summary>
         /// <param name="n"> The node which could have been duplicated in the tree </param>
         /// <param name="p"> The next parent </param>
