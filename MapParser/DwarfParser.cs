@@ -154,6 +154,10 @@ namespace MapViewer
             name = cu[COMPILATION_UNIT_NAME_INDEX];
             string[] ele = name.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
             string[] e2 = cu[9].Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+            if(ele.Contains("<") | ele.Contains(">") | ele.Contains(":") | ele.Contains(@"""") | ele.Contains("|") | ele.Contains("?") | ele.Contains("*") )
+            {
+                return String.Empty;
+            }
             if (!Path.IsPathRooted(ele[ele.Length - 1])) // Don't do anything if we already have the full path
                 name = Path.GetFullPath(e2[e2.Length - 1] + ele[ele.Length - 1]); // GetFullPath(baseDir, relativePath);
             else

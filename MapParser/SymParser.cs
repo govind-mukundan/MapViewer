@@ -157,8 +157,10 @@ namespace MapViewer
                 {
                     Debug.WriteLineIf(DEBUG, "Unknown section");
                 }
-                Symbol sym = new Symbol(entries[3], path, Convert.ToUInt32(entries[0], 16), Convert.ToUInt32(entries[1], 16), secName); sym.GlobalScope = type;
-                Symbols.Add(sym);
+                if (path != String.Empty) {
+                    Symbol sym = new Symbol(entries[3], path, Convert.ToUInt32(entries[0], 16), Convert.ToUInt32(entries[1], 16), secName); sym.GlobalScope = type;
+                    Symbols.Add(sym);
+                }
             }
 
             prog_ind?.Invoke(true);
