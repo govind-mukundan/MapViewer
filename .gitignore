@@ -33,3 +33,4 @@ heat-ip/
 *.o
 diagrams/convert.txt
 diagrams/export.html
+~*
