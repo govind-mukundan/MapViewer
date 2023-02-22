@@ -60,9 +60,9 @@ namespace MapViewer
         public UInt32 Size { get; set; }
         public string SectionName{ get; set; }
         public int GlobalScope { get; set; } // For now we have Global, Static and Hidden
-        static public int TYPE_GLOBAL = 1;
-        static public int TYPE_STATIC = 0;
-        static public int TYPE_HIDDEN = 2;
+        public const int TYPE_GLOBAL = 1;
+        public const int TYPE_STATIC = 0;
+        public const int TYPE_HIDDEN = 2;
 
         public Symbol(string sym, string file, UInt64 la, UInt32 siz, string section)
         {
@@ -76,7 +76,7 @@ namespace MapViewer
             if (file.Contains("lib_a-"))
                 file = file.Replace("lib_a-", String.Empty);
 
-            Match m2 = Regex.Match(file, @"[^\/\\(]+(\.o|\.c)$");
+            Match m2 = Regex.Match(file, @"[^\/\\(]+(\.o|\.c|\.cpp)$");
             FileName = m2.ToString();
         }
 
@@ -86,7 +86,7 @@ namespace MapViewer
             if (mod.Contains("lib_a-"))
                 mod = mod.Replace("lib_a-", String.Empty);
 
-            Match m2 = Regex.Match(mod, @"[^\/\\(]+(\.o|\.c)$");
+            Match m2 = Regex.Match(mod, @"[^\/\\(]+(\.o|\.c|\.cpp)$");
             FileName = m2.ToString();
         }
     }
