@@ -99,7 +99,7 @@ namespace MapViewer
 
         private void btn_BrowseElfFile_Click(object sender, EventArgs e)
         {
-            OFD.Filter = "ELF files|*.elf";
+            OFD.Filter = "ELF files|*.elf|All files|*.*";
             if (OFD.ShowDialog() == DialogResult.OK)
             {
                 txtBx_ElfFilepath.Text = OFD.FileName;

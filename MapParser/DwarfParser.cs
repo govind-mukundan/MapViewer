@@ -27,7 +27,16 @@ using System.Text;
 
 namespace MapViewer
 {
-
+    public static class helper
+    {
+        public static string RemoveWhitespace(this string input)
+        {
+            return new string(input.ToCharArray()
+                .Where(c => !Char.IsWhiteSpace(c))
+                .ToArray());
+        }
+    }
+       
     /// <summary>
     /// The DWARF debug_info section contains a lot of information about each of the "compilation units" = .o files
     /// We try to parse that to find the compilation units corresponding to static symbols
@@ -37,6 +46,10 @@ namespace MapViewer
 
         List<string> DwarfInfo;
         List<string[]> CompilationUnits;
+        List<string> CompilationUnitsName;
+        List<string[]> CompilationUnitsByName;
+        List<string[]> CompilationUnitsBySubprogAddress;
+        List<string[]> CompilationUnitsBySymbolAddress;
         string COMPILE_UNIT = "Compilation Unit";
         string ATTRIB_NAME = "DW_AT_name";
         string ATTRIB_LOCATION = "DW_AT_location";
@@ -69,6 +82,11 @@ namespace MapViewer
             string[] lines = result.Split(new[] { '\r', '\n' });
             DwarfInfo = lines.ToList();
             CompilationUnits = new List<string[]>();
+            CompilationUnitsName = new List<string>();
+            CompilationUnitsByName = new List<string[]>();
+            CompilationUnitsBySubprogAddress = new List<string[]>();
+            CompilationUnitsBySymbolAddress = new List<string[]>();
+
             // Select the index of all lines that contain the compilation unit tag
             var ci = DwarfInfo.Select((s, i) => new { s, i }).Where(x => x.s.Contains(COMPILE_UNIT)).Select(x => x.i).ToList();
             ci.Add(DwarfInfo.Count - 1); // last index
@@ -76,7 +94,32 @@ namespace MapViewer
             {
                 CompilationUnits.Add(DwarfInfo.GetRange(ci[i], ci[i + 1] - ci[i]).ToArray());
             }
-
+            foreach(string[] itemList in CompilationUnits)
+            {
+                List<string> ByName = new List<string>();
+                List<string> BySymbolAddress = new List<string>();
+                List<string> BySubprogAddress = new List<string>();
+                CompilationUnitsName.Add(GetCUName(itemList));
+                foreach (string item in itemList)
+                {
+                    if (item.Contains(ATTRIB_NAME))
+                    {
+                        string[] parts = item.Split(':');
+                        ByName.Add(helper.RemoveWhitespace(parts[parts.Length - 1]));
+                    }
+                    if (item.Contains(AT_SUBPROGRAM_ADDRESS))
+                    {
+                        BySubprogAddress.Add(item);
+                    }
+                    if (item.Contains(ATTRIB_LOCATION) && item.Contains(LOC_ADDRESS))
+                    {
+                        BySymbolAddress.Add(item);
+                    }
+                }
+                CompilationUnitsByName.Add(ByName.ToArray());
+                CompilationUnitsBySubprogAddress.Add(BySubprogAddress.ToArray());
+                CompilationUnitsBySymbolAddress.Add(BySymbolAddress.ToArray());
+            }
             // test
             //FindSymbolCUnit("gRecipeFwd", Convert.ToUInt32("1074", 16));
             //FindSubRoutineCUnit("vSPIM_Task", Convert.ToUInt32("4ecc", 16));
@@ -96,21 +139,43 @@ namespace MapViewer
             //if (name.Contains("StaticFunc"))
             //    Debug.WriteLine("aaa");
 
-            string[] mName = name.Split('.'); // .postfix is added by compiler/linker.. we ignore that
+            string[] mName;
+            mName = name.Split('.'); // .postfix is added by compiler/linker.. we ignore that
+            name = mName[0].Trim('_');
 
-            var filteredCU = CompilationUnits.FirstOrDefault(cu =>
+            if(name.Contains("::"))
+            {
+                // CPP
+                string[] parts = name.Split(':');
+                name = parts[parts.Length - 1];
+                parts = name.Split('(');
+                name = parts[0];
+            }
+
+            int filteredCUNameindex = CompilationUnitsByName.FindIndex(cu =>
             {
                 // Name is case sensitive, address is not
                 // XC16 compiler mangles all names with a leading underscore, so we trim that
-                if (cu.Where(s => s.Contains(ATTRIB_NAME) && s.Contains(mName[0].Trim('_'))).Count() > 0 &&
-                    cu.Where(s => s.Contains(AT_SUBPROGRAM_ADDRESS) && s.ToLower().Contains(ads)).Count() > 0)
+                if (cu.Where(s => String.Equals(s, name)).Count() > 0)
+                        return true;
+                else return false;
+            });
+
+            int filteredCUSubindex = CompilationUnitsBySubprogAddress.FindIndex(cu =>
+            {
+                // Name is case sensitive, address is not
+                if (cu.Where(s => s.ToLower().Contains(ads)).Count() > 0)
                     return true;
                 else return false;
             });
 
-            if (filteredCU != null && filteredCU.Count() > 0)
+            if(filteredCUNameindex != -1)
             {
-                return (GetCUName(filteredCU));
+                return CompilationUnitsName[filteredCUNameindex];
+            }
+            else if (filteredCUSubindex != -1)
+            {
+                return CompilationUnitsName[filteredCUSubindex];
             }
             else return String.Empty;
 
@@ -126,42 +191,65 @@ namespace MapViewer
 //                Debug.Write("test");
             string[] mName = name.Split('.'); // .postfix is added by compiler/linker.. we ignore that
 
-            filteredCU = CompilationUnits.FirstOrDefault(cu =>
+            int filteredCUNameindex = CompilationUnitsByName.FindIndex(cu =>
             {
-                if (cu.Where(s => s.Contains(ATTRIB_NAME) && s.Contains(mName[0].Trim('_'))).Count() > 0 &&
-                    cu.Where(s => s.Contains(ATTRIB_LOCATION) && s.Contains(LOC_ADDRESS) && s.ToLower().Contains(ads)).Count() > 0)
+                // Name is case sensitive, address is not
+                // XC16 compiler mangles all names with a leading underscore, so we trim that
+                if (cu.Where(s => s.Contains(mName[0].Trim('_'))).Count() > 0)
+                    return true;
+                else return false;
+            });
+            int filteredCUSymbolindex = CompilationUnitsBySymbolAddress.FindIndex(cu =>
+            {
+                // Name is case sensitive, address is not
+                // XC16 compiler mangles all names with a leading underscore, so we trim that
+                if (cu.Where(s => s.ToLower().Contains(ads)).Count() > 0)
                     return true;
                 else return false;
             });
 
-            if (filteredCU != null && filteredCU.Count() > 0)
+            if (filteredCUNameindex != -1)
             {
-                return (GetCUName(filteredCU));
+                return CompilationUnitsName[filteredCUNameindex];
+            }
+            else if (filteredCUSymbolindex != -1)
+            {
+                return CompilationUnitsName[filteredCUSymbolindex];
             }
             else return String.Empty;
+
+            //filteredCU = CompilationUnits.FirstOrDefault(cu =>
+            //{
+            //    if (cu.Where(s => s.Contains(ATTRIB_NAME) && s.Contains(mName[0].Trim('_'))).Count() > 0 &&
+            //        cu.Where(s => s.Contains(ATTRIB_LOCATION) && s.Contains(LOC_ADDRESS) && s.ToLower().Contains(ads)).Count() > 0)
+            //        return true;
+            //    else return false;
+            //});
+
+            //if (filteredCU != null && filteredCU.Count() > 0)
+            //{
+            //    return (GetCUName(filteredCU));
+            //}
+            //else return String.Empty;
         }
 
         public string GetCUName(string[] cu)
         {
+            string name = "";
+            //Debug.WriteLine(cu[COMPILATION_UNIT_NAME_INDEX]);
             // name string looks like this: 
             // <192b2>   DW_AT_name        : (indirect string, offset: 0x372f): ../src/main.c
             // <15>   DW_AT_comp_dir    : (indirect string, offset: 0xb4c): /d/Debug
             // Paths are relative to the folder where the .elf file is generated
-            string name = "";
+            string[] ele = cu[COMPILATION_UNIT_NAME_INDEX].Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+            string fullPath = ele[ele.Length - 1];
+            string[] e2 = cu[COMPILATION_UNIT_NAME_INDEX + 1].Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+            string compilePath = e2[e2.Length - 1];
 
-
-            //Debug.WriteLine(cu[COMPILATION_UNIT_NAME_INDEX]);
-            name = cu[COMPILATION_UNIT_NAME_INDEX];
-            string[] ele = name.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
-            string[] e2 = cu[9].Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
-            if(ele.Contains("<") | ele.Contains(">") | ele.Contains(":") | ele.Contains(@"""") | ele.Contains("|") | ele.Contains("?") | ele.Contains("*") )
-            {
-                return String.Empty;
-            }
-            if (!Path.IsPathRooted(ele[ele.Length - 1])) // Don't do anything if we already have the full path
-                name = Path.GetFullPath(e2[e2.Length - 1] + ele[ele.Length - 1]); // GetFullPath(baseDir, relativePath);
+            if (!Path.IsPathRooted(fullPath)) // Don't do anything if we already have the full path
+                name = Path.GetFullPath(compilePath + fullPath); // GetFullPath(baseDir, relativePath);
             else
-                name = ele[ele.Length - 1];
+                name = fullPath;
 
             return name;
         }
