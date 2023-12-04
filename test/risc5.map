@@ -1,0 +1,1024 @@
+Archive member included to satisfy reference by file (symbol)
+
+d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32ec/ilp32e\libgcc.a(muldi3.o)
+                              obj\adcFilter.o (__mulsi3)
+d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32ec/ilp32e\libgcc.a(div.o)
+                              obj\log.o (__divsi3)
+d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-atexit.o)
+                              obj\startup_ch32v003.o (atexit)
+d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-fini.o)
+                              obj\startup_ch32v003.o (__libc_fini_array)
+d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-init.o)
+                              obj\startup_ch32v003.o (__libc_init_array)
+d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-memcmp.o)
+                              obj\nvm.o (memcmp)
+d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-memcpy-asm.o)
+                              obj\nvm.o (memcpy)
+d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-memset.o)
+                              obj\utility.o (memset)
+d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-strlen.o)
+                              obj\utility.o (strlen)
+d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-strncmp.o)
+                              obj\utility.o (strncmp)
+d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-strnlen.o)
+                              obj\log.o (strnlen)
+
+Discarded input sections
+
+ .text          0x0000000000000000        0x0 obj\adcFilter.o
+ .data          0x0000000000000000        0x0 obj\adcFilter.o
+ .bss           0x0000000000000000        0x0 obj\adcFilter.o
+ .text.adc_readFilt
+                0x0000000000000000       0x36 obj\adcFilter.o
+ .debug_info    0x0000000000000000      0x292 obj\adcFilter.o
+ .debug_abbrev  0x0000000000000000      0x13a obj\adcFilter.o
+ .debug_loclists
+                0x0000000000000000       0x58 obj\adcFilter.o
+ .debug_aranges
+                0x0000000000000000       0x28 obj\adcFilter.o
+ .debug_rnglists
+                0x0000000000000000       0x1f obj\adcFilter.o
+ .debug_line    0x0000000000000000      0x15d obj\adcFilter.o
+ .debug_str     0x0000000000000000      0x241 obj\adcFilter.o
+ .debug_line_str
+                0x0000000000000000      0x157 obj\adcFilter.o
+ .debug_frame   0x0000000000000000       0x58 obj\adcFilter.o
+ .text          0x0000000000000000        0x0 obj\adc.o
+ .data          0x0000000000000000        0x0 obj\adc.o
+ .bss           0x0000000000000000        0x0 obj\adc.o
+ .data.ADCPrescTable
+                0x0000000000000000       0x14 obj\adc.o
+ .data.APBAHBPrescTable
+                0x0000000000000000       0x10 obj\adc.o
+ .debug_info    0x0000000000000000      0x51a obj\adc.o
+ .debug_abbrev  0x0000000000000000      0x18d obj\adc.o
+ .debug_loclists
+                0x0000000000000000       0x8b obj\adc.o
+ .debug_aranges
+                0x0000000000000000       0x28 obj\adc.o
+ .debug_rnglists
+                0x0000000000000000       0x1f obj\adc.o
+ .debug_line    0x0000000000000000      0x24b obj\adc.o
+ .debug_str     0x0000000000000000      0x3af obj\adc.o
+ .debug_line_str
+                0x0000000000000000      0x13e obj\adc.o
+ .debug_frame   0x0000000000000000       0x4c obj\adc.o
+ .text          0x0000000000000000        0x0 obj\app.o
+ .data          0x0000000000000000        0x0 obj\app.o
+ .bss           0x0000000000000000        0x0 obj\app.o
+ .debug_info    0x0000000000000000      0x216 obj\app.o
+ .debug_abbrev  0x0000000000000000      0x156 obj\app.o
+ .debug_aranges
+                0x0000000000000000       0x28 obj\app.o
+ .debug_rnglists
+                0x0000000000000000       0x1f obj\app.o
+ .debug_line    0x0000000000000000      0x142 obj\app.o
+ .debug_str     0x0000000000000000      0x216 obj\app.o
+ .debug_line_str
+                0x0000000000000000      0x11c obj\app.o
+ .debug_frame   0x0000000000000000       0x3c obj\app.o
+ .text          0x0000000000000000        0x0 obj\button.o
+ .data          0x0000000000000000        0x0 obj\button.o
+ .bss           0x0000000000000000        0x0 obj\button.o
+ .text.button_getAction
+                0x0000000000000000       0x34 obj\button.o
+ .debug_info    0x0000000000000000      0x361 obj\button.o
+ .debug_abbrev  0x0000000000000000      0x183 obj\button.o
+ .debug_loclists
+                0x0000000000000000       0xae obj\button.o
+ .debug_aranges
+                0x0000000000000000       0x28 obj\button.o
+ .debug_rnglists
+                0x0000000000000000       0x32 obj\button.o
+ .debug_line    0x0000000000000000      0x2c7 obj\button.o
+ .debug_str     0x0000000000000000      0x337 obj\button.o
+ .debug_line_str
+                0x0000000000000000      0x160 obj\button.o
+ .debug_frame   0x0000000000000000       0x58 obj\button.o
+ .text          0x0000000000000000        0x0 obj\clock.o
+ .data          0x0000000000000000        0x0 obj\clock.o
+ .bss           0x0000000000000000        0x0 obj\clock.o
+ .data.ADCPrescTable
+                0x0000000000000000       0x14 obj\clock.o
+ .data.APBAHBPrescTable
+                0x0000000000000000       0x10 obj\clock.o
+ .debug_info    0x0000000000000000      0x5cf obj\clock.o
+ .debug_abbrev  0x0000000000000000      0x13c obj\clock.o
+ .debug_loclists
+                0x0000000000000000       0x19 obj\clock.o
+ .debug_aranges
+                0x0000000000000000       0x20 obj\clock.o
+ .debug_rnglists
+                0x0000000000000000       0x16 obj\clock.o
+ .debug_line    0x0000000000000000      0x16a obj\clock.o
+ .debug_str     0x0000000000000000      0x46a obj\clock.o
+ .debug_line_str
+                0x0000000000000000      0x13e obj\clock.o
+ .debug_frame   0x0000000000000000       0x20 obj\clock.o
+ .text          0x0000000000000000        0x0 obj\debounce.o
+ .data          0x0000000000000000        0x0 obj\debounce.o
+ .bss           0x0000000000000000        0x0 obj\debounce.o
+ .debug_info    0x0000000000000000      0x28d obj\debounce.o
+ .debug_abbrev  0x0000000000000000      0x168 obj\debounce.o
+ .debug_loclists
+                0x0000000000000000       0xba obj\debounce.o
+ .debug_aranges
+                0x0000000000000000       0x28 obj\debounce.o
+ .debug_rnglists
+                0x0000000000000000       0x1f obj\debounce.o
+ .debug_line    0x0000000000000000      0x27d obj\debounce.o
+ .debug_str     0x0000000000000000      0x21f obj\debounce.o
+ .debug_line_str
+                0x0000000000000000      0x146 obj\debounce.o
+ .debug_frame   0x0000000000000000       0x50 obj\debounce.o
+ .text          0x0000000000000000        0x0 obj\dio.o
+ .data          0x0000000000000000        0x0 obj\dio.o
+ .bss           0x0000000000000000        0x0 obj\dio.o
+ .text.dio_lockConf
+                0x0000000000000000       0x40 obj\dio.o
+ .text.dio_debugPattern
+                0x0000000000000000       0x2a obj\dio.o
+ .data.ADCPrescTable
+                0x0000000000000000       0x14 obj\dio.o
+ .data.APBAHBPrescTable
+                0x0000000000000000       0x10 obj\dio.o
+ .debug_info    0x0000000000000000      0x6b7 obj\dio.o
+ .debug_abbrev  0x0000000000000000      0x1da obj\dio.o
+ .debug_loclists
+                0x0000000000000000      0x287 obj\dio.o
+ .debug_aranges
+                0x0000000000000000       0x48 obj\dio.o
+ .debug_rnglists
+                0x0000000000000000       0x5f obj\dio.o
+ .debug_line    0x0000000000000000      0x654 obj\dio.o
+ .debug_str     0x0000000000000000      0x415 obj\dio.o
+ .debug_line_str
+                0x0000000000000000      0x12d obj\dio.o
+ .debug_frame   0x0000000000000000       0xd4 obj\dio.o
+ .text          0x0000000000000000        0x0 obj\displayApp.o
+ .data          0x0000000000000000        0x0 obj\displayApp.o
+ .bss           0x0000000000000000        0x0 obj\displayApp.o
+ .debug_info    0x0000000000000000      0x17f obj\displayApp.o
+ .debug_abbrev  0x0000000000000000       0xdc obj\displayApp.o
+ .debug_aranges
+                0x0000000000000000       0x28 obj\displayApp.o
+ .debug_rnglists
+                0x0000000000000000       0x1f obj\displayApp.o
+ .debug_line    0x0000000000000000      0x10f obj\displayApp.o
+ .debug_str     0x0000000000000000      0x1c2 obj\displayApp.o
+ .debug_line_str
+                0x0000000000000000      0x150 obj\displayApp.o
+ .debug_frame   0x0000000000000000       0x4c obj\displayApp.o
+ .text          0x0000000000000000        0x0 obj\log.o
+ .data          0x0000000000000000        0x0 obj\log.o
+ .bss           0x0000000000000000        0x0 obj\log.o
+ .text.LOG_PRINT
+                0x0000000000000000       0x20 obj\log.o
+ .debug_info    0x0000000000000000      0x4ea obj\log.o
+ .debug_abbrev  0x0000000000000000      0x1db obj\log.o
+ .debug_loclists
+                0x0000000000000000      0x1ab obj\log.o
+ .debug_aranges
+                0x0000000000000000       0x38 obj\log.o
+ .debug_rnglists
+                0x0000000000000000       0x31 obj\log.o
+ .debug_line    0x0000000000000000      0x38f obj\log.o
+ .debug_str     0x0000000000000000      0x295 obj\log.o
+ .debug_line_str
+                0x0000000000000000      0x152 obj\log.o
+ .debug_frame   0x0000000000000000       0x98 obj\log.o
+ .text          0x0000000000000000        0x0 obj\main.o
+ .data          0x0000000000000000        0x0 obj\main.o
+ .bss           0x0000000000000000        0x0 obj\main.o
+ .data.ADCPrescTable
+                0x0000000000000000       0x14 obj\main.o
+ .data.APBAHBPrescTable
+                0x0000000000000000       0x10 obj\main.o
+ .debug_info    0x0000000000000000      0x20e obj\main.o
+ .debug_abbrev  0x0000000000000000       0xdb obj\main.o
+ .debug_aranges
+                0x0000000000000000       0x20 obj\main.o
+ .debug_rnglists
+                0x0000000000000000       0x16 obj\main.o
+ .debug_line    0x0000000000000000      0x118 obj\main.o
+ .debug_str     0x0000000000000000      0x1ec obj\main.o
+ .debug_line_str
+                0x0000000000000000      0x1ea obj\main.o
+ .debug_frame   0x0000000000000000       0x2c obj\main.o
+ .text          0x0000000000000000        0x0 obj\startup_ch32v003.o
+ .data          0x0000000000000000        0x0 obj\startup_ch32v003.o
+ .bss           0x0000000000000000        0x0 obj\startup_ch32v003.o
+ .text.vector_handler
+                0x0000000000000000       0x36 obj\startup_ch32v003.o
+ .debug_line    0x0000000000000000      0x1c2 obj\startup_ch32v003.o
+ .debug_line_str
+                0x0000000000000000       0x5f obj\startup_ch32v003.o
+ .debug_info    0x0000000000000000       0x23 obj\startup_ch32v003.o
+ .debug_abbrev  0x0000000000000000       0x12 obj\startup_ch32v003.o
+ .debug_aranges
+                0x0000000000000000       0x30 obj\startup_ch32v003.o
+ .debug_str     0x0000000000000000       0x58 obj\startup_ch32v003.o
+ .debug_rnglists
+                0x0000000000000000       0x21 obj\startup_ch32v003.o
+ .text          0x0000000000000000        0x0 obj\sys_it.o
+ .data          0x0000000000000000        0x0 obj\sys_it.o
+ .bss           0x0000000000000000        0x0 obj\sys_it.o
+ .text.exit     0x0000000000000000        0xe obj\sys_it.o
+ .data.ADCPrescTable
+                0x0000000000000000       0x14 obj\sys_it.o
+ .data.APBAHBPrescTable
+                0x0000000000000000       0x10 obj\sys_it.o
+ .debug_info    0x0000000000000000      0x4d5 obj\sys_it.o
+ .debug_abbrev  0x0000000000000000      0x134 obj\sys_it.o
+ .debug_loclists
+                0x0000000000000000       0x26 obj\sys_it.o
+ .debug_aranges
+                0x0000000000000000       0xf8 obj\sys_it.o
+ .debug_rnglists
+                0x0000000000000000      0x109 obj\sys_it.o
+ .debug_line    0x0000000000000000      0x45b obj\sys_it.o
+ .debug_str     0x0000000000000000      0x3a0 obj\sys_it.o
+ .debug_line_str
+                0x0000000000000000      0x126 obj\sys_it.o
+ .debug_frame   0x0000000000000000      0x6a0 obj\sys_it.o
+ .text          0x0000000000000000        0x0 obj\nvm.o
+ .data          0x0000000000000000        0x0 obj\nvm.o
+ .bss           0x0000000000000000        0x0 obj\nvm.o
+ .text.nvm_set  0x0000000000000000       0x18 obj\nvm.o
+ .text.nvm_get  0x0000000000000000       0x2e obj\nvm.o
+ .data.ADCPrescTable
+                0x0000000000000000       0x14 obj\nvm.o
+ .data.APBAHBPrescTable
+                0x0000000000000000       0x10 obj\nvm.o
+ .debug_info    0x0000000000000000      0x6ef obj\nvm.o
+ .debug_abbrev  0x0000000000000000      0x2da obj\nvm.o
+ .debug_loclists
+                0x0000000000000000      0x2ad obj\nvm.o
+ .debug_aranges
+                0x0000000000000000       0x38 obj\nvm.o
+ .debug_rnglists
+                0x0000000000000000       0x86 obj\nvm.o
+ .debug_line    0x0000000000000000      0x623 obj\nvm.o
+ .debug_str     0x0000000000000000      0x31b obj\nvm.o
+ .debug_line_str
+                0x0000000000000000      0x1c8 obj\nvm.o
+ .debug_frame   0x0000000000000000       0x90 obj\nvm.o
+ .text          0x0000000000000000        0x0 obj\pwm.o
+ .data          0x0000000000000000        0x0 obj\pwm.o
+ .bss           0x0000000000000000        0x0 obj\pwm.o
+ .text.pwm_init
+                0x0000000000000000       0x46 obj\pwm.o
+ .text.pwm_setPeriod
+                0x0000000000000000       0x52 obj\pwm.o
+ .text.pwm_setCCR
+                0x0000000000000000       0x58 obj\pwm.o
+ .text.pwm_setDuty
+                0x0000000000000000       0x5e obj\pwm.o
+ .sbss.periodCpy
+                0x0000000000000000        0x2 obj\pwm.o
+ .data.ADCPrescTable
+                0x0000000000000000       0x14 obj\pwm.o
+ .data.APBAHBPrescTable
+                0x0000000000000000       0x10 obj\pwm.o
+ .debug_info    0x0000000000000000      0x73f obj\pwm.o
+ .debug_abbrev  0x0000000000000000      0x264 obj\pwm.o
+ .debug_loclists
+                0x0000000000000000      0x172 obj\pwm.o
+ .debug_aranges
+                0x0000000000000000       0x38 obj\pwm.o
+ .debug_rnglists
+                0x0000000000000000       0x31 obj\pwm.o
+ .debug_line    0x0000000000000000      0x417 obj\pwm.o
+ .debug_str     0x0000000000000000      0x4ee obj\pwm.o
+ .debug_line_str
+                0x0000000000000000      0x13e obj\pwm.o
+ .comment       0x0000000000000000       0x34 obj\pwm.o
+ .debug_frame   0x0000000000000000       0x84 obj\pwm.o
+ .riscv.attributes
+                0x0000000000000000       0x21 obj\pwm.o
+ .text          0x0000000000000000        0x0 obj\queue.o
+ .data          0x0000000000000000        0x0 obj\queue.o
+ .bss           0x0000000000000000        0x0 obj\queue.o
+ .text.queue_flush
+                0x0000000000000000       0x3c obj\queue.o
+ .data.ADCPrescTable
+                0x0000000000000000       0x14 obj\queue.o
+ .data.APBAHBPrescTable
+                0x0000000000000000       0x10 obj\queue.o
+ .debug_info    0x0000000000000000      0x45d obj\queue.o
+ .debug_abbrev  0x0000000000000000      0x1c2 obj\queue.o
+ .debug_loclists
+                0x0000000000000000      0x2db obj\queue.o
+ .debug_aranges
+                0x0000000000000000       0x40 obj\queue.o
+ .debug_rnglists
+                0x0000000000000000       0x4d obj\queue.o
+ .debug_line    0x0000000000000000      0x461 obj\queue.o
+ .debug_str     0x0000000000000000      0x271 obj\queue.o
+ .debug_line_str
+                0x0000000000000000      0x146 obj\queue.o
+ .debug_frame   0x0000000000000000       0xc8 obj\queue.o
+ .text          0x0000000000000000        0x0 obj\scheduler.o
+ .data          0x0000000000000000        0x0 obj\scheduler.o
+ .bss           0x0000000000000000        0x0 obj\scheduler.o
+ .data.ADCPrescTable
+                0x0000000000000000       0x14 obj\scheduler.o
+ .data.APBAHBPrescTable
+                0x0000000000000000       0x10 obj\scheduler.o
+ .debug_info    0x0000000000000000      0xa70 obj\scheduler.o
+ .debug_abbrev  0x0000000000000000      0x2f9 obj\scheduler.o
+ .debug_loclists
+                0x0000000000000000       0x74 obj\scheduler.o
+ .debug_aranges
+                0x0000000000000000       0x30 obj\scheduler.o
+ .debug_rnglists
+                0x0000000000000000       0x61 obj\scheduler.o
+ .debug_line    0x0000000000000000      0x718 obj\scheduler.o
+ .debug_str     0x0000000000000000      0x506 obj\scheduler.o
+ .debug_line_str
+                0x0000000000000000      0x232 obj\scheduler.o
+ .debug_frame   0x0000000000000000       0x80 obj\scheduler.o
+ .text          0x0000000000000000        0x0 obj\spi.o
+ .data          0x0000000000000000        0x0 obj\spi.o
+ .bss           0x0000000000000000        0x0 obj\spi.o
+ .text.spi_readWrite
+                0x0000000000000000       0x7c obj\spi.o
+ .data.ADCPrescTable
+                0x0000000000000000       0x14 obj\spi.o
+ .data.APBAHBPrescTable
+                0x0000000000000000       0x10 obj\spi.o
+ .debug_info    0x0000000000000000      0x41a obj\spi.o
+ .debug_abbrev  0x0000000000000000      0x190 obj\spi.o
+ .debug_loclists
+                0x0000000000000000      0x104 obj\spi.o
+ .debug_aranges
+                0x0000000000000000       0x28 obj\spi.o
+ .debug_rnglists
+                0x0000000000000000       0x1f obj\spi.o
+ .debug_line    0x0000000000000000      0x232 obj\spi.o
+ .debug_str     0x0000000000000000      0x360 obj\spi.o
+ .debug_line_str
+                0x0000000000000000      0x13e obj\spi.o
+ .debug_frame   0x0000000000000000       0x3c obj\spi.o
+ .text          0x0000000000000000        0x0 obj\uart.o
+ .data          0x0000000000000000        0x0 obj\uart.o
+ .bss           0x0000000000000000        0x0 obj\uart.o
+ .text.uart_read
+                0x0000000000000000       0x34 obj\uart.o
+ .data.ADCPrescTable
+                0x0000000000000000       0x14 obj\uart.o
+ .data.APBAHBPrescTable
+                0x0000000000000000       0x10 obj\uart.o
+ .debug_info    0x0000000000000000      0xaad obj\uart.o
+ .debug_abbrev  0x0000000000000000      0x2d5 obj\uart.o
+ .debug_loclists
+                0x0000000000000000      0x139 obj\uart.o
+ .debug_aranges
+                0x0000000000000000       0x48 obj\uart.o
+ .debug_rnglists
+                0x0000000000000000       0x69 obj\uart.o
+ .debug_line    0x0000000000000000      0x400 obj\uart.o
+ .debug_str     0x0000000000000000      0x62a obj\uart.o
+ .debug_line_str
+                0x0000000000000000      0x15f obj\uart.o
+ .debug_frame   0x0000000000000000       0xd4 obj\uart.o
+ .text          0x0000000000000000        0x0 obj\utility.o
+ .data          0x0000000000000000        0x0 obj\utility.o
+ .bss           0x0000000000000000        0x0 obj\utility.o
+ .text.fletcher8_selftest
+                0x0000000000000000       0x30 obj\utility.o
+ .text.fletcher16
+                0x0000000000000000       0x2e obj\utility.o
+ .text.fletcher16_selftest
+                0x0000000000000000       0x34 obj\utility.o
+ .text.crc8_calc
+                0x0000000000000000       0x4c obj\utility.o
+ .text.crc16_calc
+                0x0000000000000000       0x40 obj\utility.o
+ .text.crc16_selftest
+                0x0000000000000000       0x64 obj\utility.o
+ .text.charIsWhiteSpace
+                0x0000000000000000       0x18 obj\utility.o
+ .text.strTrimWhiteSpaces
+                0x0000000000000000       0x60 obj\utility.o
+ .text.any      0x0000000000000000       0x22 obj\utility.o
+ .text.strStartsWith
+                0x0000000000000000       0x46 obj\utility.o
+ .text.memzero  0x0000000000000000       0x16 obj\utility.o
+ .text.memcpyRev
+                0x0000000000000000       0x1c obj\utility.o
+ .text.inRange  0x0000000000000000       0x12 obj\utility.o
+ .text.bin2u32B
+                0x0000000000000000       0x1e obj\utility.o
+ .text.u32toBinB
+                0x0000000000000000       0x1e obj\utility.o
+ .text.u32toBinL
+                0x0000000000000000       0x1e obj\utility.o
+ .text.bin2u16B
+                0x0000000000000000        0xe obj\utility.o
+ .text.u16toBinB
+                0x0000000000000000        0xe obj\utility.o
+ .text.bin2u16L
+                0x0000000000000000        0xe obj\utility.o
+ .text.u16toBinL
+                0x0000000000000000        0xe obj\utility.o
+ .srodata.testVector.0
+                0x0000000000000000        0x4 obj\utility.o
+ .rodata.testData.1
+                0x0000000000000000        0xa obj\utility.o
+ .rodata.crc16_table.2
+                0x0000000000000000      0x200 obj\utility.o
+ .rodata.crc8_table.3
+                0x0000000000000000       0x10 obj\utility.o
+ .srodata.inp.4
+                0x0000000000000000        0x3 obj\utility.o
+ .srodata.inp.5
+                0x0000000000000000        0x4 obj\utility.o
+ .debug_info    0x0000000000000000      0x992 obj\utility.o
+ .debug_abbrev  0x0000000000000000      0x287 obj\utility.o
+ .debug_loclists
+                0x0000000000000000      0x70f obj\utility.o
+ .debug_aranges
+                0x0000000000000000       0xc8 obj\utility.o
+ .debug_rnglists
+                0x0000000000000000       0xd3 obj\utility.o
+ .debug_line    0x0000000000000000      0xb0f obj\utility.o
+ .debug_str     0x0000000000000000      0x38d obj\utility.o
+ .debug_line_str
+                0x0000000000000000      0x1b8 obj\utility.o
+ .debug_frame   0x0000000000000000      0x1f4 obj\utility.o
+ .text          0x0000000000000000        0x0 obj\wdt.o
+ .data          0x0000000000000000        0x0 obj\wdt.o
+ .bss           0x0000000000000000        0x0 obj\wdt.o
+ .data.ADCPrescTable
+                0x0000000000000000       0x14 obj\wdt.o
+ .data.APBAHBPrescTable
+                0x0000000000000000       0x10 obj\wdt.o
+ .debug_info    0x0000000000000000      0x19e obj\wdt.o
+ .debug_abbrev  0x0000000000000000       0xc2 obj\wdt.o
+ .debug_aranges
+                0x0000000000000000       0x28 obj\wdt.o
+ .debug_rnglists
+                0x0000000000000000       0x1f obj\wdt.o
+ .debug_line    0x0000000000000000      0x102 obj\wdt.o
+ .debug_str     0x0000000000000000      0x1c2 obj\wdt.o
+ .debug_line_str
+                0x0000000000000000      0x127 obj\wdt.o
+ .debug_frame   0x0000000000000000       0x30 obj\wdt.o
+ .data          0x0000000000000000        0x0 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32ec/ilp32e\libgcc.a(muldi3.o)
+ .bss           0x0000000000000000        0x0 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32ec/ilp32e\libgcc.a(muldi3.o)
+ .debug_line    0x0000000000000000       0x7a d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32ec/ilp32e\libgcc.a(muldi3.o)
+ .debug_line_str
+                0x0000000000000000      0x125 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32ec/ilp32e\libgcc.a(muldi3.o)
+ .debug_info    0x0000000000000000       0x24 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32ec/ilp32e\libgcc.a(muldi3.o)
+ .debug_abbrev  0x0000000000000000       0x14 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32ec/ilp32e\libgcc.a(muldi3.o)
+ .debug_aranges
+                0x0000000000000000       0x20 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32ec/ilp32e\libgcc.a(muldi3.o)
+ .debug_str     0x0000000000000000      0x128 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32ec/ilp32e\libgcc.a(muldi3.o)
+ .data          0x0000000000000000        0x0 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32ec/ilp32e\libgcc.a(div.o)
+ .bss           0x0000000000000000        0x0 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32ec/ilp32e\libgcc.a(div.o)
+ .debug_line    0x0000000000000000      0x153 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32ec/ilp32e\libgcc.a(div.o)
+ .debug_line_str
+                0x0000000000000000      0x11f d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32ec/ilp32e\libgcc.a(div.o)
+ .debug_info    0x0000000000000000       0x24 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32ec/ilp32e\libgcc.a(div.o)
+ .debug_abbrev  0x0000000000000000       0x14 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32ec/ilp32e\libgcc.a(div.o)
+ .debug_aranges
+                0x0000000000000000       0x20 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32ec/ilp32e\libgcc.a(div.o)
+ .debug_str     0x0000000000000000      0x125 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32ec/ilp32e\libgcc.a(div.o)
+ .text          0x0000000000000000        0x0 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-atexit.o)
+ .data          0x0000000000000000        0x0 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-atexit.o)
+ .bss           0x0000000000000000        0x0 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-atexit.o)
+ .text          0x0000000000000000        0x0 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-fini.o)
+ .data          0x0000000000000000        0x0 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-fini.o)
+ .bss           0x0000000000000000        0x0 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-fini.o)
+ .text          0x0000000000000000        0x0 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-init.o)
+ .data          0x0000000000000000        0x0 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-init.o)
+ .bss           0x0000000000000000        0x0 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-init.o)
+ .text          0x0000000000000000        0x0 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-memcmp.o)
+ .data          0x0000000000000000        0x0 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-memcmp.o)
+ .bss           0x0000000000000000        0x0 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-memcmp.o)
+ .text          0x0000000000000000       0x16 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-memcpy-asm.o)
+ .data          0x0000000000000000        0x0 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-memcpy-asm.o)
+ .bss           0x0000000000000000        0x0 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-memcpy-asm.o)
+ .riscv.attributes
+                0x0000000000000000       0x1f d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-memcpy-asm.o)
+ .text          0x0000000000000000       0x10 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-memset.o)
+ .data          0x0000000000000000        0x0 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-memset.o)
+ .bss           0x0000000000000000        0x0 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-memset.o)
+ .riscv.attributes
+                0x0000000000000000       0x1f d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-memset.o)
+ .text          0x0000000000000000        0x0 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-strlen.o)
+ .data          0x0000000000000000        0x0 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-strlen.o)
+ .bss           0x0000000000000000        0x0 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-strlen.o)
+ .text.strlen   0x0000000000000000       0x12 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-strlen.o)
+ .comment       0x0000000000000000       0x34 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-strlen.o)
+ .riscv.attributes
+                0x0000000000000000       0x21 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-strlen.o)
+ .text          0x0000000000000000        0x0 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-strncmp.o)
+ .data          0x0000000000000000        0x0 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-strncmp.o)
+ .bss           0x0000000000000000        0x0 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-strncmp.o)
+ .text.strncmp  0x0000000000000000       0x2c d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-strncmp.o)
+ .comment       0x0000000000000000       0x34 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-strncmp.o)
+ .riscv.attributes
+                0x0000000000000000       0x21 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-strncmp.o)
+ .text          0x0000000000000000        0x0 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-strnlen.o)
+ .data          0x0000000000000000        0x0 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-strnlen.o)
+ .bss           0x0000000000000000        0x0 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-strnlen.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x0000000000000000 0x0000000000004000 xr
+RAM              0x0000000020000000 0x0000000000000800 xrw
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+                0x0000000000000100                __stack_size = 0x100
+                [!provide]                        PROVIDE (_stack_size = __stack_size)
+
+.init           0x0000000000000000       0xa0
+                0x0000000000000000                _sinit = .
+                0x0000000000000000                . = ALIGN (0x4)
+ *(SORT_NONE(.init))
+ .init          0x0000000000000000       0x9e obj\startup_ch32v003.o
+                0x0000000000000000                _start
+                0x00000000000000a0                . = ALIGN (0x4)
+ *fill*         0x000000000000009e        0x2 
+                0x00000000000000a0                _einit = .
+
+.text           0x00000000000000a0     0x161c
+                0x00000000000000a0                . = ALIGN (0x4)
+ *(.text)
+ .text          0x00000000000000a0       0x16 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32ec/ilp32e\libgcc.a(muldi3.o)
+                0x00000000000000a0                __mulsi3
+ *fill*         0x00000000000000b6        0x2 
+ .text          0x00000000000000b8       0x7e d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32ec/ilp32e\libgcc.a(div.o)
+                0x00000000000000b8                __divsi3
+                0x00000000000000c0                __udivsi3
+                0x00000000000000c0                __hidden___udivsi3
+                0x00000000000000ec                __umodsi3
+                0x0000000000000110                __modsi3
+ *(.text.*)
+ .text.adc_filter_task
+                0x0000000000000136       0x48 obj\adcFilter.o
+                0x0000000000000136                adc_filter_task
+ .text.adc_init
+                0x000000000000017e       0x4e obj\adc.o
+                0x000000000000017e                adc_init
+ .text.adc_read
+                0x00000000000001cc       0x52 obj\adc.o
+                0x00000000000001cc                adc_read
+ .text.app_init
+                0x000000000000021e        0x2 obj\app.o
+                0x000000000000021e                app_init
+ .text.app_task
+                0x0000000000000220       0x46 obj\app.o
+                0x0000000000000220                app_task
+ .text.button_task
+                0x0000000000000266       0xa0 obj\button.o
+                0x0000000000000266                button_task
+ .text.clock_init
+                0x0000000000000306       0x56 obj\clock.o
+                0x0000000000000306                clock_init
+ .text.debounce_task
+                0x000000000000035c       0x50 obj\debounce.o
+                0x000000000000035c                debounce_task
+ .text.dio_readDeb
+                0x00000000000003ac       0x22 obj\debounce.o
+                0x00000000000003ac                dio_readDeb
+ .text.dio_confPin
+                0x00000000000003ce       0xae obj\dio.o
+                0x00000000000003ce                dio_confPin
+ .text.dio_init
+                0x000000000000047c       0x36 obj\dio.o
+                0x000000000000047c                dio_init
+ .text.dio_write
+                0x00000000000004b2       0x72 obj\dio.o
+                0x00000000000004b2                dio_write
+ .text.dio_read
+                0x0000000000000524       0x3a obj\dio.o
+                0x0000000000000524                dio_read
+ .text.display_init
+                0x000000000000055e       0x10 obj\displayApp.o
+                0x000000000000055e                display_init
+ .text.display_task
+                0x000000000000056e       0x42 obj\displayApp.o
+                0x000000000000056e                display_task
+ .text.LOG_itoa
+                0x00000000000005b0       0x54 obj\log.o
+ .text._puts    0x0000000000000604       0x22 obj\log.o
+ .text.LOG      0x0000000000000626       0xa6 obj\log.o
+                0x0000000000000626                LOG
+ .text.main     0x00000000000006cc       0x2a obj\main.o
+                0x00000000000006cc                main
+ .text.handle_reset
+                0x00000000000006f6       0x8e obj\startup_ch32v003.o
+                0x00000000000006f6                handle_reset
+ .text._unhandled
+                0x0000000000000784       0x12 obj\sys_it.o
+ .text.NMI_Handler
+                0x0000000000000796       0x36 obj\sys_it.o
+                0x0000000000000796                NMI_Handler
+ .text.HardFault_Handler
+                0x00000000000007cc       0x36 obj\sys_it.o
+                0x00000000000007cc                HardFault_Handler
+ .text.SW_Handler
+                0x0000000000000802       0x36 obj\sys_it.o
+                0x0000000000000802                SW_Handler
+ .text.WWDG_IRQHandler
+                0x0000000000000838       0x36 obj\sys_it.o
+                0x0000000000000838                WWDG_IRQHandler
+ .text.PVD_IRQHandler
+                0x000000000000086e       0x36 obj\sys_it.o
+                0x000000000000086e                PVD_IRQHandler
+ .text.FLASH_IRQHandler
+                0x00000000000008a4       0x36 obj\sys_it.o
+                0x00000000000008a4                FLASH_IRQHandler
+ .text.RCC_IRQHandler
+                0x00000000000008da       0x36 obj\sys_it.o
+                0x00000000000008da                RCC_IRQHandler
+ .text.EXTI7_0_IRQHandler
+                0x0000000000000910       0x36 obj\sys_it.o
+                0x0000000000000910                EXTI7_0_IRQHandler
+ .text.AWU_IRQHandler
+                0x0000000000000946       0x36 obj\sys_it.o
+                0x0000000000000946                AWU_IRQHandler
+ .text.DMA1_Channel1_IRQHandler
+                0x000000000000097c       0x36 obj\sys_it.o
+                0x000000000000097c                DMA1_Channel1_IRQHandler
+ .text.DMA1_Channel2_IRQHandler
+                0x00000000000009b2       0x36 obj\sys_it.o
+                0x00000000000009b2                DMA1_Channel2_IRQHandler
+ .text.DMA1_Channel3_IRQHandler
+                0x00000000000009e8       0x36 obj\sys_it.o
+                0x00000000000009e8                DMA1_Channel3_IRQHandler
+ .text.DMA1_Channel4_IRQHandler
+                0x0000000000000a1e       0x36 obj\sys_it.o
+                0x0000000000000a1e                DMA1_Channel4_IRQHandler
+ .text.DMA1_Channel5_IRQHandler
+                0x0000000000000a54       0x36 obj\sys_it.o
+                0x0000000000000a54                DMA1_Channel5_IRQHandler
+ .text.DMA1_Channel6_IRQHandler
+                0x0000000000000a8a       0x36 obj\sys_it.o
+                0x0000000000000a8a                DMA1_Channel6_IRQHandler
+ .text.DMA1_Channel7_IRQHandler
+                0x0000000000000ac0       0x36 obj\sys_it.o
+                0x0000000000000ac0                DMA1_Channel7_IRQHandler
+ .text.ADC1_IRQHandler
+                0x0000000000000af6       0x36 obj\sys_it.o
+                0x0000000000000af6                ADC1_IRQHandler
+ .text.I2C1_EV_IRQHandler
+                0x0000000000000b2c       0x36 obj\sys_it.o
+                0x0000000000000b2c                I2C1_EV_IRQHandler
+ .text.I2C1_ER_IRQHandler
+                0x0000000000000b62       0x36 obj\sys_it.o
+                0x0000000000000b62                I2C1_ER_IRQHandler
+ .text.SPI1_IRQHandler
+                0x0000000000000b98       0x36 obj\sys_it.o
+                0x0000000000000b98                SPI1_IRQHandler
+ .text.TIM1_BRK_IRQHandler
+                0x0000000000000bce       0x36 obj\sys_it.o
+                0x0000000000000bce                TIM1_BRK_IRQHandler
+ .text.TIM1_UP_IRQHandler
+                0x0000000000000c04       0x36 obj\sys_it.o
+                0x0000000000000c04                TIM1_UP_IRQHandler
+ .text.TIM1_TRG_COM_IRQHandler
+                0x0000000000000c3a       0x36 obj\sys_it.o
+                0x0000000000000c3a                TIM1_TRG_COM_IRQHandler
+ .text.TIM1_CC_IRQHandler
+                0x0000000000000c70       0x36 obj\sys_it.o
+                0x0000000000000c70                TIM1_CC_IRQHandler
+ .text.TIM2_IRQHandler
+                0x0000000000000ca6       0x36 obj\sys_it.o
+                0x0000000000000ca6                TIM2_IRQHandler
+ .text.__register_exitproc
+                0x0000000000000cdc        0xc obj\sys_it.o
+                0x0000000000000cdc                __register_exitproc
+ .text.nvm_init
+                0x0000000000000ce8       0xb2 obj\nvm.o
+                0x0000000000000ce8                nvm_init
+ .text.nvm_task
+                0x0000000000000d9a      0x172 obj\nvm.o
+                0x0000000000000d9a                nvm_task
+ .text._consist_check
+                0x0000000000000f0c       0x54 obj\queue.o
+ .text.queue_init
+                0x0000000000000f60       0x4a obj\queue.o
+                0x0000000000000f60                queue_init
+ .text.queue_write
+                0x0000000000000faa       0x6e obj\queue.o
+                0x0000000000000faa                queue_write
+ .text.queue_remove
+                0x0000000000001018       0x4e obj\queue.o
+                0x0000000000001018                queue_remove
+ .text.scheduler_loop
+                0x0000000000001066      0x260 obj\scheduler.o
+                0x0000000000001066                scheduler_loop
+ .text.SysTick_Handler
+                0x00000000000012c6       0x68 obj\scheduler.o
+                0x00000000000012c6                SysTick_Handler
+ .text.scheduler_getUptime
+                0x000000000000132e        0x6 obj\scheduler.o
+                0x000000000000132e                scheduler_getUptime
+ .text.spi_init
+                0x0000000000001334       0x36 obj\spi.o
+                0x0000000000001334                spi_init
+ .text.assert_halt
+                0x000000000000136a       0x1c obj\uart.o
+                0x000000000000136a                assert_halt
+ .text.uart_init
+                0x0000000000001386       0x6a obj\uart.o
+                0x0000000000001386                uart_init
+ .text.uart_write
+                0x00000000000013f0       0x42 obj\uart.o
+                0x00000000000013f0                uart_write
+ .text.uart_putchar
+                0x0000000000001432       0x16 obj\uart.o
+                0x0000000000001432                uart_putchar
+ .text.USART1_IRQHandler
+                0x0000000000001448       0xae obj\uart.o
+                0x0000000000001448                USART1_IRQHandler
+ .text.fletcher8
+                0x00000000000014f6       0x68 obj\utility.o
+                0x00000000000014f6                fletcher8
+ .text.bin2u32L
+                0x000000000000155e       0x1e obj\utility.o
+                0x000000000000155e                bin2u32L
+ .text.wdt_init
+                0x000000000000157c       0x22 obj\wdt.o
+                0x000000000000157c                wdt_init
+ .text.wdt_task
+                0x000000000000159e       0x10 obj\wdt.o
+                0x000000000000159e                wdt_task
+ .text.atexit   0x00000000000015ae        0xc d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-atexit.o)
+                0x00000000000015ae                atexit
+ .text.__libc_fini_array
+                0x00000000000015ba       0x36 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-fini.o)
+                0x00000000000015ba                __libc_fini_array
+ .text.__libc_init_array
+                0x00000000000015f0       0x72 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-init.o)
+                0x00000000000015f0                __libc_init_array
+ .text.memcmp   0x0000000000001662       0x26 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-memcmp.o)
+                0x0000000000001662                memcmp
+ .text.strnlen  0x0000000000001688       0x18 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-strnlen.o)
+                0x0000000000001688                strnlen
+ *(.rodata)
+ *(.rodata*)
+ *fill*         0x00000000000016a0        0x0 
+ .rodata.PORT_MAP
+                0x00000000000016a0        0xc obj\dio.o
+ .rodata.LOG.str1.4
+                0x00000000000016ac        0x3 obj\log.o
+ *fill*         0x00000000000016af        0x1 
+ .rodata.scheduler_loop.str1.4
+                0x00000000000016b0        0xa obj\scheduler.o
+ *(.gnu.linkonce.t.*)
+                0x00000000000016bc                . = ALIGN (0x4)
+ *fill*         0x00000000000016ba        0x2 
+
+.rela.dyn       0x00000000000016bc        0x0
+ .rela.init     0x00000000000016bc        0x0 obj\adcFilter.o
+ .rela.text.handle_reset
+                0x00000000000016bc        0x0 obj\adcFilter.o
+ .rela.text.__libc_fini_array
+                0x00000000000016bc        0x0 obj\adcFilter.o
+ .rela.text.__libc_init_array
+                0x00000000000016bc        0x0 obj\adcFilter.o
+
+.fini           0x00000000000016bc        0x0
+ *(SORT_NONE(.fini))
+                0x00000000000016bc                . = ALIGN (0x4)
+                [!provide]                        PROVIDE (_etext = .)
+                [!provide]                        PROVIDE (_eitcm = .)
+
+.preinit_array  0x00000000000016bc        0x0
+                0x00000000000016bc                PROVIDE (__preinit_array_start = .)
+ *(.preinit_array)
+                0x00000000000016bc                PROVIDE (__preinit_array_end = .)
+
+.init_array     0x00000000000016bc        0x0
+                0x00000000000016bc                PROVIDE (__init_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+                0x00000000000016bc                PROVIDE (__init_array_end = .)
+
+.fini_array     0x00000000000016bc        0x0
+                0x00000000000016bc                PROVIDE (__fini_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+                0x00000000000016bc                PROVIDE (__fini_array_end = .)
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *(.dtors)
+
+.dalign         0x0000000020000000        0x0 load address 0x00000000000016bc
+                0x0000000020000000                . = ALIGN (0x4)
+                0x0000000020000000                PROVIDE (_data_vma = .)
+
+.dlalign        0x00000000000016bc        0x0
+                0x00000000000016bc                . = ALIGN (0x4)
+                0x00000000000016bc                PROVIDE (_data_lma = .)
+
+.data           0x0000000020000000       0x88 load address 0x00000000000016bc
+                0x0000000020000000                . = ALIGN (0x4)
+ *(.gnu.linkonce.r.*)
+ *(.data .data.*)
+ .data.tasks    0x0000000020000000       0x54 obj\scheduler.o
+ *(.gnu.linkonce.d.*)
+                0x0000000020000058                . = ALIGN (0x8)
+ *fill*         0x0000000020000054        0x4 
+                0x0000000020000858                PROVIDE (__global_pointer$ = (. + 0x800))
+ *(.sdata .sdata.*)
+ .sdata.filterDB
+                0x0000000020000058        0x6 obj\adcFilter.o
+ *fill*         0x000000002000005e        0x2 
+ .sdata.debDB   0x0000000020000060        0x4 obj\debounce.o
+ .sdata.globalCanary
+                0x0000000020000064        0x1 obj\scheduler.o
+                0x0000000020000064                globalCanary
+ *(.sdata2*)
+ *(.gnu.linkonce.s.*)
+                0x0000000020000068                . = ALIGN (0x8)
+ *fill*         0x0000000020000065        0x3 
+ *(.srodata.cst16)
+ *(.srodata.cst8)
+ *(.srodata.cst4)
+ *(.srodata.cst2)
+ *(.srodata .srodata.*)
+ .srodata.LUT_DDR_OUT
+                0x0000000020000068        0x6 obj\dio.o
+ *fill*         0x000000002000006e        0x2 
+ .srodata.LUT_DDR_IN
+                0x0000000020000070        0x2 obj\dio.o
+ *fill*         0x0000000020000072        0x2 
+ .srodata.nameLUT
+                0x0000000020000074        0x5 obj\log.o
+ *fill*         0x0000000020000079        0x3 
+ .srodata.nvPageAddr
+                0x000000002000007c        0x8 obj\nvm.o
+ .srodata.LOG_NAME
+                0x0000000020000084        0x4 obj\scheduler.o
+                0x0000000020000088                . = ALIGN (0x4)
+                0x0000000020000088                PROVIDE (_edata = .)
+
+.bss            0x0000000020000088       0xf0 load address 0x0000000000001744
+                0x0000000020000088                . = ALIGN (0x4)
+                0x0000000020000088                PROVIDE (_sbss = .)
+ *(.sbss*)
+ .sbss.appCnt.0
+                0x0000000020000088        0x4 obj\app.o
+ .sbss.appMod   0x000000002000008c        0x4 obj\app.o
+                0x000000002000008c                appMod
+ .sbss.heartbeat_cnt.0
+                0x0000000020000090        0x1 obj\displayApp.o
+ *fill*         0x0000000020000091        0x3 
+ .sbss.nvMod    0x0000000020000094        0x3 obj\nvm.o
+ *(.gnu.linkonce.sb.*)
+ *(.bss*)
+ *fill*         0x0000000020000097        0x1 
+ .bss.buttonDB  0x0000000020000098       0x10 obj\button.o
+ .bss.nvBlob    0x00000000200000a8       0x40 obj\nvm.o
+ .bss.schMod    0x00000000200000e8       0x14 obj\scheduler.o
+ .bss.uartMod   0x00000000200000fc       0x7c obj\uart.o
+ *(.gnu.linkonce.b.*)
+ *(COMMON*)
+                0x0000000020000178                . = ALIGN (0x4)
+                0x0000000020000178                PROVIDE (_ebss = .)
+                [!provide]                        PROVIDE (_end = _ebss)
+                [!provide]                        PROVIDE (end = .)
+
+.stack          0x0000000020000700      0x100
+                [!provide]                        PROVIDE (_heap_end = .)
+                0x0000000020000700                . = ALIGN (0x4)
+                [!provide]                        PROVIDE (_susrstack = .)
+                0x0000000020000800                . = (. + __stack_size)
+ *fill*         0x0000000020000700      0x100 
+                0x0000000020000800                PROVIDE (_eusrstack = .)
+LOAD obj\adcFilter.o
+LOAD obj\adc.o
+LOAD obj\app.o
+LOAD obj\button.o
+LOAD obj\clock.o
+LOAD obj\debounce.o
+LOAD obj\dio.o
+LOAD obj\displayApp.o
+LOAD obj\log.o
+LOAD obj\main.o
+LOAD obj\startup_ch32v003.o
+LOAD obj\sys_it.o
+LOAD obj\nvm.o
+LOAD obj\pwm.o
+LOAD obj\queue.o
+LOAD obj\scheduler.o
+LOAD obj\spi.o
+LOAD obj\uart.o
+LOAD obj\utility.o
+LOAD obj\wdt.o
+LOAD d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32ec/ilp32e\libgcc.a
+LOAD d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a
+LOAD d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libc_nano.a
+LOAD d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32ec/ilp32e\libgcc.a
+START GROUP
+LOAD d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32ec/ilp32e\libgcc.a
+LOAD d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libc_nano.a
+LOAD d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libnosys.a
+END GROUP
+START GROUP
+LOAD d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32ec/ilp32e\libgcc.a
+LOAD d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libc_nano.a
+LOAD d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libnosys.a
+END GROUP
+OUTPUT(proj.elf elf32-littleriscv)
+
+.comment        0x0000000000000000       0x33
+ .comment       0x0000000000000000       0x33 obj\adcFilter.o
+                                         0x34 (size before relaxing)
+ .comment       0x0000000000000033       0x34 obj\adc.o
+ .comment       0x0000000000000033       0x34 obj\app.o
+ .comment       0x0000000000000033       0x34 obj\button.o
+ .comment       0x0000000000000033       0x34 obj\clock.o
+ .comment       0x0000000000000033       0x34 obj\debounce.o
+ .comment       0x0000000000000033       0x34 obj\dio.o
+ .comment       0x0000000000000033       0x34 obj\displayApp.o
+ .comment       0x0000000000000033       0x34 obj\log.o
+ .comment       0x0000000000000033       0x34 obj\main.o
+ .comment       0x0000000000000033       0x34 obj\sys_it.o
+ .comment       0x0000000000000033       0x34 obj\nvm.o
+ .comment       0x0000000000000033       0x34 obj\queue.o
+ .comment       0x0000000000000033       0x34 obj\scheduler.o
+ .comment       0x0000000000000033       0x34 obj\spi.o
+ .comment       0x0000000000000033       0x34 obj\uart.o
+ .comment       0x0000000000000033       0x34 obj\utility.o
+ .comment       0x0000000000000033       0x34 obj\wdt.o
+ .comment       0x0000000000000033       0x34 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-atexit.o)
+ .comment       0x0000000000000033       0x34 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-fini.o)
+ .comment       0x0000000000000033       0x34 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-init.o)
+ .comment       0x0000000000000033       0x34 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-memcmp.o)
+ .comment       0x0000000000000033       0x34 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-strnlen.o)
+
+.riscv.attributes
+                0x0000000000000000       0x2e
+ .riscv.attributes
+                0x0000000000000000       0x21 obj\adcFilter.o
+ .riscv.attributes
+                0x0000000000000021       0x21 obj\adc.o
+ .riscv.attributes
+                0x0000000000000042       0x21 obj\app.o
+ .riscv.attributes
+                0x0000000000000063       0x21 obj\button.o
+ .riscv.attributes
+                0x0000000000000084       0x21 obj\clock.o
+ .riscv.attributes
+                0x00000000000000a5       0x21 obj\debounce.o
+ .riscv.attributes
+                0x00000000000000c6       0x21 obj\dio.o
+ .riscv.attributes
+                0x00000000000000e7       0x21 obj\displayApp.o
+ .riscv.attributes
+                0x0000000000000108       0x21 obj\log.o
+ .riscv.attributes
+                0x0000000000000129       0x21 obj\main.o
+ .riscv.attributes
+                0x000000000000014a       0x2c obj\startup_ch32v003.o
+ .riscv.attributes
+                0x0000000000000176       0x25 obj\sys_it.o
+ .riscv.attributes
+                0x000000000000019b       0x21 obj\nvm.o
+ .riscv.attributes
+                0x00000000000001bc       0x2e obj\queue.o
+ .riscv.attributes
+                0x00000000000001ea       0x2e obj\scheduler.o
+ .riscv.attributes
+                0x0000000000000218       0x21 obj\spi.o
+ .riscv.attributes
+                0x0000000000000239       0x2e obj\uart.o
+ .riscv.attributes
+                0x0000000000000267       0x21 obj\utility.o
+ .riscv.attributes
+                0x0000000000000288       0x21 obj\wdt.o
+ .riscv.attributes
+                0x00000000000002a9       0x1f d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32ec/ilp32e\libgcc.a(muldi3.o)
+ .riscv.attributes
+                0x00000000000002c8       0x1f d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/rv32ec/ilp32e\libgcc.a(div.o)
+ .riscv.attributes
+                0x00000000000002e7       0x21 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-atexit.o)
+ .riscv.attributes
+                0x0000000000000308       0x21 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-fini.o)
+ .riscv.attributes
+                0x0000000000000329       0x21 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-init.o)
+ .riscv.attributes
+                0x000000000000034a       0x21 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-memcmp.o)
+ .riscv.attributes
+                0x000000000000036b       0x21 d:/progs/gcc_riscv_v12/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/rv32ec/ilp32e\libg_nano.a(lib_a-strnlen.o)

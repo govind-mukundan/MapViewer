@@ -399,14 +399,14 @@ namespace MapViewer
             if (txtBx_ElfFilepath.Text == "" || !File.Exists(txtBx_ElfFilepath.Text))
             {
                 MessageBox.Show("Please enter a valid ELF file path for symbol analysis!", "Gratutious Advice", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //hide_sym_column();
-                //return;
+                hide_sym_column();
+                return;
             }
             if (BINUTIL_READ_ELF == "" || !File.Exists(BINUTIL_READ_ELF) ||
                 BINUTIL_NM == "" || !File.Exists(BINUTIL_NM))
             {
                 MessageBox.Show("Please enter a valid ObjectDump and NM path for symbol analysis!\n Click the Settings button!", "Gratutious Advice", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //return;
+                return;
             }
 
             // Parse the dwarf information to get all the compilation units
