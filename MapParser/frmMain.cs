@@ -1,4 +1,4 @@
-﻿#define CREF
+#define CREF
 
 #region copyright
 /*
@@ -551,7 +551,7 @@ namespace MapViewer
             this.BeginInvoke(new MethodInvoker(() =>
             {
                 // Hide Symbol view if there's no elf file
-                tlp_Main.ColumnStyles[1].Width = 0;
+                this.leftLayoutPanel.ColumnStyles[1].Width = 0;
             }));
         }
 

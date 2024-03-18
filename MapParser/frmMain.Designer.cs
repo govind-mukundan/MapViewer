@@ -1,4 +1,4 @@
-﻿namespace MapViewer
+namespace MapViewer
 {
     partial class MapViewer
     {
@@ -59,7 +59,6 @@
             this.olvColumn7 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.colFileName = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.OFD = new System.Windows.Forms.OpenFileDialog();
-            this.tlp_Main = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.txtBx_ElfFilepath = new System.Windows.Forms.TextBox();
@@ -86,12 +85,14 @@
             this.tabpg_deps = new System.Windows.Forms.TabPage();
             this.olv_Cref = new BrightIdeasSoftware.TreeListView();
             this.tlv_ColModule = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.mainSplitLayoutContainer = new System.Windows.Forms.SplitContainer();
+            this.leftLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.rightLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olv_ModuleSum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.olv_ModuleView)).BeginInit();
             this.cms_export.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olv_SymbolView)).BeginInit();
-            this.tlp_Main.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -104,6 +105,12 @@
             this.tabpg_syms.SuspendLayout();
             this.tabpg_deps.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olv_Cref)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainSplitLayoutContainer)).BeginInit();
+            this.mainSplitLayoutContainer.Panel1.SuspendLayout();
+            this.mainSplitLayoutContainer.Panel2.SuspendLayout();
+            this.mainSplitLayoutContainer.SuspendLayout();
+            this.leftLayoutPanel.SuspendLayout();
+            this.rightLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // chkBx_ShowStatic
@@ -417,26 +424,6 @@
             this.colFileName.HeaderFont = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
             this.colFileName.Text = "MODULE";
             this.colFileName.Width = 400;
-            // 
-            // tlp_Main
-            // 
-            this.tlp_Main.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlp_Main.ColumnCount = 2;
-            this.tlp_Main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.55556F));
-            this.tlp_Main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.44444F));
-            this.tlp_Main.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.tlp_Main.Controls.Add(this.olv_ModuleView, 0, 1);
-            this.tlp_Main.Controls.Add(this.tableLayoutPanel4, 1, 0);
-            this.tlp_Main.Controls.Add(this.groupBox5, 1, 1);
-            this.tlp_Main.Location = new System.Drawing.Point(3, 1);
-            this.tlp_Main.Name = "tlp_Main";
-            this.tlp_Main.RowCount = 2;
-            this.tlp_Main.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlp_Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlp_Main.Size = new System.Drawing.Size(1113, 510);
-            this.tlp_Main.TabIndex = 35;
             // 
             // tableLayoutPanel2
             // 
@@ -753,6 +740,7 @@
             this.olv_Cref.Cursor = System.Windows.Forms.Cursors.Default;
             this.olv_Cref.EmptyListMsg = "Please link with the -cref option and select a module!";
             this.olv_Cref.EmptyListMsgFont = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.olv_Cref.HideSelection = false;
             this.olv_Cref.Location = new System.Drawing.Point(6, 6);
             this.olv_Cref.Name = "olv_Cref";
             this.olv_Cref.ShowGroups = false;
@@ -773,12 +761,63 @@
             this.tlv_ColModule.Text = "MODULE";
             this.tlv_ColModule.Width = 1000;
             // 
+            // mainSplitLayoutContainer
+            // 
+            this.mainSplitLayoutContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainSplitLayoutContainer.Location = new System.Drawing.Point(0, 0);
+            this.mainSplitLayoutContainer.Name = "mainSplitLayoutContainer";
+            // 
+            // mainSplitLayoutContainer.Panel1
+            // 
+            this.mainSplitLayoutContainer.Panel1.Controls.Add(this.leftLayoutPanel);
+            this.mainSplitLayoutContainer.Panel1MinSize = 475;
+            // 
+            // mainSplitLayoutContainer.Panel2
+            // 
+            this.mainSplitLayoutContainer.Panel2.Controls.Add(this.rightLayoutPanel);
+            this.mainSplitLayoutContainer.Panel2MinSize = 500;
+            this.mainSplitLayoutContainer.Size = new System.Drawing.Size(1117, 509);
+            this.mainSplitLayoutContainer.SplitterDistance = 485;
+            this.mainSplitLayoutContainer.TabIndex = 36;
+            // 
+            // leftLayoutPanel
+            // 
+            this.leftLayoutPanel.ColumnCount = 1;
+            this.leftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.leftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.leftLayoutPanel.Controls.Add(this.tableLayoutPanel2, 0, 0);
+            this.leftLayoutPanel.Controls.Add(this.olv_ModuleView, 0, 1);
+            this.leftLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.leftLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.leftLayoutPanel.Name = "leftLayoutPanel";
+            this.leftLayoutPanel.RowCount = 2;
+            this.leftLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 155F));
+            this.leftLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.leftLayoutPanel.Size = new System.Drawing.Size(485, 509);
+            this.leftLayoutPanel.TabIndex = 0;
+            // 
+            // rightLayoutPanel
+            // 
+            this.rightLayoutPanel.ColumnCount = 1;
+            this.rightLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.rightLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.rightLayoutPanel.Controls.Add(this.tableLayoutPanel4, 0, 0);
+            this.rightLayoutPanel.Controls.Add(this.groupBox5, 0, 1);
+            this.rightLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rightLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.rightLayoutPanel.Name = "rightLayoutPanel";
+            this.rightLayoutPanel.RowCount = 2;
+            this.rightLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 155F));
+            this.rightLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.rightLayoutPanel.Size = new System.Drawing.Size(628, 509);
+            this.rightLayoutPanel.TabIndex = 0;
+            // 
             // MapViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1117, 509);
-            this.Controls.Add(this.tlp_Main);
+            this.Controls.Add(this.mainSplitLayoutContainer);
             this.Font = new System.Drawing.Font("Consolas", 8.25F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MapViewer";
@@ -790,7 +829,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.olv_ModuleView)).EndInit();
             this.cms_export.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.olv_SymbolView)).EndInit();
-            this.tlp_Main.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
@@ -807,6 +845,12 @@
             this.tabpg_syms.ResumeLayout(false);
             this.tabpg_deps.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.olv_Cref)).EndInit();
+            this.mainSplitLayoutContainer.Panel1.ResumeLayout(false);
+            this.mainSplitLayoutContainer.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.mainSplitLayoutContainer)).EndInit();
+            this.mainSplitLayoutContainer.ResumeLayout(false);
+            this.leftLayoutPanel.ResumeLayout(false);
+            this.rightLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -837,7 +881,6 @@
         private BrightIdeasSoftware.OLVColumn olvColumn1;
         private BrightIdeasSoftware.OLVColumn olvColumn2;
         private BrightIdeasSoftware.OLVColumn olvColumn3;
-        private System.Windows.Forms.TableLayoutPanel tlp_Main;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -869,6 +912,9 @@
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cSVToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hTMLToolStripMenuItem;
+        private System.Windows.Forms.SplitContainer mainSplitLayoutContainer;
+        private System.Windows.Forms.TableLayoutPanel leftLayoutPanel;
+        private System.Windows.Forms.TableLayoutPanel rightLayoutPanel;
     }
 }
 
