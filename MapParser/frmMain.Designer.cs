@@ -389,6 +389,7 @@
             this.columnGlobal.AspectName = "GlobalScope";
             this.columnGlobal.HeaderFont = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
             this.columnGlobal.Text = "GLOBAL";
+            this.columnGlobal.ToolTipText = "G = Global\nS = Static\nH = Hidden";
             // 
             // symAddrColumn
             // 
