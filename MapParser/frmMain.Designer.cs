@@ -1,4 +1,4 @@
-namespace MapViewer
+﻿namespace MapViewer
 {
     partial class MapViewer
     {
@@ -128,7 +128,7 @@ namespace MapViewer
             // 
             // btn_BrowseMapFile
             // 
-            this.btn_BrowseMapFile.Location = new System.Drawing.Point(457, 3);
+            this.btn_BrowseMapFile.Location = new System.Drawing.Point(339, 3);
             this.btn_BrowseMapFile.Name = "btn_BrowseMapFile";
             this.btn_BrowseMapFile.Size = new System.Drawing.Size(37, 22);
             this.btn_BrowseMapFile.TabIndex = 30;
@@ -139,9 +139,9 @@ namespace MapViewer
             // btn_Analyze
             // 
             this.btn_Analyze.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_Analyze.Location = new System.Drawing.Point(517, 3);
+            this.btn_Analyze.Location = new System.Drawing.Point(383, 3);
             this.btn_Analyze.Name = "btn_Analyze";
-            this.btn_Analyze.Size = new System.Drawing.Size(86, 22);
+            this.btn_Analyze.Size = new System.Drawing.Size(87, 22);
             this.btn_Analyze.TabIndex = 29;
             this.btn_Analyze.Text = "Analyze";
             this.btn_Analyze.UseVisualStyleBackColor = true;
@@ -152,7 +152,7 @@ namespace MapViewer
             this.txtBx_MapFilepath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBx_MapFilepath.Location = new System.Drawing.Point(3, 4);
             this.txtBx_MapFilepath.Name = "txtBx_MapFilepath";
-            this.txtBx_MapFilepath.Size = new System.Drawing.Size(448, 20);
+            this.txtBx_MapFilepath.Size = new System.Drawing.Size(330, 20);
             this.txtBx_MapFilepath.TabIndex = 28;
             // 
             // groupBox9
@@ -165,7 +165,7 @@ namespace MapViewer
             this.groupBox9.Controls.Add(this.rb_RegexFilter);
             this.groupBox9.Location = new System.Drawing.Point(3, 65);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(606, 79);
+            this.groupBox9.Size = new System.Drawing.Size(473, 82);
             this.groupBox9.TabIndex = 27;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Filter";
@@ -176,7 +176,7 @@ namespace MapViewer
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxFilterSimple.Location = new System.Drawing.Point(7, 31);
             this.textBoxFilterSimple.Name = "textBoxFilterSimple";
-            this.textBoxFilterSimple.Size = new System.Drawing.Size(374, 20);
+            this.textBoxFilterSimple.Size = new System.Drawing.Size(241, 20);
             this.textBoxFilterSimple.TabIndex = 0;
             this.textBoxFilterSimple.TextChanged += new System.EventHandler(this.textBoxFilterSimple_TextChanged);
             // 
@@ -194,7 +194,8 @@ namespace MapViewer
             this.olvColumn3});
             this.olv_ModuleSum.Cursor = System.Windows.Forms.Cursors.Default;
             this.olv_ModuleSum.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.olv_ModuleSum.Location = new System.Drawing.Point(387, 28);
+            this.olv_ModuleSum.HideSelection = false;
+            this.olv_ModuleSum.Location = new System.Drawing.Point(254, 31);
             this.olv_ModuleSum.Name = "olv_ModuleSum";
             this.olv_ModuleSum.SelectColumnsMenuStaysOpen = false;
             this.olv_ModuleSum.ShowGroups = false;
@@ -272,11 +273,12 @@ namespace MapViewer
             this.olv_ModuleView.ContextMenuStrip = this.cms_export;
             this.olv_ModuleView.Cursor = System.Windows.Forms.Cursors.Default;
             this.olv_ModuleView.FullRowSelect = true;
-            this.olv_ModuleView.Location = new System.Drawing.Point(3, 156);
+            this.olv_ModuleView.HideSelection = false;
+            this.olv_ModuleView.Location = new System.Drawing.Point(3, 158);
             this.olv_ModuleView.Name = "olv_ModuleView";
             this.olv_ModuleView.SelectColumnsMenuStaysOpen = false;
             this.olv_ModuleView.ShowGroups = false;
-            this.olv_ModuleView.Size = new System.Drawing.Size(612, 351);
+            this.olv_ModuleView.Size = new System.Drawing.Size(479, 351);
             this.olv_ModuleView.SortGroupItemsByPrimaryColumn = false;
             this.olv_ModuleView.Sorting = System.Windows.Forms.SortOrder.Descending;
             this.olv_ModuleView.TabIndex = 32;
@@ -319,7 +321,7 @@ namespace MapViewer
             this.cms_export.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exportToolStripMenuItem});
             this.cms_export.Name = "cms_export";
-            this.cms_export.Size = new System.Drawing.Size(131, 26);
+            this.cms_export.Size = new System.Drawing.Size(132, 26);
             this.cms_export.Opening += new System.ComponentModel.CancelEventHandler(this.cms_export_Opening);
             // 
             // exportToolStripMenuItem
@@ -328,20 +330,20 @@ namespace MapViewer
             this.cSVToolStripMenuItem,
             this.hTMLToolStripMenuItem});
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.exportToolStripMenuItem.Text = "Export as...";
             // 
             // cSVToolStripMenuItem
             // 
             this.cSVToolStripMenuItem.Name = "cSVToolStripMenuItem";
-            this.cSVToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.cSVToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.cSVToolStripMenuItem.Text = "CSV";
             this.cSVToolStripMenuItem.Click += new System.EventHandler(this.cSVToolStripMenuItem_Click);
             // 
             // hTMLToolStripMenuItem
             // 
             this.hTMLToolStripMenuItem.Name = "hTMLToolStripMenuItem";
-            this.hTMLToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.hTMLToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.hTMLToolStripMenuItem.Text = "HTML";
             this.hTMLToolStripMenuItem.Click += new System.EventHandler(this.hTMLToolStripMenuItem_Click);
             // 
@@ -368,11 +370,12 @@ namespace MapViewer
             this.olv_SymbolView.ContextMenuStrip = this.cms_export;
             this.olv_SymbolView.Cursor = System.Windows.Forms.Cursors.Default;
             this.olv_SymbolView.FullRowSelect = true;
+            this.olv_SymbolView.HideSelection = false;
             this.olv_SymbolView.Location = new System.Drawing.Point(0, 0);
             this.olv_SymbolView.Name = "olv_SymbolView";
             this.olv_SymbolView.SelectColumnsMenuStaysOpen = false;
             this.olv_SymbolView.ShowGroups = false;
-            this.olv_SymbolView.Size = new System.Drawing.Size(482, 332);
+            this.olv_SymbolView.Size = new System.Drawing.Size(615, 332);
             this.olv_SymbolView.SortGroupItemsByPrimaryColumn = false;
             this.olv_SymbolView.Sorting = System.Windows.Forms.SortOrder.Descending;
             this.olv_SymbolView.TabIndex = 33;
@@ -439,7 +442,7 @@ namespace MapViewer
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(612, 147);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(479, 147);
             this.tableLayoutPanel2.TabIndex = 35;
             // 
             // tableLayoutPanel3
@@ -448,7 +451,7 @@ namespace MapViewer
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 88.31169F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.68831F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 91F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 92F));
             this.tableLayoutPanel3.Controls.Add(this.txtBx_ElfFilepath, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.txtBx_MapFilepath, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.btn_Analyze, 2, 0);
@@ -460,7 +463,7 @@ namespace MapViewer
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(606, 56);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(473, 56);
             this.tableLayoutPanel3.TabIndex = 28;
             // 
             // txtBx_ElfFilepath
@@ -468,15 +471,15 @@ namespace MapViewer
             this.txtBx_ElfFilepath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBx_ElfFilepath.Location = new System.Drawing.Point(3, 32);
             this.txtBx_ElfFilepath.Name = "txtBx_ElfFilepath";
-            this.txtBx_ElfFilepath.Size = new System.Drawing.Size(448, 20);
+            this.txtBx_ElfFilepath.Size = new System.Drawing.Size(330, 20);
             this.txtBx_ElfFilepath.TabIndex = 31;
             // 
             // btn_Settings
             // 
             this.btn_Settings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_Settings.Location = new System.Drawing.Point(517, 31);
+            this.btn_Settings.Location = new System.Drawing.Point(383, 31);
             this.btn_Settings.Name = "btn_Settings";
-            this.btn_Settings.Size = new System.Drawing.Size(86, 22);
+            this.btn_Settings.Size = new System.Drawing.Size(87, 22);
             this.btn_Settings.TabIndex = 33;
             this.btn_Settings.Text = "Settings";
             this.btn_Settings.UseVisualStyleBackColor = true;
@@ -484,7 +487,7 @@ namespace MapViewer
             // 
             // btn_BrowseElfFile
             // 
-            this.btn_BrowseElfFile.Location = new System.Drawing.Point(457, 31);
+            this.btn_BrowseElfFile.Location = new System.Drawing.Point(339, 31);
             this.btn_BrowseElfFile.Name = "btn_BrowseElfFile";
             this.btn_BrowseElfFile.Size = new System.Drawing.Size(37, 22);
             this.btn_BrowseElfFile.TabIndex = 32;
@@ -503,13 +506,13 @@ namespace MapViewer
             this.tableLayoutPanel4.Controls.Add(this.groupBox3, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.groupBox2, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.olv_SymbolSum, 1, 1);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(621, 3);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 3;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(489, 147);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(622, 147);
             this.tableLayoutPanel4.TabIndex = 36;
             // 
             // groupBox1
@@ -522,7 +525,7 @@ namespace MapViewer
             this.groupBox1.Controls.Add(this.rb_RegexFilter2);
             this.groupBox1.Location = new System.Drawing.Point(3, 79);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(243, 73);
+            this.groupBox1.Size = new System.Drawing.Size(376, 68);
             this.groupBox1.TabIndex = 35;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filter";
@@ -530,9 +533,9 @@ namespace MapViewer
             // txtBx_SymFilter
             // 
             this.txtBx_SymFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBx_SymFilter.Location = new System.Drawing.Point(6, 24);
+            this.txtBx_SymFilter.Location = new System.Drawing.Point(6, 21);
             this.txtBx_SymFilter.Name = "txtBx_SymFilter";
-            this.txtBx_SymFilter.Size = new System.Drawing.Size(231, 20);
+            this.txtBx_SymFilter.Size = new System.Drawing.Size(364, 20);
             this.txtBx_SymFilter.TabIndex = 0;
             this.txtBx_SymFilter.TextChanged += new System.EventHandler(this.txtBx_SymFilter_TextChanged);
             // 
@@ -541,7 +544,7 @@ namespace MapViewer
             this.rb_SimpleFilter2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rb_SimpleFilter2.AutoSize = true;
             this.rb_SimpleFilter2.Checked = true;
-            this.rb_SimpleFilter2.Location = new System.Drawing.Point(6, 50);
+            this.rb_SimpleFilter2.Location = new System.Drawing.Point(6, 45);
             this.rb_SimpleFilter2.Name = "rb_SimpleFilter2";
             this.rb_SimpleFilter2.Size = new System.Drawing.Size(127, 17);
             this.rb_SimpleFilter2.TabIndex = 20;
@@ -553,7 +556,7 @@ namespace MapViewer
             // 
             this.rb_RegexFilter2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rb_RegexFilter2.AutoSize = true;
-            this.rb_RegexFilter2.Location = new System.Drawing.Point(136, 49);
+            this.rb_RegexFilter2.Location = new System.Drawing.Point(136, 44);
             this.rb_RegexFilter2.Name = "rb_RegexFilter2";
             this.rb_RegexFilter2.Size = new System.Drawing.Size(97, 17);
             this.rb_RegexFilter2.TabIndex = 21;
@@ -566,7 +569,7 @@ namespace MapViewer
             this.groupBox3.Controls.Add(this.lbl_DataSizeActual);
             this.groupBox3.Controls.Add(this.lbl_TextSizeActual);
             this.groupBox3.Controls.Add(this.lbl_BssSizeActual);
-            this.groupBox3.Location = new System.Drawing.Point(252, 3);
+            this.groupBox3.Location = new System.Drawing.Point(385, 3);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(234, 70);
             this.groupBox3.TabIndex = 35;
@@ -614,7 +617,7 @@ namespace MapViewer
             this.groupBox2.Margin = new System.Windows.Forms.Padding(0);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(0);
-            this.groupBox2.Size = new System.Drawing.Size(249, 76);
+            this.groupBox2.Size = new System.Drawing.Size(382, 76);
             this.groupBox2.TabIndex = 35;
             this.groupBox2.TabStop = false;
             // 
@@ -642,7 +645,8 @@ namespace MapViewer
             this.olvColumn8});
             this.olv_SymbolSum.Cursor = System.Windows.Forms.Cursors.Default;
             this.olv_SymbolSum.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.olv_SymbolSum.Location = new System.Drawing.Point(252, 89);
+            this.olv_SymbolSum.HideSelection = false;
+            this.olv_SymbolSum.Location = new System.Drawing.Point(385, 86);
             this.olv_SymbolSum.Name = "olv_SymbolSum";
             this.olv_SymbolSum.SelectColumnsMenuStaysOpen = false;
             this.olv_SymbolSum.ShowGroups = false;
@@ -685,9 +689,9 @@ namespace MapViewer
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox5.Controls.Add(this.tab_details);
-            this.groupBox5.Location = new System.Drawing.Point(621, 156);
+            this.groupBox5.Location = new System.Drawing.Point(3, 158);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(489, 351);
+            this.groupBox5.Size = new System.Drawing.Size(622, 351);
             this.groupBox5.TabIndex = 37;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "groupBox5";
@@ -702,7 +706,7 @@ namespace MapViewer
             this.tab_details.Location = new System.Drawing.Point(0, 0);
             this.tab_details.Name = "tab_details";
             this.tab_details.SelectedIndex = 0;
-            this.tab_details.Size = new System.Drawing.Size(486, 351);
+            this.tab_details.Size = new System.Drawing.Size(619, 351);
             this.tab_details.TabIndex = 22;
             // 
             // tabpg_syms
@@ -711,7 +715,7 @@ namespace MapViewer
             this.tabpg_syms.Location = new System.Drawing.Point(4, 22);
             this.tabpg_syms.Name = "tabpg_syms";
             this.tabpg_syms.Padding = new System.Windows.Forms.Padding(3);
-            this.tabpg_syms.Size = new System.Drawing.Size(478, 325);
+            this.tabpg_syms.Size = new System.Drawing.Size(611, 325);
             this.tabpg_syms.TabIndex = 0;
             this.tabpg_syms.Text = "Symbols";
             this.tabpg_syms.UseVisualStyleBackColor = true;
