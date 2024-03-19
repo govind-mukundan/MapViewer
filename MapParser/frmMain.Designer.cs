@@ -59,7 +59,6 @@
             this.olvColumn7 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.colFileName = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.OFD = new System.Windows.Forms.OpenFileDialog();
-            this.tlp_Main = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.txtBx_ElfFilepath = new System.Windows.Forms.TextBox();
@@ -86,12 +85,14 @@
             this.tabpg_deps = new System.Windows.Forms.TabPage();
             this.olv_Cref = new BrightIdeasSoftware.TreeListView();
             this.tlv_ColModule = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.mainSplitLayoutContainer = new System.Windows.Forms.SplitContainer();
+            this.leftLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.rightLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olv_ModuleSum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.olv_ModuleView)).BeginInit();
             this.cms_export.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olv_SymbolView)).BeginInit();
-            this.tlp_Main.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -104,6 +105,12 @@
             this.tabpg_syms.SuspendLayout();
             this.tabpg_deps.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olv_Cref)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainSplitLayoutContainer)).BeginInit();
+            this.mainSplitLayoutContainer.Panel1.SuspendLayout();
+            this.mainSplitLayoutContainer.Panel2.SuspendLayout();
+            this.mainSplitLayoutContainer.SuspendLayout();
+            this.leftLayoutPanel.SuspendLayout();
+            this.rightLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // chkBx_ShowStatic
@@ -121,7 +128,7 @@
             // 
             // btn_BrowseMapFile
             // 
-            this.btn_BrowseMapFile.Location = new System.Drawing.Point(457, 3);
+            this.btn_BrowseMapFile.Location = new System.Drawing.Point(339, 3);
             this.btn_BrowseMapFile.Name = "btn_BrowseMapFile";
             this.btn_BrowseMapFile.Size = new System.Drawing.Size(37, 22);
             this.btn_BrowseMapFile.TabIndex = 30;
@@ -132,9 +139,9 @@
             // btn_Analyze
             // 
             this.btn_Analyze.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_Analyze.Location = new System.Drawing.Point(517, 3);
+            this.btn_Analyze.Location = new System.Drawing.Point(383, 3);
             this.btn_Analyze.Name = "btn_Analyze";
-            this.btn_Analyze.Size = new System.Drawing.Size(86, 22);
+            this.btn_Analyze.Size = new System.Drawing.Size(87, 22);
             this.btn_Analyze.TabIndex = 29;
             this.btn_Analyze.Text = "Analyze";
             this.btn_Analyze.UseVisualStyleBackColor = true;
@@ -145,7 +152,7 @@
             this.txtBx_MapFilepath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBx_MapFilepath.Location = new System.Drawing.Point(3, 4);
             this.txtBx_MapFilepath.Name = "txtBx_MapFilepath";
-            this.txtBx_MapFilepath.Size = new System.Drawing.Size(448, 20);
+            this.txtBx_MapFilepath.Size = new System.Drawing.Size(330, 20);
             this.txtBx_MapFilepath.TabIndex = 28;
             // 
             // groupBox9
@@ -158,7 +165,7 @@
             this.groupBox9.Controls.Add(this.rb_RegexFilter);
             this.groupBox9.Location = new System.Drawing.Point(3, 65);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(606, 79);
+            this.groupBox9.Size = new System.Drawing.Size(473, 82);
             this.groupBox9.TabIndex = 27;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Filter";
@@ -169,7 +176,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxFilterSimple.Location = new System.Drawing.Point(7, 31);
             this.textBoxFilterSimple.Name = "textBoxFilterSimple";
-            this.textBoxFilterSimple.Size = new System.Drawing.Size(374, 20);
+            this.textBoxFilterSimple.Size = new System.Drawing.Size(241, 20);
             this.textBoxFilterSimple.TabIndex = 0;
             this.textBoxFilterSimple.TextChanged += new System.EventHandler(this.textBoxFilterSimple_TextChanged);
             // 
@@ -187,7 +194,8 @@
             this.olvColumn3});
             this.olv_ModuleSum.Cursor = System.Windows.Forms.Cursors.Default;
             this.olv_ModuleSum.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.olv_ModuleSum.Location = new System.Drawing.Point(387, 28);
+            this.olv_ModuleSum.HideSelection = false;
+            this.olv_ModuleSum.Location = new System.Drawing.Point(254, 31);
             this.olv_ModuleSum.Name = "olv_ModuleSum";
             this.olv_ModuleSum.SelectColumnsMenuStaysOpen = false;
             this.olv_ModuleSum.ShowGroups = false;
@@ -265,11 +273,12 @@
             this.olv_ModuleView.ContextMenuStrip = this.cms_export;
             this.olv_ModuleView.Cursor = System.Windows.Forms.Cursors.Default;
             this.olv_ModuleView.FullRowSelect = true;
-            this.olv_ModuleView.Location = new System.Drawing.Point(3, 156);
+            this.olv_ModuleView.HideSelection = false;
+            this.olv_ModuleView.Location = new System.Drawing.Point(3, 158);
             this.olv_ModuleView.Name = "olv_ModuleView";
             this.olv_ModuleView.SelectColumnsMenuStaysOpen = false;
             this.olv_ModuleView.ShowGroups = false;
-            this.olv_ModuleView.Size = new System.Drawing.Size(612, 351);
+            this.olv_ModuleView.Size = new System.Drawing.Size(479, 351);
             this.olv_ModuleView.SortGroupItemsByPrimaryColumn = false;
             this.olv_ModuleView.Sorting = System.Windows.Forms.SortOrder.Descending;
             this.olv_ModuleView.TabIndex = 32;
@@ -312,7 +321,7 @@
             this.cms_export.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exportToolStripMenuItem});
             this.cms_export.Name = "cms_export";
-            this.cms_export.Size = new System.Drawing.Size(131, 26);
+            this.cms_export.Size = new System.Drawing.Size(132, 26);
             this.cms_export.Opening += new System.ComponentModel.CancelEventHandler(this.cms_export_Opening);
             // 
             // exportToolStripMenuItem
@@ -321,20 +330,20 @@
             this.cSVToolStripMenuItem,
             this.hTMLToolStripMenuItem});
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.exportToolStripMenuItem.Text = "Export as...";
             // 
             // cSVToolStripMenuItem
             // 
             this.cSVToolStripMenuItem.Name = "cSVToolStripMenuItem";
-            this.cSVToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.cSVToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.cSVToolStripMenuItem.Text = "CSV";
             this.cSVToolStripMenuItem.Click += new System.EventHandler(this.cSVToolStripMenuItem_Click);
             // 
             // hTMLToolStripMenuItem
             // 
             this.hTMLToolStripMenuItem.Name = "hTMLToolStripMenuItem";
-            this.hTMLToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.hTMLToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.hTMLToolStripMenuItem.Text = "HTML";
             this.hTMLToolStripMenuItem.Click += new System.EventHandler(this.hTMLToolStripMenuItem_Click);
             // 
@@ -361,11 +370,12 @@
             this.olv_SymbolView.ContextMenuStrip = this.cms_export;
             this.olv_SymbolView.Cursor = System.Windows.Forms.Cursors.Default;
             this.olv_SymbolView.FullRowSelect = true;
+            this.olv_SymbolView.HideSelection = false;
             this.olv_SymbolView.Location = new System.Drawing.Point(0, 0);
             this.olv_SymbolView.Name = "olv_SymbolView";
             this.olv_SymbolView.SelectColumnsMenuStaysOpen = false;
             this.olv_SymbolView.ShowGroups = false;
-            this.olv_SymbolView.Size = new System.Drawing.Size(482, 332);
+            this.olv_SymbolView.Size = new System.Drawing.Size(615, 332);
             this.olv_SymbolView.SortGroupItemsByPrimaryColumn = false;
             this.olv_SymbolView.Sorting = System.Windows.Forms.SortOrder.Descending;
             this.olv_SymbolView.TabIndex = 33;
@@ -419,26 +429,6 @@
             this.colFileName.Text = "MODULE";
             this.colFileName.Width = 400;
             // 
-            // tlp_Main
-            // 
-            this.tlp_Main.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlp_Main.ColumnCount = 2;
-            this.tlp_Main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.55556F));
-            this.tlp_Main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.44444F));
-            this.tlp_Main.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.tlp_Main.Controls.Add(this.olv_ModuleView, 0, 1);
-            this.tlp_Main.Controls.Add(this.tableLayoutPanel4, 1, 0);
-            this.tlp_Main.Controls.Add(this.groupBox5, 1, 1);
-            this.tlp_Main.Location = new System.Drawing.Point(3, 1);
-            this.tlp_Main.Name = "tlp_Main";
-            this.tlp_Main.RowCount = 2;
-            this.tlp_Main.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlp_Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlp_Main.Size = new System.Drawing.Size(1113, 510);
-            this.tlp_Main.TabIndex = 35;
-            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -453,7 +443,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(612, 147);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(479, 147);
             this.tableLayoutPanel2.TabIndex = 35;
             // 
             // tableLayoutPanel3
@@ -462,7 +452,7 @@
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 88.31169F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.68831F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 91F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 92F));
             this.tableLayoutPanel3.Controls.Add(this.txtBx_ElfFilepath, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.txtBx_MapFilepath, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.btn_Analyze, 2, 0);
@@ -474,7 +464,7 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(606, 56);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(473, 56);
             this.tableLayoutPanel3.TabIndex = 28;
             // 
             // txtBx_ElfFilepath
@@ -482,15 +472,15 @@
             this.txtBx_ElfFilepath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBx_ElfFilepath.Location = new System.Drawing.Point(3, 32);
             this.txtBx_ElfFilepath.Name = "txtBx_ElfFilepath";
-            this.txtBx_ElfFilepath.Size = new System.Drawing.Size(448, 20);
+            this.txtBx_ElfFilepath.Size = new System.Drawing.Size(330, 20);
             this.txtBx_ElfFilepath.TabIndex = 31;
             // 
             // btn_Settings
             // 
             this.btn_Settings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_Settings.Location = new System.Drawing.Point(517, 31);
+            this.btn_Settings.Location = new System.Drawing.Point(383, 31);
             this.btn_Settings.Name = "btn_Settings";
-            this.btn_Settings.Size = new System.Drawing.Size(86, 22);
+            this.btn_Settings.Size = new System.Drawing.Size(87, 22);
             this.btn_Settings.TabIndex = 33;
             this.btn_Settings.Text = "Settings";
             this.btn_Settings.UseVisualStyleBackColor = true;
@@ -498,7 +488,7 @@
             // 
             // btn_BrowseElfFile
             // 
-            this.btn_BrowseElfFile.Location = new System.Drawing.Point(457, 31);
+            this.btn_BrowseElfFile.Location = new System.Drawing.Point(339, 31);
             this.btn_BrowseElfFile.Name = "btn_BrowseElfFile";
             this.btn_BrowseElfFile.Size = new System.Drawing.Size(37, 22);
             this.btn_BrowseElfFile.TabIndex = 32;
@@ -517,13 +507,13 @@
             this.tableLayoutPanel4.Controls.Add(this.groupBox3, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.groupBox2, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.olv_SymbolSum, 1, 1);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(621, 3);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 3;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(489, 147);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(622, 147);
             this.tableLayoutPanel4.TabIndex = 36;
             // 
             // groupBox1
@@ -536,7 +526,7 @@
             this.groupBox1.Controls.Add(this.rb_RegexFilter2);
             this.groupBox1.Location = new System.Drawing.Point(3, 79);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(243, 73);
+            this.groupBox1.Size = new System.Drawing.Size(376, 68);
             this.groupBox1.TabIndex = 35;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filter";
@@ -544,9 +534,9 @@
             // txtBx_SymFilter
             // 
             this.txtBx_SymFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBx_SymFilter.Location = new System.Drawing.Point(6, 24);
+            this.txtBx_SymFilter.Location = new System.Drawing.Point(6, 21);
             this.txtBx_SymFilter.Name = "txtBx_SymFilter";
-            this.txtBx_SymFilter.Size = new System.Drawing.Size(231, 20);
+            this.txtBx_SymFilter.Size = new System.Drawing.Size(364, 20);
             this.txtBx_SymFilter.TabIndex = 0;
             this.txtBx_SymFilter.TextChanged += new System.EventHandler(this.txtBx_SymFilter_TextChanged);
             // 
@@ -555,7 +545,7 @@
             this.rb_SimpleFilter2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rb_SimpleFilter2.AutoSize = true;
             this.rb_SimpleFilter2.Checked = true;
-            this.rb_SimpleFilter2.Location = new System.Drawing.Point(6, 50);
+            this.rb_SimpleFilter2.Location = new System.Drawing.Point(6, 45);
             this.rb_SimpleFilter2.Name = "rb_SimpleFilter2";
             this.rb_SimpleFilter2.Size = new System.Drawing.Size(127, 17);
             this.rb_SimpleFilter2.TabIndex = 20;
@@ -567,7 +557,7 @@
             // 
             this.rb_RegexFilter2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rb_RegexFilter2.AutoSize = true;
-            this.rb_RegexFilter2.Location = new System.Drawing.Point(136, 49);
+            this.rb_RegexFilter2.Location = new System.Drawing.Point(136, 44);
             this.rb_RegexFilter2.Name = "rb_RegexFilter2";
             this.rb_RegexFilter2.Size = new System.Drawing.Size(97, 17);
             this.rb_RegexFilter2.TabIndex = 21;
@@ -580,7 +570,7 @@
             this.groupBox3.Controls.Add(this.lbl_DataSizeActual);
             this.groupBox3.Controls.Add(this.lbl_TextSizeActual);
             this.groupBox3.Controls.Add(this.lbl_BssSizeActual);
-            this.groupBox3.Location = new System.Drawing.Point(252, 3);
+            this.groupBox3.Location = new System.Drawing.Point(385, 3);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(234, 70);
             this.groupBox3.TabIndex = 35;
@@ -628,7 +618,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(0);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(0);
-            this.groupBox2.Size = new System.Drawing.Size(249, 76);
+            this.groupBox2.Size = new System.Drawing.Size(382, 76);
             this.groupBox2.TabIndex = 35;
             this.groupBox2.TabStop = false;
             // 
@@ -656,7 +646,8 @@
             this.olvColumn8});
             this.olv_SymbolSum.Cursor = System.Windows.Forms.Cursors.Default;
             this.olv_SymbolSum.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.olv_SymbolSum.Location = new System.Drawing.Point(252, 89);
+            this.olv_SymbolSum.HideSelection = false;
+            this.olv_SymbolSum.Location = new System.Drawing.Point(385, 86);
             this.olv_SymbolSum.Name = "olv_SymbolSum";
             this.olv_SymbolSum.SelectColumnsMenuStaysOpen = false;
             this.olv_SymbolSum.ShowGroups = false;
@@ -699,9 +690,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox5.Controls.Add(this.tab_details);
-            this.groupBox5.Location = new System.Drawing.Point(621, 156);
+            this.groupBox5.Location = new System.Drawing.Point(3, 158);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(489, 351);
+            this.groupBox5.Size = new System.Drawing.Size(622, 351);
             this.groupBox5.TabIndex = 37;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "groupBox5";
@@ -716,7 +707,7 @@
             this.tab_details.Location = new System.Drawing.Point(0, 0);
             this.tab_details.Name = "tab_details";
             this.tab_details.SelectedIndex = 0;
-            this.tab_details.Size = new System.Drawing.Size(486, 351);
+            this.tab_details.Size = new System.Drawing.Size(619, 351);
             this.tab_details.TabIndex = 22;
             // 
             // tabpg_syms
@@ -725,7 +716,7 @@
             this.tabpg_syms.Location = new System.Drawing.Point(4, 22);
             this.tabpg_syms.Name = "tabpg_syms";
             this.tabpg_syms.Padding = new System.Windows.Forms.Padding(3);
-            this.tabpg_syms.Size = new System.Drawing.Size(478, 325);
+            this.tabpg_syms.Size = new System.Drawing.Size(611, 325);
             this.tabpg_syms.TabIndex = 0;
             this.tabpg_syms.Text = "Symbols";
             this.tabpg_syms.UseVisualStyleBackColor = true;
@@ -754,6 +745,7 @@
             this.olv_Cref.Cursor = System.Windows.Forms.Cursors.Default;
             this.olv_Cref.EmptyListMsg = "Please link with the -cref option and select a module!";
             this.olv_Cref.EmptyListMsgFont = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.olv_Cref.HideSelection = false;
             this.olv_Cref.Location = new System.Drawing.Point(6, 6);
             this.olv_Cref.Name = "olv_Cref";
             this.olv_Cref.ShowGroups = false;
@@ -774,12 +766,63 @@
             this.tlv_ColModule.Text = "MODULE";
             this.tlv_ColModule.Width = 1000;
             // 
+            // mainSplitLayoutContainer
+            // 
+            this.mainSplitLayoutContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainSplitLayoutContainer.Location = new System.Drawing.Point(0, 0);
+            this.mainSplitLayoutContainer.Name = "mainSplitLayoutContainer";
+            // 
+            // mainSplitLayoutContainer.Panel1
+            // 
+            this.mainSplitLayoutContainer.Panel1.Controls.Add(this.leftLayoutPanel);
+            this.mainSplitLayoutContainer.Panel1MinSize = 475;
+            // 
+            // mainSplitLayoutContainer.Panel2
+            // 
+            this.mainSplitLayoutContainer.Panel2.Controls.Add(this.rightLayoutPanel);
+            this.mainSplitLayoutContainer.Panel2MinSize = 500;
+            this.mainSplitLayoutContainer.Size = new System.Drawing.Size(1117, 509);
+            this.mainSplitLayoutContainer.SplitterDistance = 485;
+            this.mainSplitLayoutContainer.TabIndex = 36;
+            // 
+            // leftLayoutPanel
+            // 
+            this.leftLayoutPanel.ColumnCount = 1;
+            this.leftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.leftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.leftLayoutPanel.Controls.Add(this.tableLayoutPanel2, 0, 0);
+            this.leftLayoutPanel.Controls.Add(this.olv_ModuleView, 0, 1);
+            this.leftLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.leftLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.leftLayoutPanel.Name = "leftLayoutPanel";
+            this.leftLayoutPanel.RowCount = 2;
+            this.leftLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 155F));
+            this.leftLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.leftLayoutPanel.Size = new System.Drawing.Size(485, 509);
+            this.leftLayoutPanel.TabIndex = 0;
+            // 
+            // rightLayoutPanel
+            // 
+            this.rightLayoutPanel.ColumnCount = 1;
+            this.rightLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.rightLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.rightLayoutPanel.Controls.Add(this.tableLayoutPanel4, 0, 0);
+            this.rightLayoutPanel.Controls.Add(this.groupBox5, 0, 1);
+            this.rightLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rightLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.rightLayoutPanel.Name = "rightLayoutPanel";
+            this.rightLayoutPanel.RowCount = 2;
+            this.rightLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 155F));
+            this.rightLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.rightLayoutPanel.Size = new System.Drawing.Size(628, 509);
+            this.rightLayoutPanel.TabIndex = 0;
+            // 
             // MapViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1117, 509);
-            this.Controls.Add(this.tlp_Main);
+            this.Controls.Add(this.mainSplitLayoutContainer);
             this.Font = new System.Drawing.Font("Consolas", 8.25F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MapViewer";
@@ -791,7 +834,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.olv_ModuleView)).EndInit();
             this.cms_export.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.olv_SymbolView)).EndInit();
-            this.tlp_Main.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
@@ -808,6 +850,12 @@
             this.tabpg_syms.ResumeLayout(false);
             this.tabpg_deps.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.olv_Cref)).EndInit();
+            this.mainSplitLayoutContainer.Panel1.ResumeLayout(false);
+            this.mainSplitLayoutContainer.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.mainSplitLayoutContainer)).EndInit();
+            this.mainSplitLayoutContainer.ResumeLayout(false);
+            this.leftLayoutPanel.ResumeLayout(false);
+            this.rightLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -838,7 +886,6 @@
         private BrightIdeasSoftware.OLVColumn olvColumn1;
         private BrightIdeasSoftware.OLVColumn olvColumn2;
         private BrightIdeasSoftware.OLVColumn olvColumn3;
-        private System.Windows.Forms.TableLayoutPanel tlp_Main;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -870,6 +917,9 @@
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cSVToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hTMLToolStripMenuItem;
+        private System.Windows.Forms.SplitContainer mainSplitLayoutContainer;
+        private System.Windows.Forms.TableLayoutPanel leftLayoutPanel;
+        private System.Windows.Forms.TableLayoutPanel rightLayoutPanel;
     }
 }
 
