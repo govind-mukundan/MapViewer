@@ -1,4 +1,4 @@
-﻿#define CREF
+#define CREF
 
 #region copyright
 /*
@@ -616,7 +616,14 @@ namespace MapViewer
 
             // Special aspect getter for address coz we want to see that in hex
             this.symAddrColumn.AspectGetter = (x) => { return ((Symbol)x).LoadAddress.ToString("X6"); };
-            colSection.AspectGetter = x => { return ((Symbol)x).SectionName[1].ToString().ToUpper(); };
+            colSection.AspectGetter = x => { 
+                // check what kind of section we have
+                if (((Symbol)x).SectionName.ToLower() == "unknown") {
+                    return "UNK";
+                }
+
+                return ((Symbol)x).SectionName[1].ToString().ToUpper();
+            };
             columnGlobal.AspectGetter = x =>
             {
                 int type = ((Symbol)x).GlobalScope;
